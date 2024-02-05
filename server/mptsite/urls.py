@@ -6,4 +6,5 @@ urlpatterns = [
     path('', v.home_page),
     path('rasp/', v.rasp_page),
     path('prepodi/', v.prepods),
+    path('newfile/', v.newFile),
 ]
