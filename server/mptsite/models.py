@@ -101,3 +101,17 @@ class Schedules(models.Model):
     class Meta():
         verbose_name = "Строку расписания"
         verbose_name_plural = "Расписание"
+
+
+
+# -------------------------------- Модели, которые не идут в базу данных
+
+class DaySchedule():
+    # инит и переменные внутри были основаны на элементе из миро
+    def __init__(self, day, schedules_list):
+        self.day = day
+        self.schedules_list = schedules_list
+
+    def __str__(self):
+        return  f"{self.day} | {self.schedules_list}"
+

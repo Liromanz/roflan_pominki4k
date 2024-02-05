@@ -1,5 +1,6 @@
 from django.shortcuts import render
 from . import models as m
+from .modules.raspgenerator import RaspGenerator
 
 # Create your views here.
 
@@ -9,7 +10,10 @@ def home_page(request):
 
 
 def rasp_page(request):
-    slovar = {"bbb": "расписание еще не выложили, но будет жопа", "groups": ["п50-8-22", "п50-7-22", "п50-6-22"]}
+    rasps = RaspGenerator()
+    day_rasp = rasps.GenerateCurrentDay(m.Group.objects.filter(name='П50-8-22')[0])
+
+    slovar = {"rasp": day_rasp}
     return render(request, 'rasp.html', context=slovar)
 
 

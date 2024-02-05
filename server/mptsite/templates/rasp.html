@@ -13,12 +13,12 @@
     {# операции - {% for item in переменная %} {% endfor %} #}
     {# операции - {% if условие %} {% endif %} #}
 
-    {{ bbb }}
-    <br/>
-
-    {% for gr in groups %}
-        <a href="/mpt">{{ gr }}</a>
-        <br/>
+    {% for r in rasp %}
+        <b{{ r.day }}></b>
+        {% for sched in r.schedules_list %}
+            <a>{{ sched.number_pair.number }} | {{ sched.number_pair.time_start }} - {{ sched.number_pair.time_end }} | {{ sched.discipline }} | {{ sched.building }}, {{ sched.audience_number }} | {{ sched.prepod }}</a>
+        {% endfor %}
     {% endfor %}
+    <br/>
 </body>
 </html>
