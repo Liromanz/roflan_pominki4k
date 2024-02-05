@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <center><h1>расписание</h1></center>
+    <hr/>
+
+    {# это комментарий #}
+    {# использовать переменную {{ названиепеременной }} #}
+    {# операции - {% for item in переменная %} {% endfor %} #}
+    {# операции - {% if условие %} {% endif %} #}
+
+    {{ bbb }}
+    <br/>
+
+    {% for gr in groups %}
+        <a href="/mpt">{{ gr }}</a>
+        <br/>
+    {% endfor %}
+</body>
+</html>

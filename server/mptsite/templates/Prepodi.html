@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Преподаватели</title>
+</head>
+<body>
+    <center><h1>преподаватели ебучей шаражки</h1></center>
+    <hr/>
+
+    {% for prep in prepodi %}
+        <b>{{prep.First_name}} {{prep.Name}} {{prep.Patronymic}}</b>
+        <a href="/">Подробнее</a>
+        <br/>
+    {% endfor %}
+</body>
+</html>
