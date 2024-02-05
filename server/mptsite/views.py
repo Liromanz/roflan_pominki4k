@@ -16,3 +16,6 @@ def rasp_page(request):
 def prepods(request):
     prepodi = m.Teacher.objects.all()
     return render(request, 'Prepodi.html', context={'prepodi': prepodi})
+
+def newFile(request):
+    return render(request, 'newfile.html')
