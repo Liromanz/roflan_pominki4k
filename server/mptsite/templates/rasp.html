@@ -8,17 +8,16 @@
     <center><h1>расписание</h1></center>
     <hr/>
 
-    {# это комментарий #}
-    {# использовать переменную {{ названиепеременной }} #}
-    {# операции - {% for item in переменная %} {% endfor %} #}
-    {# операции - {% if условие %} {% endif %} #}
 
-    {{ bbb }}
-    <br/>
-
-    {% for gr in groups %}
-        <a href="/mpt">{{ gr }}</a>
+    {# Вариация отображения расписания для тестирования #}
+    {% for r in rasp %}
+        {% for sched in r.lessons %}
+            <a>{{ sched.number_pair.number }} | {{ sched.number_pair.time_start }} - {{ sched.number_pair.time_end }} | {{ sched.discipline }} | {{ sched.building }}, {{ sched.audience_number }} | {{ sched.prepod }}</a>
+            <br/>
+        {% endfor %}
         <br/>
+        <hr/>
     {% endfor %}
+    <br/>
 </body>
 </html>
