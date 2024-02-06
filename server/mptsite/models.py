@@ -106,12 +106,12 @@ class Schedules(models.Model):
 
 # -------------------------------- Модели, которые не идут в базу данных
 
-class DaySchedule():
+class DaySchedule:
     # инит и переменные внутри были основаны на элементе из миро
     def __init__(self, day, schedules_list):
-        self.day = day
-        self.schedules_list = schedules_list
+        self.cur_date = day
+        self.lessons = schedules_list
 
     def __str__(self):
-        return  f"{self.day} | {self.schedules_list}"
+        return  f"{self.cur_date} | {self.lessons}"
 

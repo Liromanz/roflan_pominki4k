@@ -1,7 +1,7 @@
 from django.shortcuts import render
 from . import models as m
-from .modules.raspgenerator import RaspGenerator
-
+from .modules.schedule_generator import ScheduleGenerator
+from datetime import date
 # Create your views here.
 
 
@@ -10,8 +10,22 @@ def home_page(request):
 
 
 def rasp_page(request):
-    rasps = RaspGenerator()
-    day_rasp = rasps.GenerateCurrentDay(m.Group.objects.filter(name='П50-8-22')[0])
+    ### Вариация расписания на сегодняшний день. Передаем только группу
+    #day_rasp = ScheduleGenerator.generate_by_day(m.Group.objects.filter(name='П50-8-22')[0])
+
+    ### Вариация расписания на сегодняшний день. Передаем группу и дату
+    #day_rasp = ScheduleGenerator.generate_by_day(m.Group.objects.filter(name='П50-8-22')[0], date(2024, 2, 6))
+
+    ### Вариация расписания на текущую неделю. Передаем только группу
+    #day_rasp = ScheduleGenerator.generate_current_week(m.Group.objects.filter(name='П50-8-22')[0])
+
+    ### Вариация расписания на следующую неделю. Передаем только группу
+    #day_rasp = ScheduleGenerator.generate_next_week(m.Group.objects.filter(name='П50-8-22')[0])
+
+    ### Вариация расписания на промежуток дней. Передаем группу, стартовую дату и дату окончания
+    day_rasp = ScheduleGenerator.generate_by_two_dates(m.Group.objects.filter(name='П50-8-22')[0],
+                                                       date(2024, 2, 6), date(2024, 2, 14))
+
 
     slovar = {"rasp": day_rasp}
     return render(request, 'rasp.html', context=slovar)
