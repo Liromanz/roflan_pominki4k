@@ -7,4 +7,5 @@ urlpatterns = [
     path('rasp/', v.rasp_page, name='rasp'),
     path('prepodi/', v.prepods),
     path('newfile/', v.newFile),
+    # path('lupapupa/<int:num>/', v.prepods)
 ]
