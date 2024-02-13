@@ -1,6 +1,6 @@
 from ..models import *
 from .Parser_schedule import Parser
-import os
+from datetime import datetime
 import requests
 from bs4 import BeautifulSoup
 class Additions:
@@ -9,27 +9,32 @@ class Additions:
         napr = {"09.02.01":"Компьютерные системы и комплексы","09.02.06":"Сетевое и системное администрирование", "09.02.07":"Информационные системы и программирование","10.02.05":"Обеспечение информационной безопасности автоматизированных систем","40.02.01":"Право и организация социального обеспечения"}
         for i in list(napr.keys()):
             d = CodeDirection(code=i, name=napr[i])
-            d.save()
-
-    # @staticmethod
-    # def Add_Speciality():
+            try:
+                d.save()
+            except:
+                continue
 
     @staticmethod
     def Add_group():
-        # TODO: доделать относительный путь
-        for filename in os.listdir(r"C:\Users\serge\OneDrive\Рабочий стол\Расписания"):
-            groupname = filename.replace('$', '/').strip('.json')
+        Parser.Get_groups()
+        for group in Parser.Get_groups():
             for i in range(4):
-                if groupname[0:4-i] in [j.name for j in Speciality.objects.all()]:
-                    g = Group(speciality_id=int((Speciality.objects.get(name=f"{groupname[0:4-i]}")).id), name=groupname)
-                    g.save()
+                if group[0:4-i] in [j.name for j in Speciality.objects.all()]:
+                    g = Group(speciality_id=int((Speciality.objects.get(name=f"{group[0:4-i]}")).id), name=group)
+                    try:
+                        g.save()
+                    except:
+                        break
                     break
 
     @staticmethod
     def Add_disps():
-        for i in Parser.Get_disps():
+        for i in Parser.Get_disps()['disps']:
             d = Disciplines(name=i)
-            d.save()
+            try:
+                d.save()
+            except:
+                continue
 
     @staticmethod
     def Add_prep():
@@ -43,15 +48,13 @@ class Additions:
         for i in links:
             if i.get('href')[i.get('href').find('kolledji')::] != 'x':
                 links_obrabot.append(i.get('href')[i.get('href').find('kolledji')::])
-        # for j in links_obrabot:
-        #     print(j)
+
         for i in range(len(links_obrabot)):
             link = f"https://www.xn--p1ag3a.xn--p1ai/structure/{links_obrabot[i]}"
             respons = requests.get(link).text
             prepod_html = BeautifulSoup(respons, 'lxml')
 
             FIO = prepod_html.find("h1", class_="inner-title").text.strip()
-            # print(FIO)
 
             prepod_card = prepod_html.find('div', class_="inner-page-content clearfix").text.replace('&nbsp;', '')
             Education = prepod_card[prepod_card.find("Образование:"):prepod_card.find(
@@ -92,8 +95,15 @@ class Additions:
             t.save()
 
 
-    # @staticmethod
-    # def Add_
+    @staticmethod
+    def Add_raspisanie():
+        data = Parser.Get_disps()
+        current_legend = data['legend'] #легенда текущей недели
+        groups_schedule = data['pairs'] #словарь группа - дни недели с парами
+
+        t = datetime.today().weekday()
+
+        s = Schedules()
 
 
 

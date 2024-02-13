@@ -1,7 +1,7 @@
 from django.db import models
 
 class Pairs(models.Model):
-    number = models.IntegerField(verbose_name="Номер пары")
+    number = models.IntegerField(verbose_name="Номер пары", unique=True)
     time_start = models.TimeField(verbose_name="Время начала")
     time_end = models.TimeField(verbose_name="Время окончания")
 
@@ -14,8 +14,8 @@ class Pairs(models.Model):
 
 
 class CodeDirection (models.Model):
-    code = models.CharField(max_length=20, verbose_name="Код направления")
-    name = models.TextField(verbose_name="Наименование направления")
+    code = models.CharField(max_length=20, verbose_name="Код направления", unique=True)
+    name = models.TextField(verbose_name="Наименование направления", unique=True)
 
     def __str__(self):
         return f"{self.code} {self.name}"
@@ -27,7 +27,7 @@ class CodeDirection (models.Model):
 
 class Speciality (models.Model):
     code = models.ForeignKey(CodeDirection, on_delete=models.CASCADE, verbose_name="Код")
-    name = models.CharField(max_length=20)
+    name = models.CharField(max_length=20, unique=True)
 
     def __str__(self):
         return f"{self.name}"
@@ -39,7 +39,7 @@ class Speciality (models.Model):
 
 class Group(models.Model):
     speciality = models.ForeignKey(Speciality, on_delete=models.CASCADE)
-    name = models.CharField(max_length=20)
+    name = models.CharField(max_length=20, unique=True)
 
     def __str__(self):
         return f"{self.speciality} {self.name}"
@@ -50,8 +50,8 @@ class Group(models.Model):
 
 
 class Building (models.Model):
-    name = models.CharField(max_length=30, verbose_name="Название")
-    address = models.TextField(verbose_name="Адрес")
+    name = models.CharField(max_length=30, verbose_name="Название", unique=True)
+    address = models.TextField(verbose_name="Адрес", unique=True)
 
     def __str__(self):
         return f"{self.name}"
@@ -62,7 +62,7 @@ class Building (models.Model):
 
 
 class Disciplines(models.Model):
-    name = models.CharField(max_length=30, verbose_name="Название дисциплины")
+    name = models.CharField(max_length=30, verbose_name="Название дисциплины", unique=True)
 
     def __str__(self):
         return f"{self.name}"
