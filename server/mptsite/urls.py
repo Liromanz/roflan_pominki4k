@@ -1,11 +1,11 @@
 from django.contrib import admin
 from django.urls import path
-from . import views as v
+from .views import *
 
 urlpatterns = [
-    path('', v.home_page),
-    path('rasp/', v.rasp_page),
-    path('prepodi/', v.prepods),
-    path('newfile/', v.newFile),
+    path('', home_page),
+    path('rasp/', rasp_page),
+    path('prepodi/', prepods),
+    path('newfile/', newFile),
     # path('lupapupa/<int:num>/', v.prepods)
 ]
