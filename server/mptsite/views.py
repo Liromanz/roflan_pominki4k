@@ -2,6 +2,8 @@ from django.shortcuts import render
 from . import models as m
 from .modules.Direction_add import Additions
 from .modules.Parser_schedule import Parser
+from .modules.schedule_generator import ScheduleGenerator
+
 
 # Create your views here.
 
@@ -33,13 +35,14 @@ def rasp_page(request):
     #                                                   date(2024, 2, 6), date(2024, 2, 14))
 
 
-    slovar = {"rasp": day_rasp}
-    return render(request, 'rasp.html', context=slovar)
+    #slovar = {"rasp": day_rasp}
+    slovar = {}
+    return render(request, 'mptsite/rasp.html', context=slovar)
 
 
 def prepods(request):
     prepodi = m.Teacher.objects.all()
-    return render(request, 'Prepodi.html', context={'prepodi': prepodi})
+    return render(request, 'mptsite/Prepodi.html', context={'prepodi': prepodi})
 
 def newFile(request):
-    return render(request, 'newfile.html')
+    return render(request, 'mptsite/newfile.html')
