@@ -1,0 +1,13 @@
+.default-body{
+    background: #2b2b2b;
+    color: #d0d0d0;
+}
+
+.content-arranger{
+    padding: 20px;
+}
+
+.default-link{
+    text-decoration: none;
+    color: #31d2f2;
+}
