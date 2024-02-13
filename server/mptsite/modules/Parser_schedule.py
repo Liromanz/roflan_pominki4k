@@ -64,7 +64,6 @@ class Parser:
             list_days = []
             l_mpt_cls_days = []
 
-            # print(t, legendendary)
 
             for zaniatie in day_schedul:
                 day_name = zaniatie.find('h4')  # имя дня и площадка
@@ -111,16 +110,10 @@ class Parser:
                         else:
                             day_cls.append(MPT_class(num, legend, cch, czn, pch, pzn))
                 l_mpt_cls_days.append(day_cls)
-                # for i in day_cls:
-                #     i.getter()
                 list_days.append(Day(str(day_name.text).replace(day_name.find('span').text, '').replace("\n", ''),
                                      str(day_name.find('span').text), day_cls))
                 pairs_group[g] = list_days
                 day_cls = []
-        # print(list(set(disps)))
-        # print(list(groups.keys()))
-        # print(len(l_mpt_cls_days))
-        # return {'disps': list(set(disps)), 'groups': list(groups.keys()), 'pairs':l_mpt_cls_days}
         return {'disps': list(set(disps)), 'groups': list(groups.keys()), 'pairs': pairs_group, 'legend':legendendary}
     @staticmethod
     def Get_schedule():

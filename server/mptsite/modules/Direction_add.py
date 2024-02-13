@@ -14,6 +14,10 @@ class Additions:
             except:
                 continue
 
+    # @staticmethod
+    # def Add_speciality():
+
+
     @staticmethod
     def Add_group():
         Parser.Get_groups()

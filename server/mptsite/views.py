@@ -8,9 +8,9 @@ from .modules.Parser_schedule import Parser
 
 def home_page(request):
     # Additions.Add_napr()
-    Additions.Add_group() # не робит, дописать
+    # Additions.Add_group() # не робит, дописать
     # Additions.Add_prep()
-    Additions.Add_disps()
+    # Additions.Add_disps()
     return render(request, 'index.html')
 
 
