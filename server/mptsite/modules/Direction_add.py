@@ -14,20 +14,54 @@ class Additions:
             except:
                 continue
 
-    # @staticmethod
-    # def Add_speciality():
-
+    @staticmethod
+    def Add_speciality():
+        napr_ids = {}
+        for i in CodeDirection.objects.all():
+            napr_ids[i.code] = i
+        for g in ["П", "БД", "ВД", "Т", "ИС", "ИСиП"]:
+            d = Speciality(code=napr_ids["09.02.07"], name=g)
+            try:
+                d.save()
+            except:
+                continue
+        for g in ["СА"]:
+            d = Speciality(code=napr_ids["09.02.06"], name=g)
+            try:
+                d.save()
+            except:
+                continue
+        for g in ["Э"]:
+            d = Speciality(code=napr_ids["09.02.01"], name=g)
+            try:
+                d.save()
+            except:
+                continue
+        for g in ["Ю"]:
+            d = Speciality(code=napr_ids["40.02.01"], name=g)
+            try:
+                d.save()
+            except:
+                continue
+        for g in ["БИ"]:
+            d = Speciality(code=napr_ids["10.02.05"], name=g)
+            try:
+                d.save()
+            except:
+                continue
 
     @staticmethod
     def Add_group():
-        Parser.Get_groups()
         for group in Parser.Get_groups():
+            print(group)
             for i in range(4):
                 if group[0:4-i] in [j.name for j in Speciality.objects.all()]:
                     g = Group(speciality_id=int((Speciality.objects.get(name=f"{group[0:4-i]}")).id), name=group)
+                    print(g)
                     try:
                         g.save()
                     except:
+                        print('Ошибка')
                         break
                     break
 

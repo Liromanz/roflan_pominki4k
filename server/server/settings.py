@@ -76,23 +76,23 @@ WSGI_APPLICATION = 'server.wsgi.application'
 # https://docs.djangoproject.com/en/5.0/ref/settings/#databases
 # sqllite, mongo, oracle, mysql, postgre
 
-#DATABASES = {
-#    'default': {
-#        'ENGINE': 'django.db.backends.sqlite3',
-#        'NAME': BASE_DIR / 'db.sqlite3',
-#    }
-#}
-
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'HOST': '89.23.118.157',
-        'PORT': '5432',
-        'USER': 'mptsite',
-        'PASSWORD': 'hehe_he\'s_a_l0w_pri0r_chel',
-        'NAME': 'site_database'
-    }
+   'default': {
+       'ENGINE': 'django.db.backends.sqlite3',
+       'NAME': BASE_DIR / 'db.sqlite3',
+   }
 }
+
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.postgresql',
+#         'HOST': '89.23.118.157',
+#         'PORT': '5432',
+#         'USER': 'mptsite',
+#         'PASSWORD': 'hehe_he\'s_a_l0w_pri0r_chel',
+#         'NAME': 'site_database'
+#     }
+# }
 
 
 

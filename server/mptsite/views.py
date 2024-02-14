@@ -10,7 +10,9 @@ from .modules.schedule_generator import ScheduleGenerator
 
 def home_page(request):
     # Additions.Add_napr()
-    # Additions.Add_group() # не робит, дописать
+    # Additions.Add_speciality()
+    # Additions.Add_group()
+
     # Additions.Add_prep()
     # Additions.Add_disps()
     return render(request, 'index.html')
