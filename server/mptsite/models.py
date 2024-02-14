@@ -39,7 +39,7 @@ class Speciality (models.Model):
 
 class Group(models.Model):
     speciality = models.ForeignKey(Speciality, on_delete=models.CASCADE)
-    name = models.CharField(max_length=20, unique=True)
+    name = models.CharField(max_length=30, unique=True)
 
     def __str__(self):
         return f"{self.speciality} {self.name}"
@@ -73,15 +73,15 @@ class Disciplines(models.Model):
 
 class Prepods(models.Model):
     Surname = models.CharField(verbose_name="Фамилия", max_length=30, default="")
-    Name = models.CharField(verbose_name="Имя", max_length=20, null=False, default='')
+    Name = models.CharField(verbose_name="Имя", max_length=30, null=False, default='')
     Patronymic = models.CharField(verbose_name="Отчество", max_length=30, null=True, default="")
     Education = models.TextField(verbose_name="Образование", null=True, default="")
     Qualification = models.TextField(verbose_name="Данные о повышении квалификации",null=True, default="")
-    Post = models.CharField(verbose_name="Должность", max_length=100, default="")
+    Post = models.CharField(verbose_name="Должность", max_length=200, default="")
     Disciplines = models.TextField(verbose_name="Преподаваемые дисциплины", default="")
-    Full_expirience = models.CharField(verbose_name="Общий трудовой стаж", max_length=10, null=True, default="")
-    Prepod_expirience = models.CharField(verbose_name="Педагогический стаж", max_length=10, null=True, default="")
-    Sharaga_expirience = models.CharField(verbose_name="Стаж работы в техникуме", max_length=10, null=True, default="")
+    Full_expirience = models.CharField(verbose_name="Общий трудовой стаж", max_length=30, null=True, default="")
+    Prepod_expirience = models.CharField(verbose_name="Педагогический стаж", max_length=30, null=True, default="")
+    Sharaga_expirience = models.CharField(verbose_name="Стаж работы в техникуме", max_length=30, null=True, default="")
     Contacts = models.EmailField(verbose_name="Контакты",null=True, default="")
     Degree = models.TextField(verbose_name="Ученая степень/категория", default="нет/нет")
 
