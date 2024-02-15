@@ -81,17 +81,18 @@ class Parser:
     @staticmethod
     def Get_pairs(json_form=False):
         pairs = []
-        groups = {'П50-8-22': '2084fc05f67bc0c1e78dc7c87b5d1dc2'}
-        # groups = {}
+        # groups = {'П50-8-22': '2084fc05f67bc0c1e78dc7c87b5d1dc2'}
+        # groups = {'П50-9-21': '3dfcedbcbe61b166aeefe70959f2bc18'}
+        groups = {}
         link = "https://mpt.ru/studentu/raspisanie-zanyatiy/"
         respons = requests.get(link).text
         site_body = BeautifulSoup(respons, "lxml")
 
         week_days_list = ["понедельник", "вторник", "среда", "четверг", "пятница", "суббота"]
 
-        # for i in site_body.find_all('div', role = "tabpanel"):
-        #     if (i.find('h2') == None):
-        #         groups[(i.find('h3').text).replace('Группа ', '')] = i.get('id')
+        for i in site_body.find_all('div', role = "tabpanel"):
+            if (i.find('h2') == None):
+                groups[(i.find('h3').text).replace('Группа ', '')] = i.get('id')
 
         for group in list(groups.keys()):
             week = site_body.find('div', id=f'{groups[group]}')

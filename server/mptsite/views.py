@@ -12,9 +12,11 @@ def home_page(request):
     # Additions.Add_napr()
     # Additions.Add_speciality()
     # Additions.Add_group()
-
-    # Additions.Add_prep()
+    # Additions.Add_pairs_numbers()
+    # Additions.Add_building()
     # Additions.Add_disps()
+    # Additions.Add_prep()
+    # Additions.Add_schedule()
     return render(request, 'index.html')
 
 

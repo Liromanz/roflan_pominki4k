@@ -1,7 +1,9 @@
 from ..models import *
 from .Parser_schedule import Parser
-from datetime import datetime
+from datetime import datetime, date
 import requests
+import time as tm
+import datetime as dt
 from bs4 import BeautifulSoup
 class Additions:
     @staticmethod
@@ -75,6 +77,15 @@ class Additions:
                 continue
 
     @staticmethod
+    def Add_building():
+        cl = 0
+        buildings = {"Нахимовский": "Нахимовский проспект, 21", "Нежинская": "Нежинская, 7"}
+        for i in list(buildings.keys()):
+            d = Building(id=cl, name=i, address=buildings[i])
+            d.save()
+            cl += 1
+
+    @staticmethod
     def Add_prep():
         link = "https://www.xn--p1ag3a.xn--p1ai/structure/kolledji-i-tehnikum/moskovskiy-priborostroitelnyiy-tehnikum#section-17706"
         respons = requests.get(link).text
@@ -86,8 +97,9 @@ class Additions:
         for i in links:
             if i.get('href')[i.get('href').find('kolledji')::] != 'x':
                 links_obrabot.append(i.get('href')[i.get('href').find('kolledji')::])
-
+        print(*links_obrabot, sep='\n')
         for i in range(len(links_obrabot)):
+            tm.sleep(5)
             link = f"https://www.xn--p1ag3a.xn--p1ai/structure/{links_obrabot[i]}"
             respons = requests.get(link).text
             prepod_html = BeautifulSoup(respons, 'lxml')
@@ -134,14 +146,44 @@ class Additions:
 
 
     @staticmethod
-    def Add_raspisanie():
-        data = Parser.Get_disps()
-        current_legend = data['legend'] #легенда текущей недели
-        groups_schedule = data['pairs'] #словарь группа - дни недели с парами
-
-        t = datetime.today().weekday()
-
-        s = Schedules()
+    def Add_pairs_numbers():
+        cl = 0
+        for i in [((8, 30, 0), (10, 0, 0)),((10, 10, 0), (11, 40, 0)),((12, 0, 0), (13, 30, 0)), ((13, 50, 0), (15, 20, 0)), ((15, 30, 0), (17, 0, 0)), ((17, 10, 0), (18, 40, 0))]:
+            p = Pairs(id=cl, number=cl+1, time_start=dt.time(*i[0]) , time_end=dt.time(*i[1]))
+            p.save()
+            cl += 1
 
 
+    @staticmethod
+    def Add_schedule():
+        data = Parser.Get_pairs(json_form=True)
+        for i in data:
+            print(i)
+            date_schedul = date.fromisoformat(i['date'])
+            number_id = Pairs.objects.get(id=i['number'] - 1)
+            group = Group.objects.get(name=f"{i['group']}")
+            disp = Disciplines.objects.get(name=f"{i['name']}")
+            if i['name'] == 'ПРАКТИКА':
+                s = Schedules(number_pair=number_id, discipline=disp, group=group, date=date_schedul)
+                s.save()
+                continue
+            if i['name'] == '':
+                continue
+
+            prepod_fio = i['prepod']
+            biulding = Building.objects.get(name=f"{i['platform']}") if i['platform'] != '' else None
+            cl = 0
+            for i in range(len(prepod_fio.split(','))):
+                fio = prepod_fio.split(',')[i].split('.')
+                prepods_variant = Prepods.objects.filter(surname=fio[2].strip())
+                if len(prepods_variant) == 0:
+                    p = Prepods(surname=fio[2].strip(), name=fio[0].strip(), patronymic=fio[1].strip())
+                    p.save()
+                    prepods_variant = Prepods.objects.filter(surname=fio[2].strip())
+                for prepod in prepods_variant:
+                    if prepod.name.startswith(fio[0].strip()) and prepod.patronymic.startswith(fio[1].strip()):
+                        prepod_id = prepod
+                        s = Schedules(number_pair=number_id, discipline=disp, group=group, prepod=prepod_id,
+                                        date=date_schedul, building=biulding)
+                        s.save()
 
