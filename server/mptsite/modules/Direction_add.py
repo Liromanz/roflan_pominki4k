@@ -97,8 +97,9 @@ class Additions:
         for i in links:
             if i.get('href')[i.get('href').find('kolledji')::] != 'x':
                 links_obrabot.append(i.get('href')[i.get('href').find('kolledji')::])
-        print(*links_obrabot, sep='\n')
+
         for i in range(len(links_obrabot)):
+            print(links_obrabot[i])
             tm.sleep(5)
             link = f"https://www.xn--p1ag3a.xn--p1ai/structure/{links_obrabot[i]}"
             respons = requests.get(link).text
@@ -141,7 +142,7 @@ class Additions:
             Degree = prepod_html.find('div', class_="inner-page-content clearfix").find_all('p')[-1].text.replace(
                 'Ученая степень/категория:', '').strip()
             # print(Degree)
-            t = Prepods(Name=FIO.split()[1], Surname=FIO.split()[0], Patronymic=FIO.split()[2], Education=Education, Qualification=Qualification, Post=Post, Disciplines=Disciplines, Full_expirience=Full_expirience, Prepod_expirience=Prepod_expirience, Sharaga_expirience=Sharaga_expirience, Contacts=Contacts, Degree=Degree)
+            t = Prepods(name=FIO.split()[1], surname=FIO.split()[0], patronymic=FIO.split()[2], education=Education, qualification=Qualification, post=Post, disciplines=Disciplines, full_expirience=Full_expirience, prepod_expirience=Prepod_expirience, sharaga_expirience=Sharaga_expirience, contacts=Contacts, degree=Degree)
             t.save()
 
 
