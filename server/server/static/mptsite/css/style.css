@@ -1,8 +1,191 @@
-.navigations {
-  color: blue;
+:root {
+    --mainColor: #2D2D44;
 }
 
-h1 {
-  color: firebrick;
-  font-size: 50px;
+*{
+   
+}
+
+.outsideFilter {
+    background-size: cover;
+    background-image: url('../img/Nezhka.jpg');
+    background-repeat: no-repeat;
+    /* display: flex;
+    justify-content: center; */
+    width: 100%;
+    overflow-x: hidden;
+}
+
+.top-ban {
+    backdrop-filter: brightness(0.25);
+    width: 100%;
+    height: 100vh;
+    display: grid;
+    grid-template-rows: 1fr 1fr 30fr 1fr;
+}
+
+.top-ban__logos {
+    display: flex;
+    align-items: center;
+}
+
+.top-ban__logos img {
+    cursor: pointer;
+}
+
+.top-ban__right-side {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    /* width: 10vw; */
+    font-size: 32px;
+
+}
+
+.top-ban__right-side button {
+    font-size: 32px;
+    background-color: transparent;
+    color: white;
+    padding: 19px 37px 15px 36px;
+    border: 3px solid #ffff;
+    /* margin-right: 10vw; */
+}
+
+.top-ban__right-side button:hover {
+    font-size: 32px;
+    background-color: rgba(0, 0, 0, 0.177);
+    color: rgb(255, 255, 255);
+    padding: 19px 37px 15px 36px;
+    border: 3px solid #ffffff;
+}
+
+.line {
+    width: 80vw;
+    height: 0.5vh;
+    background-color: white;
+    align-self: center;
+    justify-self: center;
+}
+
+.langSwithcer {
+    margin: auto 2vw;
+    cursor: pointer;
+}
+
+.top-ban__header {
+    width: 100vw;
+    max-width: 80vw;
+    /* min-width: 80vw; */
+    margin: 0 10vw;
+    color: white;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+@media (min-width: 1900px) {
+    .top-ban__header {
+        height: 10vh;
+    }
+}
+
+@media (max-width: 600px) {
+
+
+    .top-ban__header {
+        width: 70vw;
+        height: 50px;
+        margin: 0 10vw;
+        /* gap: 100px; */
+    }
+
+    .top-ban__right-side {
+        font-size: 10px;
+    }
+
+    .top-ban__right-side button {
+        font-size: 10px;
+        padding: 4px;
+        border: 0.1px solid #ffffff;
+        margin: 4px;
+    }
+
+    .top-ban__right-side button:hover {
+        font-size: 10px;
+        padding: 4px;
+        border: 0.1px solid #ffffff;
+    }
+
+    .top-ban__logos img {
+        width: 50px;
+        height: 25px;
+
+    }
+
+    .top-ban__logo-Gerb {
+        display: flex;
+
+    }
+}
+
+.top-ban__main {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: 88px;
+    /* margin: 228px 0 120px 0; */
+}
+
+.top-ban__main h1 {
+
+    font-size: 100px;
+    color: var(--mainColor);
+    text-align: center;
+    font-family: "Rubik", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 700;
+    text-shadow:
+        -0 -3px 0 #FFFFFF,
+        0 -3px 0 #FFFFFF,
+        -0 3px 0 #FFFFFF,
+        0 3px 0 #FFFFFF,
+        -3px -0 0 #FFFFFF,
+        3px -0 0 #FFFFFF,
+        -3px 0 0 #FFFFFF,
+        3px 0 0 #FFFFFF,
+        -1px -3px 0 #FFFFFF,
+        1px -3px 0 #FFFFFF,
+        -1px 3px 0 #FFFFFF,
+        1px 3px 0 #FFFFFF,
+        -3px -1px 0 #FFFFFF,
+        3px -1px 0 #FFFFFF,
+        -3px 1px 0 #FFFFFF,
+        3px 1px 0 #FFFFFF,
+        -2px -3px 0 #FFFFFF,
+        2px -3px 0 #FFFFFF,
+        -2px 3px 0 #FFFFFF,
+        2px 3px 0 #FFFFFF,
+        -3px -2px 0 #FFFFFF,
+        3px -2px 0 #FFFFFF,
+        -3px 2px 0 #FFFFFF,
+        3px 2px 0 #FFFFFF,
+        -3px -3px 0 #FFFFFF,
+        3px -3px 0 #FFFFFF,
+        -3px 3px 0 #FFFFFF,
+        3px 3px 0 #FFFFFF,
+        -3px -3px 0 #FFFFFF,
+        3px -3px 0 #FFFFFF,
+        -3px 3px 0 #FFFFFF,
+        3px 3px 0 #FFFFFF;
+}
+
+.subtitle {
+    font-size: 30px;
+    color: white;
+    text-align: center;
+    font-family: "Rubik", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 700;
+
 }

@@ -99,13 +99,10 @@ header {}
     display: grid;
     justify-content: center;
 }
+.test{
 
-.raspisanie__sup-header div:nth-child(1) {
-    display: flex;
-    justify-content: center;
 }
-
-.raspisanie__sup-header div:nth-child(2) {
+.raspisanie__sup-header div:nth-child(1),.raspisanie__sup-header div:nth-child(2) {
     display: flex;
     justify-content: center;
 }
