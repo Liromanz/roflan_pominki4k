@@ -1,29 +1,20 @@
-<!DOCTYPE html>
+{% extends 'mptsite/base.html'%}
 {% load static %}
-<html lang="en">
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>main</title>
-    <link rel="stylesheet" type="text/css" href="{% static 'mptsite/css/dropStyle.css' %}">
-    <link rel="stylesheet" type="text/css" href="{% static 'mptsite/css/style.css' %}">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Rubik:wght@300..900&display=swap" rel="stylesheet">
+{% block title %}
+Московский приборостроительный техникум
+{% endblock %}
 
-</head>
-
-<body>
+{% block main_info %}
     <div class="outsideFilter">
         <div class="top-ban">
             <div class="top-ban__header">
                 <div class="top-ban__logos">
                     <div class="top-ban__logo-Gerb">
-                        <img  src="{% static 'mptsite/img/gerb.svg'%}" alt="gerb">
+                        <img  src="{% static 'mptsite/img/gerb.svg' %}" alt="gerb">
                     </div>
                     <div class="top-ban__logo-REU">
-                        <img src="{% static 'mptsite/img/logoREU.svg'%}" alt="REU">
+                        <img src="{% static 'mptsite/img/logoREU.svg' %}" alt="REU">
                     </div>
                 </div>
                 <div class="top-ban__right-side">
@@ -42,6 +33,4 @@
         </div>
 
     </div>
-</body>
-
-</html>
+{% endblock %}
