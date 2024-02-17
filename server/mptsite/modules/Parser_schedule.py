@@ -52,8 +52,11 @@ class Parser:
         legendendary = soup.find('span', class_='label').text  # Получение легенды
 
         disps = []
+        cl = 1
         pairs_group = dict()
         for g in list(groups.keys()):
+            print(g, cl)
+            cl += 1
             week_schedul = soup.find('div', id=f'{groups[g]}')  # необработанное расписание на неделю
             day_schedul = week_schedul.find_all('table')  # необработанные расписания на 1 день
 
