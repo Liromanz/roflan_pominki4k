@@ -102,7 +102,7 @@ class Schedules(models.Model):
     building = models.ForeignKey(Building, on_delete=models.CASCADE, verbose_name="Корпус", null=True)
 
     def __str__(self):
-        return f"{self.date} {self.group} {self.discipline} {self.prepod}"
+        return f"{self.date} {self.group} {self.discipline} {self.prepod }"
 
     class Meta():
         verbose_name = "Строку расписания"
