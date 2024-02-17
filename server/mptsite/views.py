@@ -1,5 +1,8 @@
+import datetime
+
 from django.shortcuts import render
 from . import models as m
+from .modules.schedule_generator import ScheduleGenerator as gen
 from .modules.Direction_add import Additions
 from .modules.Parser_schedule import Parser
 from .modules.schedule_generator import ScheduleGenerator
@@ -37,10 +40,11 @@ def rasp_page(request):
     ### Вариация расписания на промежуток дней. Передаем группу, стартовую дату и дату окончания
     #day_rasp = ScheduleGenerator.generate_by_two_dates(m.Group.objects.filter(name='П50-8-22')[0],
     #                                                   date(2024, 2, 6), date(2024, 2, 14))
-
-
-    #slovar = {"rasp": day_rasp}
-    slovar = {}
+    group = m.Group.objects.get(name='П50-8-22')
+    st = datetime.date.fromisoformat('2024-02-05')
+    end = datetime.date.fromisoformat('2024-02-18')
+    day_rasp = gen.generate_by_two_dates(group ,st, end)
+    slovar = {"rasp": day_rasp}
     return render(request, 'mptsite/rasp.html', context=slovar)
 
 
@@ -50,3 +54,15 @@ def prepods(request):
 
 def newFile(request):
     return render(request, 'mptsite/newfile.html')
+
+def newrasp(request):
+    group = m.Group.objects.get(name='П50-8-22')
+
+    st = datetime.date.fromisoformat('2024-02-05')
+    end = datetime.date.fromisoformat('2024-02-18')
+
+    day_rasp = gen.generate_by_two_dates(group, st, end)
+    day_rasp = [i for i in day_rasp if len(i.lessons) > 0]
+    print(day_rasp[1].lessons[0].building)
+    slovar = {"rasp": day_rasp}
+    return render(request, 'mptsite/raspisanie.html', context=slovar)
