@@ -62,7 +62,7 @@ class Building (models.Model):
 
 
 class Disciplines(models.Model):
-    name = models.CharField(max_length=30, verbose_name="Название дисциплины", unique=True)
+    name = models.CharField(max_length=100, verbose_name="Название дисциплины", unique=True)
 
     def __str__(self):
         return f"{self.name}"
@@ -72,17 +72,17 @@ class Disciplines(models.Model):
         verbose_name_plural = "Дисциплины"
 
 class Prepods(models.Model):
-    surname = models.CharField(verbose_name="Фамилия", max_length=30, default="")
-    name = models.CharField(verbose_name="Имя", max_length=20, null=False, default='')
-    patronymic = models.CharField(verbose_name="Отчество", max_length=30, null=True, default="")
+    surname = models.CharField(verbose_name="Фамилия", max_length=50, default="")
+    name = models.CharField(verbose_name="Имя", max_length=50, null=False, default='')
+    patronymic = models.CharField(verbose_name="Отчество", max_length=50, null=True, default="")
     education = models.TextField(verbose_name="Образование", null=True, default="")
     qualification = models.TextField(verbose_name="Данные о повышении квалификации",null=True, default="")
-    post = models.CharField(verbose_name="Должность", max_length=100, default="преподаватель")
+    post = models.TextField(verbose_name="Должность", max_length=300, default="преподаватель")
     disciplines = models.TextField(verbose_name="Преподаваемые дисциплины", default="")
-    full_expirience = models.CharField(verbose_name="Общий трудовой стаж", max_length=10, null=True, default="")
-    prepod_expirience = models.CharField(verbose_name="Педагогический стаж", max_length=10, null=True, default="")
-    sharaga_expirience = models.CharField(verbose_name="Стаж работы в техникуме", max_length=10, null=True, default="")
-    contacts = models.EmailField(verbose_name="Контакты",null=True, default="")
+    full_expirience = models.CharField(verbose_name="Общий трудовой стаж", max_length=150, null=True, default="")
+    prepod_expirience = models.CharField(verbose_name="Педагогический стаж", max_length=150, null=True, default="")
+    sharaga_expirience = models.CharField(verbose_name="Стаж работы в техникуме", max_length=150, null=True, default="")
+    contacts = models.TextField(verbose_name="Контакты",null=True, default="")
     degree = models.TextField(verbose_name="Ученая степень/категория", default="нет/нет")
 
     def __str__(self):
