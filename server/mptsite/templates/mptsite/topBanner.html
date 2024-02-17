@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>main</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'mptsite/css/dropStyle.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'mptsite/css/style.css' %}">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Rubik:wght@300..900&display=swap" rel="stylesheet">
+
+</head>
+
+<body>
+    <div class="outsideFilter">
+        <div class="top-ban">
+            <div class="top-ban__header">
+                <div class="top-ban__logos">
+                    <div class="top-ban__logo-Gerb">
+                        <img  src="{% static 'mptsite/img/gerb.svg'%}" alt="gerb">
+                    </div>
+                    <div class="top-ban__logo-REU">
+                        <img src="{% static 'mptsite/img/logoREU.svg'%}" alt="REU">
+                    </div>
+                </div>
+                <div class="top-ban__right-side">
+                    <div class="langSwithcer">RUS</div>
+                    <button class="student">Студенту</button>
+                </div>
+            </div>
+            <div class="line"></div>
+            <div class="top-ban__main">
+                <div class="title"><h1>Московский <br> приборостроительный <br> техникум</h1></div>
+                <div class="subtitle">
+                    <h2>Техникум при РЭУ им. Г.В. Плеханова, обучающая высококлассных программистов и юристов</h2>
+                </div>
+            </div>
+            <div class="line"></div>
+        </div>
+
+    </div>
+</body>
+
+</html>

@@ -17,7 +17,7 @@ def home_page(request):
     # Additions.Add_disps()
     # Additions.Add_prep()
     # Additions.Add_schedule()
-    return render(request, 'index.html')
+    return render(request, 'mptsite/topBanner.html')
 
 
 def rasp_page(request):
