@@ -1,5 +1,7 @@
 from django.shortcuts import render
 from . import models as m
+import datetime
+from .modules import schedule_generator as gen
 from .modules.Direction_add import Additions
 from .modules.Parser_schedule import Parser
 from .modules.schedule_generator import ScheduleGenerator
