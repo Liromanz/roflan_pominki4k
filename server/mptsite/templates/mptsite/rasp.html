@@ -11,6 +11,7 @@
 
     {# Вариация отображения расписания для тестирования #}
     {% for r in rasp %}
+    <p> {{r.cur_date|date:"d.m"}} - {{r.cur_date|date:"l"}} </p>
         {% for sched in r.lessons %}
             <a>{{ sched.number_pair.number }} | {{ sched.number_pair.time_start }} - {{ sched.number_pair.time_end }} | {{ sched.discipline }} | {{ sched.building }}, {{ sched.audience_number }} | {{ sched.prepod }}</a>
             <br/>

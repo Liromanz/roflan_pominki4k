@@ -36,10 +36,13 @@ class ScheduleGenerator:
 
     @staticmethod
     def generate_by_two_dates(group : Group, start_date : date, end_date : date):
+        helper = DateHelper(start_date)
+
+        dates = helper.get_all_days_until(end_date)
         schedule = Schedules.objects.filter(date__gte=start_date, date__lte=end_date,
                                             group=group)
         day = []
-        for d in range((end_date-start_date).days):
-            cur_date = start_date + timedelta(d)
-            day.append(DaySchedule(start_date + timedelta(days=1), schedule.filter(date=cur_date).order_by('number_pair')))
+        for d in dates:
+            day.append(DaySchedule(d, schedule.filter(date=d).order_by('number_pair')))
+
         return day

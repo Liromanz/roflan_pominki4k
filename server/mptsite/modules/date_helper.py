@@ -19,3 +19,16 @@ class DateHelper:
     def get_last_day_week(self):
         self.selected_date += timedelta(days=6-self.selected_date.weekday())
         return self.selected_date
+
+    def get_all_days_until(self, end_date : date):
+        if end_date < self.selected_date:
+            return #todo: сделать собственную обработку ошибок
+
+        delta = end_date - self.selected_date
+
+        day = []
+        for i in range(delta.days + 1):
+            if (self.selected_date + timedelta(days=i)).weekday() == 6:
+                continue
+            day.append(self.selected_date + timedelta(days=i))
+        return day

@@ -17,53 +17,59 @@
 </head>
 
 <body>
-    {% for r in rasp %}
-    <div class="raspisanie">
-        <div class="header">
-            <div class="raspisanie__header">
-                <div class="raspisanie__date"> {{r.lessons.0.date|date:"d.m"}} </div>
-                <div class="dateOfWeek">{{r.lessons.0.date|date:"l"}}</div>
-                <div class="raspisanie__place">
-                    {{r.lessons.1.building.name}}
-                </div>
-            </div>
-            <div class="raspisanie__sup-header">
-                <div class="raspisanie__number">№</div>
-                <div class="raspisanie__time">время</div>
-                <div class="raspisanie__lesson-name">наименование</div>
-                <div class="raspisanie__prepod">преподаватель</div>
-                <div class="raspisanie__classroom">
-                    каб
-                </div>
+{% for r in rasp %}
+<div class="raspisanie">
+    <div class="header">
+        <div class="raspisanie__header">
+            <div class="raspisanie__date"> {{r.cur_date|date:"d.m"}}</div>
+            <div class="dateOfWeek">{{r.cur_date|date:"l"}}</div>
+            <div class="raspisanie__place">
+                {{r.lessons.1.building.name}}
             </div>
         </div>
-        <div class="content">
-            <div class="line"></div>
-            {% for sched in r.lessons %}
-            <div class="content__1">
-                <div>
-                    <p class="id__par">{{ sched.number_pair.number }}</p>
-                </div>
-                <div class="time_par">
-                    <p>{{ sched.number_pair.time_start }}<br>{{ sched.number_pair.time_end }}</p>
-                </div>
-                <div>
-                    <p class="par-name">
-                        {{ sched.discipline }}
-                    </p>
-                </div>
-                <div>
-                    <p class="prepod-name">{{ sched.prepod.surname }} {{ sched.prepod.name.0 }}. {{ sched.prepod.patronymic.0 }}.</p>
-                </div>
-                <div>
-                    <p class="kab">{{ sched.audience_number }}</p>
-                </div>
+        <div class="raspisanie__sup-header">
+            <div class="raspisanie__number">№</div>
+            <div class="raspisanie__time">время</div>
+            <div class="raspisanie__lesson-name">наименование</div>
+            <div class="raspisanie__prepod">преподаватель</div>
+            <div class="raspisanie__classroom">
+                каб
             </div>
-            <div class="line"></div>
-            {% endfor %}
         </div>
     </div>
-    <br/>
+    <div class="content">
+        <div class="line"></div>
+        {% if r.lessons %}
+        {% for sched in r.lessons %}
+        <div class="content__1">
+            <div>
+                <p class="id__par">{{ sched.number_pair.number }}</p>
+            </div>
+            <div class="time_par">
+                <p>{{ sched.number_pair.time_start }}<br>{{ sched.number_pair.time_end }}</p>
+            </div>
+            <div>
+                <p class="par-name">
+                    {{ sched.discipline }}
+                </p>
+            </div>
+            <div>
+                <p class="prepod-name">{{ sched.prepod.surname }} {{ sched.prepod.name.0 }}. {{ sched.prepod.patronymic.0 }}.</p>
+            </div>
+            <div>
+                <p class="kab">{{ sched.audience_number }}</p>
+            </div>
+        </div>
+        <div class="line"></div>
+        {% endfor %}
+        {% else %}
+        <center style="padding:30px">
+        <p>мем)</p>
+        </center>
+        {% endif %}
+    </div>
+</div>
+<br/>
 {% endfor %}
 
 </body>
