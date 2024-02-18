@@ -178,14 +178,18 @@ class Additions:
             Degree = prepod_html.find('div', class_="inner-page-content clearfix").find_all('p')[-1].text.replace(
                 'Ученая степень/категория:', '').strip()
             # print(Degree)
-            t = Prepods(name=FIO.split()[1], surname=FIO.split()[0], patronymic=FIO.split()[2], education=Education, qualification=Qualification, post=Post, disciplines=Disciplines, full_expirience=Full_expirience, prepod_expirience=Prepod_expirience, sharaga_expirience=Sharaga_expirience, contacts=Contacts, degree=Degree)
+            t = Prepods(name=FIO.split()[1], surname=FIO.split()[0], patronymic=FIO.split()[2], education=Education,
+                        qualification=Qualification, post=Post, disciplines=Disciplines,
+                        full_expirience=Full_expirience, prepod_expirience=Prepod_expirience,
+                        sharaga_expirience=Sharaga_expirience, contacts=Contacts, degree=Degree)
             t.save()
 
 
     @staticmethod
     def Add_pairs_numbers():
         cl = 0
-        for i in [((8, 30, 0), (10, 0, 0)),((10, 10, 0), (11, 40, 0)),((12, 0, 0), (13, 30, 0)), ((13, 50, 0), (15, 20, 0)), ((15, 30, 0), (17, 0, 0)), ((17, 10, 0), (18, 40, 0))]:
+        for i in [((8, 30, 0), (10, 0, 0)),((10, 10, 0), (11, 40, 0)),((12, 0, 0), (13, 30, 0)), ((13, 50, 0),
+                  (15, 20, 0)), ((15, 30, 0), (17, 0, 0)), ((17, 10, 0), (18, 40, 0))]:
             p = Pairs(id=cl, number=cl+1, time_start=dt.time(*i[0]) , time_end=dt.time(*i[1]))
             p.save()
             cl += 1
