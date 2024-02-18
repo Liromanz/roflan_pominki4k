@@ -60,7 +60,7 @@ def newrasp(request):
     end = datetime.date.fromisoformat('2024-02-18')
 
     day_rasp = gen.generate_by_two_dates(group, st, end)
-    day_rasp = [i for i in day_rasp if len(i.lessons) > 0]
-    print(day_rasp[1].lessons[0].building)
+    #day_rasp = [i for i in day_rasp if len(i.lessons) > 0]
+    #print(day_rasp[1].lessons[0].building)
     slovar = {"rasp": day_rasp}
     return render(request, 'mptsite/raspisanie.html', context=slovar)
