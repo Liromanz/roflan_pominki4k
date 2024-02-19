@@ -1,0 +1,36 @@
+{% extends 'docsite/base.html' %}
+{% load static %}
+
+{% block main_info %}
+    <h2>Начало работы</h2>
+    <p>Начнем с того, что сам проект находится вот на этой ссылке: <a class="default-link"
+                                                                      href="https://github.com/Liromanz/roflan_pominki4k">https://github.com/Liromanz/roflan_pominki4k</a>.
+        Для
+        того чтобы начать с ним работать, вам нужно либо через GitHub клонировать репозиторий (именно клонировать, не
+        скачать как архив, иначе Git работать не будет), либо ввести следующую команду в папке, куда вы хотите
+        расположить
+        проект</p>
+
+    <div class="code-block">
+        <p class="code-text">> git clone https://github.com/Liromanz/roflan_pominki4k</p>
+    </div>
+
+    <p>Если вы не можете клонировать или вносить изменения в репозиторий потому что нет прав, запросите их у <a
+            href="https://t.me/SafikaFifika" class="default-link">@SafikaFifika</a>. В ином случае, давайте посмотрим
+        что у нас происходит внутри проекта</p>
+    <p>В самом начале у вас не будет виртуального окружения. При первом запуске, если вы используете PyCharm и он
+        правильно установлен, он предложит воспользоваться файлом requirements.txt и докачать все модули для
+        взаимодействия с проектом. У каждого разработчика venv будет свой и он не будет отправляться на GitHub.</p>
+
+    <img src="{% static 'docsite/img/venv.png' %}" alt="Venv">
+
+    <p>Если venv не ставится, вам нужно будет поставить его вручную через терминал. После создания, активировать venv и
+        докачать в него необходимые библиотеки, расположенные в файле requirements.txt</p>
+    <div class="code-block">
+        <p class="code-text">> python -m venv .venv</p>
+        <p class="code-text">> .venv/Scripts/activate</p>
+        <p class="code-text">> pip install -r requirements.txt</p>
+    </div>
+
+    <hr/>
+{% endblock %}
