@@ -18,6 +18,8 @@ body {
     background-color: var(--dark-fioletoviy);
     display: flex;
     flex-wrap: wrap;
+    weight: 100%;
+    justify-content: center;
 }
 
 header {
@@ -33,7 +35,7 @@ header {
     /* height: 350px; */
     width: 730px;
     flex-direction: column;
-    justify-content: center;
+    /*justify-content: center;*/
     align-items: center;
     background-color: var(--backgroudCard);
     color: var(--dark-fioletoviy);

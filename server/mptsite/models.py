@@ -100,6 +100,7 @@ class Schedules(models.Model):
     audience_number = models.CharField(max_length=10, verbose_name="Номер аудитории", null=True, default='')
     date = models.DateField(verbose_name="Дата", null=True, default='')
     building = models.ForeignKey(Building, on_delete=models.CASCADE, verbose_name="Корпус", null=True)
+    # ischange = models.BooleanField(default=False, verbose_name="Замена?")
 
     def __str__(self):
         return f"{self.date} {self.group} {self.discipline} {self.prepod }"
