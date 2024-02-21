@@ -109,6 +109,8 @@ class Schedules(models.Model):
         verbose_name_plural = "Расписание"
 
 
+# ------------------------------- Модели, которые не идут в базу данных
+
 class DaySchedule:
     # инит и переменные внутри были основаны на элементе из миро
     def __init__(self, day, schedules_list):

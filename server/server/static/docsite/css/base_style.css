@@ -26,3 +26,8 @@
     font-size: small;
     color: white;
 }
+
+.stick-to-top{
+    position: sticky;
+    top: 0;
+}
