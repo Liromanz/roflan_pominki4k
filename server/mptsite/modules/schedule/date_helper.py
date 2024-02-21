@@ -22,7 +22,7 @@ class DateHelper:
 
     def get_all_days_until(self, end_date : date):
         if end_date < self.selected_date:
-            return #todo: сделать собственную обработку ошибок
+            return #TODO: сделать собственную обработку ошибок
 
         delta = end_date - self.selected_date
 

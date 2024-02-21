@@ -1,13 +1,11 @@
 from django.shortcuts import render
 from . import models as m
 import datetime
-from .modules.schedule_generator import ScheduleGenerator as gen
+from .modules.schedule.schedule_generator import ScheduleGenerator as gen
 from .modules.Direction_add import Additions
-from .modules.schedule_generator import ScheduleGenerator
 
 
 # Create your views here.
-
 
 def home_page(request):
     return render(request, 'index.html')
