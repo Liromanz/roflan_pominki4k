@@ -12,10 +12,12 @@ admin.site.register(m.Disciplines)
 
 
 class SchedulesAdmin(admin.ModelAdmin):
-    list_display = ('number_pair', 'block_rasp', 'date', 'discipline', 'group')
+    list_display = ('number_pair', 'date', 'discipline', 'group', 'ischange')
     list_filter = ('group', )
     search_fields = ('discipline', 'prepod')
     ordering = ('date', 'number_pair')
+    list_editable = ('ischange', )
+
 
 
 admin.site.register(m.Schedules, SchedulesAdmin)
