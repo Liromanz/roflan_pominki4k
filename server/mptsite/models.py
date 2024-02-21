@@ -92,6 +92,19 @@ class Prepods(models.Model):
         verbose_name = "Преподаватель"
         verbose_name_plural = "Преподаватели"
 
+
+class DateTemplates(models.Model):
+    name = models.TextField(verbose_name="Название блока")
+    date_from = models.DateField(verbose_name="Начало блока")
+    date_end = models.DateField(verbose_name="Конец блока")
+
+    def __str__(self):
+        return f"{self.id} блок - {self.name}. С {self.date_from} по {self.date_end}"
+    class Meta:
+        verbose_name = "Блок расписания"
+        verbose_name_plural = "Блоки расписания"
+
+
 class Schedules(models.Model):
     number_pair = models.ForeignKey(Pairs, on_delete=models.CASCADE, verbose_name="Номер пары")
     discipline = models.ForeignKey(Disciplines, on_delete=models.CASCADE, null=True)
@@ -99,6 +112,7 @@ class Schedules(models.Model):
     prepod = models.ForeignKey(Prepods, on_delete=models.CASCADE, verbose_name="Преподаватель", null=True)
     audience_number = models.CharField(max_length=10, verbose_name="Номер аудитории", null=True, default='')
     date = models.DateField(verbose_name="Дата", null=True, default='')
+    block_rasp = models.ForeignKey(DateTemplates, on_delete=models.CASCADE, verbose_name="Блок расписания", null=True)
     building = models.ForeignKey(Building, on_delete=models.CASCADE, verbose_name="Корпус", null=True)
     # ischange = models.BooleanField(default=False, verbose_name="Замена?")
 
@@ -108,6 +122,7 @@ class Schedules(models.Model):
     class Meta():
         verbose_name = "Строку расписания"
         verbose_name_plural = "Расписание"
+
 
 # -------------------------------- Модели, которые не идут в базу данных
 

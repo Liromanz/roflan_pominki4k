@@ -15,7 +15,6 @@ from pathlib import Path
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/5.0/howto/deployment/checklist/
 
@@ -26,7 +25,6 @@ SECRET_KEY = 'django-insecure-zdmp$3temh5bvlk&)!m+qj7+5!zlc9y@w#%hmwdiy&obj)jysd
 DEBUG = True
 
 ALLOWED_HOSTS = []
-
 
 # Application definition
 
@@ -56,7 +54,7 @@ ROOT_URLCONF = 'server.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [BASE_DIR/'docsite/base_template/', BASE_DIR/'mptsite/base_template/'],
+        'DIRS': [BASE_DIR / 'docsite/base_template/', BASE_DIR / 'mptsite/base_template/'],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -71,27 +69,30 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'server.wsgi.application'
 
-
 # Database
 # https://docs.djangoproject.com/en/5.0/ref/settings/#databases
 # sqllite, mongo, oracle, mysql, postgre
 
-# DATABASES = {
+#DATABASES = {
 #    'default': {
-#        'ENGINE': 'django.db.backends.sqlite3',
-#        'NAME': BASE_DIR / 'db.sqlite3',
+#        'ENGINE': 'django.db.backends.postgresql',
+#        'HOST': 'localhost',
+#        'PORT': '9090',
+#        'USER': 'postgres',
+#        'PASSWORD': '1234567890',
+#        'NAME': 'pipapopa'
 #    }
-# }
+#}
 
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'HOST': '89.23.118.157',
-        'PORT': '5432',
-        'USER': 'mptsite',
-        'PASSWORD': 'hehe_he\'s_a_l0w_pri0r_chel',
-        'NAME': 'site_database'
-    }
+   'default': {
+       'ENGINE': 'django.db.backends.postgresql',
+       'HOST': '89.23.118.157',
+       'PORT': '5432',
+       'USER': 'mptsite',
+       'PASSWORD': 'hehe_he\'s_a_l0w_pri0r_chel',
+       'NAME': 'site_database'
+   }
 }
 
 # Password validation
@@ -111,7 +112,6 @@ AUTH_PASSWORD_VALIDATORS = [
         'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator',
     },
 ]
-
 
 # Internationalization
 # https://docs.djangoproject.com/en/5.0/topics/i18n/

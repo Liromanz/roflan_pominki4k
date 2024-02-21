@@ -16,7 +16,7 @@ def home_page(request):
     # Additions.Add_building()
     # Additions.Add_disps()
     # Additions.Add_prep()
-    # Additions.Add_schedule()
+    #Additions.Add_schedule()
 
 def rasp_page(request):
 
