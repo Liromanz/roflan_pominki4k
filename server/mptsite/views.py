@@ -3,7 +3,6 @@ from . import models as m
 import datetime
 from .modules.schedule_generator import ScheduleGenerator as gen
 from .modules.Direction_add import Additions
-from .modules.Parser_schedule import Parser
 from .modules.schedule_generator import ScheduleGenerator
 
 
@@ -11,6 +10,7 @@ from .modules.schedule_generator import ScheduleGenerator
 
 
 def home_page(request):
+    return render(request, 'index.html')
     # Additions.Add_napr()
     # Additions.Add_speciality()
     # Additions.Add_group()
@@ -19,8 +19,6 @@ def home_page(request):
     # Additions.Add_disps()
     # Additions.Add_prep()
     # Additions.Add_schedule()
-    return render(request, 'index.html')
-
 
 def rasp_page(request):
 
