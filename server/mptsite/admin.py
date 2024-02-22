@@ -9,5 +9,23 @@ admin.site.register(m.Group)
 admin.site.register(m.Prepods)
 admin.site.register(m.Building)
 admin.site.register(m.Disciplines)
-admin.site.register(m.Schedules)
+
+
+class SchedulesAdmin(admin.ModelAdmin):
+    list_display = ('number_pair', 'date', 'discipline', 'group', 'ischange')
+    list_filter = ('group', )
+    search_fields = ('discipline', 'prepod')
+    ordering = ('date', 'number_pair')
+    list_editable = ('ischange', )
+
+
+
+admin.site.register(m.Schedules, SchedulesAdmin)
 admin.site.register(m.Speciality)
+
+
+class DateTemplatesAdmin(admin.ModelAdmin):
+    list_display = ('name', 'date_from', 'date_end')
+
+
+admin.site.register(m.DateTemplates, DateTemplatesAdmin)

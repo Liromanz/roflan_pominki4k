@@ -11,3 +11,23 @@
     text-decoration: none;
     color: #31d2f2;
 }
+
+.code-block{
+  background: #222;
+  padding: 10px;
+  border-radius: 10px;
+
+}
+
+.code-text{
+    margin-top: 0;
+    margin-bottom: 0;
+    font-family: "Cascadia Code";
+    font-size: small;
+    color: white;
+}
+
+.stick-to-top{
+    position: sticky;
+    top: 0;
+}

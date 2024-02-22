@@ -1,13 +1,11 @@
 from django.shortcuts import render
 from . import models as m
-import datetime
-from .modules.schedule_generator import ScheduleGenerator as gen
+from datetime import datetime
+from .modules.schedule.schedule_generator import ScheduleGenerator as gen
 from .modules.Direction_add import Additions
-from .modules.schedule_generator import ScheduleGenerator
 
 
 # Create your views here.
-
 
 def home_page(request):
     return render(request, 'index.html')
@@ -18,7 +16,7 @@ def home_page(request):
     # Additions.Add_building()
     # Additions.Add_disps()
     # Additions.Add_prep()
-    # Additions.Add_schedule()
+    #Additions.Add_schedule()
 
 def rasp_page(request):
 
@@ -40,8 +38,8 @@ def rasp_page(request):
 
     group = m.Group.objects.get(name='П50-8-22')
 
-    st = datetime.date.fromisoformat('2024-02-05')
-    end = datetime.date.fromisoformat('2024-02-18')
+    st = datetime(2024, 2, 8)
+    end = datetime(2024, 2, 18)
 
     day_rasp = gen.generate_by_two_dates(group, st, end)
     # day_rasp = [i for i in day_rasp if len(i.lessons) > 0]
@@ -60,8 +58,8 @@ def newFile(request):
 def newrasp(request):
     group = m.Group.objects.get(name='П50-8-22')
 
-    st = datetime.date.fromisoformat('2024-02-05')
-    end = datetime.date.fromisoformat('2024-02-18')
+    st = datetime(2024, 5, 1)
+    end = datetime(2024, 5, 15)
 
     day_rasp = gen.generate_by_two_dates(group, st, end)
     #day_rasp = [i for i in day_rasp if len(i.lessons) > 0]

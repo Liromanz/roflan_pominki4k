@@ -17,10 +17,10 @@
 <body class="default-body">
 <div class="wrapper">
     <nav id="sidebar">
-        <ul class="list-unstyled components">
-            <p>Документация сайта МПТ</p>
+        <ul class="list-unstyled components stick-to-top">
+            <p><a  href="{% url 'home' %}">Документация сайта МПТ</a></p>
             <li class="active">
-                <a  href="#">Начало работы</a>
+                <a  href="{% url 'start' %}">Начало работы</a>
 
             </li>
             <li>
@@ -36,7 +36,7 @@
 
 
     <div id="content">
-        <header class="p-3 bg-dark text-white">
+        <header class="p-3 bg-dark text-white stick-to-top">
             <nav class="navbar navbar-expand-lg">
                 <div class="container-fluid">
 
@@ -51,13 +51,13 @@
                     </button>
 
                     <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
-                        <li><a href="#" class="nav-link px-2 text-white">Администраторская панель</a></li>
+                        <li><a href="/admin" class="nav-link px-2 text-white">Администраторская панель</a></li>
                         <li><a href="#" class="nav-link px-2 text-white">Полезные ссылки</a></li>
                     </ul>
 
                     <div class="text-end">
-                        <button type="button" class="btn btn btn-info">Вернуться на сайт</button>
-                        <button type="button" class="btn btn-outline-info">Выход</button>
+                        <a href="/" class="btn btn btn-info">Вернуться на сайт</a>
+                        <a href="#" class="btn btn-outline-info">Выход</a>
                     </div>
                 </div>
             </nav>
