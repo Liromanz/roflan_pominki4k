@@ -1,4 +1,6 @@
 from django.db import models
+from django.db.models import UniqueConstraint
+
 
 class Pairs(models.Model):
     number = models.IntegerField(verbose_name="Номер пары", unique=True)
@@ -124,7 +126,9 @@ class Schedules(models.Model):
     class Meta():
         verbose_name = "Строку расписания"
         verbose_name_plural = "Расписание"
-
+        constraints = [
+            UniqueConstraint(fields=['group', 'discipline', 'number_pair', 'prepod', 'ischange'], name='unique_schedul_string')
+        ]
 
 # -------------------------------- Модели, которые не идут в базу данных
 
