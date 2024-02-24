@@ -57,14 +57,20 @@ class ScheduleGenerator:
     @staticmethod
     def __get_base_schedule__(group: Group, selected_date: datetime):
         selected_date = datetime(2024, selected_date.month, selected_date.day)
+        print(group.id)
 
         blocks = get_object_or_404(DateTemplates, date_from__lte=selected_date, date_end__gte=selected_date)
         is_even_week = selected_date.isocalendar().week % 2
         weekday = selected_date.isoweekday()
 
-        rasp = []
-        for para in Schedules.objects.filter(group=group, block_rasp=blocks, date__iso_week_day=weekday):
-            if para.date.isocalendar().week % 2 == is_even_week:
-                rasp.append(para)
+        rasp = list(Schedules.objects.filter(group=group, block_rasp=blocks, date=selected_date, ischange=True).exclude(discipline=None))
 
-        return rasp
+        for para in Schedules.objects.filter(group=group, block_rasp=blocks, date__iso_week_day=weekday, ischange=False):
+            if next((one_zamena for one_zamena in rasp if one_zamena.number_pair == para.number_pair), None) is not None:
+                continue
+            if (para.date.isocalendar().week % 2 == is_even_week
+                    and next((one_zamena for one_zamena in rasp if one_zamena.number_pair == para.number_pair), None) is not None):
+                rasp.append(para)
+                print(para.id)
+
+        return sorted(rasp, key=lambda para: para.number_pair.id)

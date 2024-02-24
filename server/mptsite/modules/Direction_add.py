@@ -52,41 +52,6 @@ class Additions:
             except:
                 continue
 
-    @staticmethod
-    def Add_speciality():
-        napr_ids = {}
-        for i in CodeDirection.objects.all():
-            napr_ids[i.code] = i.id
-        for g in ["П", "БД", "ВД", "Т", "ИС", "ИСиП"]:
-            d = Speciality(code=napr_ids["09.02.07"], name = g)
-            try:
-                d.save()
-            except:
-                continue
-        for g in ["CА"]:
-            d = Speciality(code=napr_ids["09.02.06"], name = g)
-            try:
-                d.save()
-            except:
-                continue
-        for g in ["Э"]:
-            d = Speciality(code=napr_ids["09.02.01"], name = g)
-            try:
-                d.save()
-            except:
-                continue
-        for g in ["Ю"]:
-            d = Speciality(code=napr_ids["40.02.01"], name = g)
-            try:
-                d.save()
-            except:
-                continue
-        for g in ["БИ"]:
-            d = Speciality(code=napr_ids["10.02.05"], name = g)
-            try:
-                d.save()
-            except:
-                continue
 
     @staticmethod
     def Add_group():

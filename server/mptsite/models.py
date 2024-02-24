@@ -115,6 +115,8 @@ class Schedules(models.Model):
     block_rasp = models.ForeignKey(DateTemplates, on_delete=models.CASCADE, verbose_name="Блок расписания", null=True)
     building = models.ForeignKey(Building, on_delete=models.CASCADE, verbose_name="Корпус", null=True)
     ischange = models.BooleanField(default=False, verbose_name="Замена?")
+    iscanceled = models.BooleanField(default=False, verbose_name="Отмена?")
+    isdistance = models.BooleanField(default=False, verbose_name="Дистант?")
 
     def __str__(self):
         return f"{self.date} {self.group} {self.discipline} {self.prepod }"

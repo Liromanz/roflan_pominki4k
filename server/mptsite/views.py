@@ -56,10 +56,10 @@ def newFile(request):
     return render(request, 'mptsite/newfile.html')
 
 def newrasp(request):
-    group = m.Group.objects.get(name='П50-8-22')
+    group = m.Group.objects.get(name='СА50-3-20')
 
-    st = datetime(2024, 5, 1)
-    end = datetime(2024, 5, 15)
+    st = datetime(2024, 2, 25)
+    end = datetime(2024, 3, 2)
 
     day_rasp = gen.generate_by_two_dates(group, st, end)
     #day_rasp = [i for i in day_rasp if len(i.lessons) > 0]
