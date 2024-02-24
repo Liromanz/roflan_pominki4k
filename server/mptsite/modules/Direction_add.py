@@ -22,72 +22,38 @@ class Additions:
         napr_ids = {}
         for i in CodeDirection.objects.all():
             napr_ids[i.code] = i
+        print(napr_ids)
         for g in ["П", "БД", "ВД", "Т", "ИС", "ИСиП"]:
-            d = Speciality(code=napr_ids["09.02.07"], name=g)
+            d = Speciality(code=CodeDirection.objects.get(code="09.02.07"), name=g)
             try:
                 d.save()
             except:
                 continue
         for g in ["СА"]:
-            d = Speciality(code=napr_ids["09.02.06"], name=g)
+            d = Speciality(code=CodeDirection.objects.get(code="09.02.06"), name=g)
             try:
                 d.save()
             except:
                 continue
         for g in ["Э"]:
-            d = Speciality(code=napr_ids["09.02.01"], name=g)
+            d = Speciality(code=CodeDirection.objects.get(code="09.02.01"), name=g)
             try:
                 d.save()
             except:
                 continue
         for g in ["Ю"]:
-            d = Speciality(code=napr_ids["40.02.01"], name=g)
+            d = Speciality(code=CodeDirection.objects.get(code="40.02.01"), name=g)
             try:
                 d.save()
             except:
                 continue
         for g in ["БИ"]:
-            d = Speciality(code=napr_ids["10.02.05"], name=g)
+            d = Speciality(code=CodeDirection.objects.get(code="10.02.05"), name=g)
             try:
                 d.save()
             except:
                 continue
 
-    @staticmethod
-    def Add_speciality():
-        napr_ids = {}
-        for i in CodeDirection.objects.all():
-            napr_ids[i.code] = i.id
-        for g in ["П", "БД", "ВД", "Т", "ИС", "ИСиП"]:
-            d = Speciality(code=napr_ids["09.02.07"], name = g)
-            try:
-                d.save()
-            except:
-                continue
-        for g in ["CА"]:
-            d = Speciality(code=napr_ids["09.02.06"], name = g)
-            try:
-                d.save()
-            except:
-                continue
-        for g in ["Э"]:
-            d = Speciality(code=napr_ids["09.02.01"], name = g)
-            try:
-                d.save()
-            except:
-                continue
-        for g in ["Ю"]:
-            d = Speciality(code=napr_ids["40.02.01"], name = g)
-            try:
-                d.save()
-            except:
-                continue
-        for g in ["БИ"]:
-            d = Speciality(code=napr_ids["10.02.05"], name = g)
-            try:
-                d.save()
-            except:
-                continue
 
     @staticmethod
     def Add_group():
@@ -237,39 +203,39 @@ class Additions:
             date_schedul = date.fromisoformat(i['date'])
             number_id = Pairs.objects.get(id=int(i['number']) - 1)
             group = ''
+            iscanceled = i['iscanceled']
+            isdistance = i['idistance']
             for gr in Group.objects.all():
                 if gr.name.lower() == i['group'].lower():
                     group = gr
                     break
-            if i['name'] == None:
-                s = Schedules(number_pair=number_id, building=None, discipline=None, group=group, date=date_schedul,
-                              ischange=True, iscanceled=iscanceled, isdistance=isdistance)
-                s.save()
-                continue
-                # try:
-                #     s.save()
-                #     cl += 1
-                #     print(cl)
-                #     continue
-                # except:
-                #     continue
+            # if i['name'] == None:
+            #     s = Schedules(number_pair=number_id, building=None, discipline=None, group=group, date=date_schedul,
+            #                   ischange=True, iscanceled=iscanceled, isdistance=isdistance)
+            #     # s.save()
+            #     # continue
+            #     try:
+            #         s.save()
+            #         cl += 1
+            #         print(str(s))
+            #         continue
+            #     except:
+            #         continue
             disp = Disciplines.objects.get(name=f"{i['name']}")
             #for dis in Disciplines.objects.all():
             #    if dis.name.lower() == i['name'].lower():
             #        disp = dis
             #        break
-            iscanceled = i['iscanceled']
-            isdistance = i['idistance']
+
             if i['name'] == 'ПРАКТИКА':
                 s = Schedules(number_pair=number_id, building=None, discipline=disp, group=group, date=date_schedul, ischange=True, iscanceled=iscanceled, isdistance=isdistance)
-                s.save()
-                # try:
-                #     s.save()
-                #     cl += 1
-                #     print(cl)
-                # except:
-                #     print("ertyuio")
-                #     continue
+                # s.save()
+                try:
+                    s.save()
+                    cl += 1
+                    print(str(s))
+                except:
+                    continue
                 continue
             if i['name'] == '':
                 continue
@@ -281,22 +247,20 @@ class Additions:
             if len(prepods_variant) == 0:
                 p = Prepods(surname=fio[2].strip(), name=fio[0].strip(), patronymic=fio[1].strip())
                 p.save()
-                # try:
-                #     p.save()
-                # except:
-                #     print("ertyuio")
-                #     continue
+                try:
+                    p.save()
+                except:
+                    continue
                 prepods_variant = Prepods.objects.filter(surname=fio[2].strip())
             for prepod in prepods_variant:
                 if prepod.name.startswith(fio[0].strip()) and prepod.patronymic.startswith(fio[1].strip()):
                     prepod_id = prepod
                     s = Schedules(number_pair=number_id, discipline=disp, group=group, prepod=prepod_id,
                                     date=date_schedul, building=None, ischange=True, iscanceled=iscanceled, isdistance=isdistance)
-                    s.save()
-                    # try:
-                    #     s.save()
-                    #     cl += 1
-                    #     print(cl)
-                    # except:
-                    #     print("ertyuio")
-                    #     continue
+                    # s.save()
+                    try:
+                        s.save()
+                        cl += 1
+                        print(str(s))
+                    except:
+                        continue
