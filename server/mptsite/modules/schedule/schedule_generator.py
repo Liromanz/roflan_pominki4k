@@ -64,7 +64,7 @@ class ScheduleGenerator:
 
         rasp = []
         for para in Schedules.objects.filter(group=group, block_rasp=blocks, date__iso_week_day=weekday):
-            if para.date.isocalendar().week % 2 == is_even_week:
+            if para.date_zam.isocalendar().week % 2 == is_even_week:
                 rasp.append(para)
 
         return rasp

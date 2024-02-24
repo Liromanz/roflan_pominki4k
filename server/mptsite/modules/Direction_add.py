@@ -1,5 +1,6 @@
 from ..models import *
 from .Parser_schedule import Parser
+from .Parser_zamena import Parser_zamena
 from datetime import datetime, date
 import requests
 import time as tm
@@ -227,4 +228,75 @@ class Additions:
                         s = Schedules(number_pair=number_id, discipline=disp, group=group, prepod=prepod_id,
                                         date=date_schedul, building=biulding)
                         s.save()
+    @staticmethod
+    def Add_zamena():
+        data = Parser_zamena.Get_zamens()
+        cl = 0
+        for i in data:
+            # print(i)
+            date_schedul = date.fromisoformat(i['date'])
+            number_id = Pairs.objects.get(id=int(i['number']) - 1)
+            group = ''
+            for gr in Group.objects.all():
+                if gr.name.lower() == i['group'].lower():
+                    group = gr
+                    break
+            if i['name'] == None:
+                s = Schedules(number_pair=number_id, building=None, discipline=None, group=group, date=date_schedul,
+                              ischange=True, iscanceled=iscanceled, isdistance=isdistance)
+                s.save()
+                continue
+                # try:
+                #     s.save()
+                #     cl += 1
+                #     print(cl)
+                #     continue
+                # except:
+                #     continue
+            disp = Disciplines.objects.get(name=f"{i['name']}")
+            #for dis in Disciplines.objects.all():
+            #    if dis.name.lower() == i['name'].lower():
+            #        disp = dis
+            #        break
+            iscanceled = i['iscanceled']
+            isdistance = i['idistance']
+            if i['name'] == 'ПРАКТИКА':
+                s = Schedules(number_pair=number_id, building=None, discipline=disp, group=group, date=date_schedul, ischange=True, iscanceled=iscanceled, isdistance=isdistance)
+                s.save()
+                # try:
+                #     s.save()
+                #     cl += 1
+                #     print(cl)
+                # except:
+                #     print("ertyuio")
+                #     continue
+                continue
+            if i['name'] == '':
+                continue
 
+            prepod_fio = i['prepod']
+            cl = 0
+            fio = prepod_fio.split('.')
+            prepods_variant = Prepods.objects.filter(surname=fio[2].strip())
+            if len(prepods_variant) == 0:
+                p = Prepods(surname=fio[2].strip(), name=fio[0].strip(), patronymic=fio[1].strip())
+                p.save()
+                # try:
+                #     p.save()
+                # except:
+                #     print("ertyuio")
+                #     continue
+                prepods_variant = Prepods.objects.filter(surname=fio[2].strip())
+            for prepod in prepods_variant:
+                if prepod.name.startswith(fio[0].strip()) and prepod.patronymic.startswith(fio[1].strip()):
+                    prepod_id = prepod
+                    s = Schedules(number_pair=number_id, discipline=disp, group=group, prepod=prepod_id,
+                                    date=date_schedul, building=None, ischange=True, iscanceled=iscanceled, isdistance=isdistance)
+                    s.save()
+                    # try:
+                    #     s.save()
+                    #     cl += 1
+                    #     print(cl)
+                    # except:
+                    #     print("ertyuio")
+                    #     continue

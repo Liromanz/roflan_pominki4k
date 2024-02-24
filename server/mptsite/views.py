@@ -8,6 +8,7 @@ from .modules.Direction_add import Additions
 # Create your views here.
 
 def home_page(request):
+    Additions.Add_zamena()
     return render(request, 'index.html')
     # Additions.Add_napr()
     # Additions.Add_speciality()
