@@ -5,6 +5,23 @@ from .date_helper import DateHelper
 from datetime import datetime, timedelta
 
 
+class ChangeScheduleChecker:
+    def __init__(self, changed: list):
+        self.changed = changed
+
+    def was_changed(self, cur_para: Schedules):
+        for change in self.changed:
+            if change.number_pair == cur_para.number_pair and change.ischange and not change.iscanceled:
+                return True
+        return False
+
+    def was_canceled(self, cur_para: Schedules):
+        for change in self.changed:
+            if change.number_pair == cur_para.number_pair and change.iscanceled:
+                return True
+        return False
+
+
 class ScheduleGenerator:
 
     ### Принцип:
@@ -54,6 +71,8 @@ class ScheduleGenerator:
 
         return day
 
+    # ------------------------------ Главный метод по генерации расписания
+
     @staticmethod
     def __get_base_schedule__(group: Group, selected_date: datetime):
         selected_date = datetime(2024, selected_date.month, selected_date.day)
@@ -62,13 +81,13 @@ class ScheduleGenerator:
         is_even_week = selected_date.isocalendar().week % 2
         weekday = selected_date.isoweekday()
 
-        rasp = list(Schedules.objects.filter(group=group, block_rasp=blocks, date=selected_date, ischange=True).exclude(discipline=None))
+        rasp = list(Schedules.objects.filter(group=group, block_rasp=blocks, date=selected_date, ischange=True))
+        change_checker = ChangeScheduleChecker(rasp)
 
-        for para in Schedules.objects.filter(group=group, block_rasp=blocks, date__iso_week_day=weekday, ischange=False):
-            if next((one_zamena for one_zamena in rasp if one_zamena.number_pair == para.number_pair), None) is not None:
+        for para in Schedules.objects.filter(group=group, block_rasp=blocks, date__iso_week_day=weekday):
+            if change_checker.was_changed(para):
                 continue
-            if (para.date.isocalendar().week % 2 == is_even_week
-                    and next((one_zamena for one_zamena in rasp if one_zamena.number_pair == para.number_pair), None) is not None):
+            if para.date.isocalendar().week % 2 == is_even_week and not change_checker.was_canceled(para):
                 rasp.append(para)
 
-        return rasp
+        return sorted(filter(lambda x: not x.iscanceled, rasp), key=lambda x: x.number_pair.id)
