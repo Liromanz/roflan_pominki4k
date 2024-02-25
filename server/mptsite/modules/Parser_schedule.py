@@ -135,7 +135,7 @@ class Parser:
                                         pch = stlb_rasps[2].text
                                         pzn = stlb_rasps[2].text
                                 else:
-                                    legend = True
+                                    # legend = True
                                     ch = 'label label-danger'
                                     zn = 'label label-info'
 
@@ -154,9 +154,14 @@ class Parser:
                                     pairs.append(serealiser(Pair(actual_date, platform, group, num, cch, pch)))
                                 else:
                                     pairs.append(serealiser(Pair(actual_date, platform, group, num, czn, pzn)))
-                    if days.index(day) == len(days) - 1 and second == False:
+                    # if days.index(day) == len(days) - 1 and second == False:
+                    #     second = True
+                    # elif days.index(day) == len(days) - 1 and second == True:
+                    #     legend = True
+                    if day == days[-1] and second == False:
                         second = True
-                    elif days.index(day) == len(days) - 1 and second == True:
+                    elif day == days[-1] and second == True:
                         legend = True
         return pairs
 
+print(*[str(i) for i in Parser.Get_pairs()], sep='\n')
