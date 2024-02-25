@@ -85,13 +85,9 @@ class ScheduleGenerator:
         change_checker = ChangeScheduleChecker(rasp)
 
         for para in Schedules.objects.filter(group=group, block_rasp=blocks, date__iso_week_day=weekday):
-            #print(para.discipline, "|", para.number_pair, "|", para.date, "|", para.prepod)
             if change_checker.was_changed(para):
                 continue
-            #print("первое условие: ", para.date.isocalendar().week % 2 == is_even_week)
-            #print("второе условие: ", not change_checker.was_canceled(para))
             if para.date.isocalendar().week % 2 == is_even_week and not change_checker.was_canceled(para):
                 rasp.append(para)
 
         return sorted(filter(lambda x: not x.iscanceled, rasp), key=lambda x: x.number_pair.id)
-        #return rasp

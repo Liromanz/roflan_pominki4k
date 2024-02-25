@@ -41,7 +41,7 @@
         <div class="line"></div>
         {% if r.lessons %}
         {% for sched in r.lessons %}
-        <div class="content__1">
+        <div class="content__1" {% if sched.ischange %} style="background: aqua;" {% endif %}>
             <div>
                 <p class="id__par">{{ sched.number_pair.number }}</p>
             </div>
