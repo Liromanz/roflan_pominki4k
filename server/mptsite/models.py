@@ -127,7 +127,7 @@ class Schedules(models.Model):
         verbose_name = "Строку расписания"
         verbose_name_plural = "Расписание"
         constraints = [
-            UniqueConstraint(fields=['group', 'discipline', 'number_pair', 'prepod', 'ischange'], name='unique_schedul_string')
+            UniqueConstraint(fields=['date', 'group', 'discipline', 'number_pair', 'prepod', 'ischange'], name='unique_schedul_string')
         ]
 
 # -------------------------------- Модели, которые не идут в базу данных

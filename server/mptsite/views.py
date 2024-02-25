@@ -37,7 +37,7 @@ def rasp_page(request):
     #day_rasp = ScheduleGenerator.generate_by_two_dates(m.Group.objects.filter(name='П50-8-22')[0],
     #                                                   date(2024, 2, 6), date(2024, 2, 14))
 
-    group = m.Group.objects.get(name='П50-8-22')
+    group = m.Group.objects.get(name='П50-9-21')
 
     st = datetime(2024, 2, 8)
     end = datetime(2024, 2, 18)
@@ -57,7 +57,7 @@ def newFile(request):
     return render(request, 'mptsite/newfile.html')
 
 def newrasp(request):
-    group = m.Group.objects.get(name='П50-8-22')
+    group = m.Group.objects.get(name='П50-9-21')
 
     st = datetime(2024, 5, 1)
     end = datetime(2024, 5, 15)

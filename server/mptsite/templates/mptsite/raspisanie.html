@@ -54,7 +54,9 @@
                 </p>
             </div>
             <div>
+                {% if sched.prepod.surname %}
                 <p class="prepod-name">{{ sched.prepod.surname }} {{ sched.prepod.name.0 }}. {{ sched.prepod.patronymic.0 }}.</p>
+                {% endif %}
             </div>
             <div>
                 <p class="kab">{{ sched.audience_number }}</p>
