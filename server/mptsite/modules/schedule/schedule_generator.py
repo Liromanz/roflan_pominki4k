@@ -81,7 +81,8 @@ class ScheduleGenerator:
         is_even_week = selected_date.isocalendar().week % 2
         weekday = selected_date.isoweekday()
 
-        rasp = list(Schedules.objects.filter(group=group, block_rasp=blocks, date=selected_date, ischange=True))
+        rasp = list(Schedules.objects.filter(group=group, date=selected_date, ischange=True))
+        print(rasp)
         change_checker = ChangeScheduleChecker(rasp)
 
         for para in Schedules.objects.filter(group=group, block_rasp=blocks, date__iso_week_day=weekday):
