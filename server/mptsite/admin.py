@@ -29,3 +29,4 @@ class DateTemplatesAdmin(admin.ModelAdmin):
 
 
 admin.site.register(m.DateTemplates, DateTemplatesAdmin)
+admin.site.register(m.News)
