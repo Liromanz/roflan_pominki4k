@@ -133,9 +133,10 @@ class Schedules(models.Model):
 class News(models.Model):
     date = models.DateField(verbose_name="Дата новости")
     name = models.CharField(verbose_name="Заголовок", max_length=100, null=False, default='')
+    short_info = models.CharField(verbose_name="Краткое описание", max_length=100, null=False, default='')
     info = models.TextField(verbose_name="Содержимое новости", null=True, default='')
     url = models.URLField(verbose_name="Ссылка на подробную запись", null=True)
-    image = models.ImageField(verbose_name="Превью-картинка", null=True, upload_to='server/image')
+    image = models.ImageField(verbose_name="Превью-картинка", null=True, upload_to='server/static/mptsite/img/news')
 
     def __str__(self):
         return f"{self.date} - {self.name}"

@@ -20,13 +20,13 @@
 }
 
 .card {
-  font-family: 'Heebo';
+  font-family: 'Rubik';
   --bg-filter-opacity: 0.5;
   background-image: linear-gradient(rgba(0,0,0,var(--bg-filter-opacity)),rgba(0,0,0,var(--bg-filter-opacity))), var(--bg-img);
   height: 20em;
   width: 15em;
   font-size: 1.5em;
-  color: white;
+  color: azure;
   border-radius: 1em;
   padding: 1em;
   /*margin: 2em;*/
@@ -108,7 +108,7 @@
 }
 
 .card:after {
-  background: white;
+  background: #1A1A2F;
   width: 200%;
   height: 200%;
 }

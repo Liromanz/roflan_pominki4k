@@ -64,25 +64,19 @@
 
 {% block after_related_objects %}
     <p> Превью карточки: </p>
+
     <section class="cards-wrapper">
         <div class="card-grid-space">
-        <a class="card" href="https://codetheweb.blog/2017/10/06/html-syntax/" style="--bg-img: url(https://images1-focus-opensocial.googleusercontent.com/gadgets/proxy?container=focus&resize_w=1500&url=https://codetheweb.blog/assets/img/posts/html-syntax/cover.jpg)">
-        <div>
-        {% for fieldset in adminform %} {% for line in fieldset %}  {% for field in line %}
-            {% if field.label_tag == 'Заголовок:' %}
-              <h1>{{ field.field.value }}</h1>
-            {% endif %}
-            {% if field.label_tag == "Дата новости: " %}
-              <div class="date">{{ field.field.value }}</div>
-            {% endif %}
-            {% if field.label_tag == "Дата новости: " %}
-              <div class="tags">
-                <div class="tag">Студсовет</div>
-              </div>
-            {% endif %}
-        {% endfor%} {%endfor%} {% endfor%}
-        </div>
-        </a>
+           <a class="card" href="{{ original.url }}" style="background-image: url('{{ original.image.url|cut:'/server' }}')">
+             <div>
+               <h1>{{ original.name }}</h1>
+               <p>{{ original.short_info }}</p>
+               <div class="date">{{ original.date }}</div>
+               <div class="tags">
+                 <div class="tag">Студсовет</div>
+               </div>
+             </div>
+           </a>
         </div>
     </section>
 {% endblock %}
