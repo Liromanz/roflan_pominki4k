@@ -1,7 +1,6 @@
 from django.db import models
 from django.db.models import UniqueConstraint
 
-
 class Pairs(models.Model):
     number = models.IntegerField(verbose_name="Номер пары", unique=True)
     time_start = models.TimeField(verbose_name="Время начала")
@@ -73,6 +72,20 @@ class Disciplines(models.Model):
         verbose_name = "Дисциплину"
         verbose_name_plural = "Дисциплины"
 
+
+class Users(models.Model):
+    token = models.CharField(verbose_name='Токен доступа', max_length=256, null=False, blank=False, unique=True)
+    secret_user = models.CharField(verbose_name='Секрет пользователя', max_length=256, null=False, blank=False, unique=True)
+    sex = models.BooleanField(verbose_name='Мужчина?', null=False, default=False)
+    birth_date = models.DateField(verbose_name='Дата рождения', null=False)
+    group = models.ForeignKey(Group, on_delete=models.CASCADE, null=True, verbose_name="Группа")
+
+    class Meta:
+        verbose_name = "Пользователь"
+        verbose_name_plural = "Пользователи"
+
+
+
 class Prepods(models.Model):
     surname = models.CharField(verbose_name="Фамилия", max_length=50, default="")
     name = models.CharField(verbose_name="Имя", max_length=50, null=False, default='')
@@ -130,13 +143,15 @@ class Schedules(models.Model):
             UniqueConstraint(fields=['date', 'group', 'discipline', 'number_pair', 'prepod', 'ischange'], name='unique_schedul_string')
         ]
 
+
 class News(models.Model):
     date = models.DateField(verbose_name="Дата новости")
     name = models.CharField(verbose_name="Заголовок", max_length=100, null=False, default='')
-    short_info = models.CharField(verbose_name="Краткое описание", max_length=100, null=False, default='')
-    info = models.TextField(verbose_name="Содержимое новости", null=True, default='')
-    url = models.URLField(verbose_name="Ссылка на подробную запись", null=True)
-    image = models.ImageField(verbose_name="Превью-картинка", null=True, upload_to='server/static/mptsite/img/news')
+    description = models.TextField(verbose_name="Содержимое новости", null=True, default='')
+    link = models.URLField(verbose_name="Ссылка на подробную запись", null=True)
+    picture = models.ImageField(verbose_name="Превью-картинка", null=True, upload_to='server/static/mptsite/img/news')
+    short_description = models.CharField(verbose_name="Краткое описание", max_length=100, null=False, default='')
+    date_to = models.DateField(verbose_name="Актуально до", null=False)
 
     def __str__(self):
         return f"{self.date} - {self.name}"
@@ -144,6 +159,32 @@ class News(models.Model):
     class Meta:
         verbose_name = "Новость"
         verbose_name_plural = "Новости"
+
+
+class Category_of_questions(models.Model):
+    category_name = models.CharField(verbose_name="Наименование категории", max_length=100, null=False)
+
+    def __str__(self):
+        return f"{self.category_name}"
+
+    class Meta:
+        verbose_name = "Категория вопроса"
+        verbose_name_plural = "Категории вопросов"
+
+
+class Questions(models.Model):
+    question = models.CharField(verbose_name="Вопрос", max_length=300, null=False)
+    answer = models.TextField(verbose_name="Ответ", null=False)
+    category_id = models.ForeignKey(Category_of_questions, on_delete=models.CASCADE, verbose_name="Категория", null=False)
+
+    def __str__(self):
+        return f"Вопрос: {self.question}"
+
+    class Meta:
+        verbose_name = "Вопрос"
+        verbose_name_plural = "Вопросы"
+
+
 # -------------------------------- Модели, которые не идут в базу данных
 
 class DaySchedule:
