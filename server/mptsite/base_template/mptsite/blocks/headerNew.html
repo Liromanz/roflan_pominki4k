@@ -1,3 +1,4 @@
+{% load static %}
 <header class="header">
     <nav class="navigation">
         <div class="navigation__left-part">
@@ -9,10 +10,10 @@
             </div>
             <div class="nav__logos">
                 <div class="nav__logo-mpt">
-                    <img src="../img/logoMPT.svg" alt="MPT" width="62.15" id="MPT">
+                    <img src="{% static 'mptsite/img/logoMPT.svg' %}" alt="MPT" width="62.15" id="MPT">
                 </div>
                 <div class="nav__logo-reu">
-                    <img src="../img/logoREU.svg" alt="REU" width="136.74px" height="52.8px" id="REU">
+                    <img src="{% static 'mptsite/img/logoREU.svg' %}" alt="REU" width="136.74px" height="52.8px" id="REU">
                 </div>
             </div>
         </div>
@@ -26,7 +27,7 @@
                 </div>
             </div>
             <div class="nav__login-icon">
-                <img src="../img/login.svg" alt="">
+                <img src="{% static 'mptsite/img/login.svg' %}" alt="">
             </div>
         </div>
     </nav>
