@@ -15,7 +15,6 @@ class Directions(models.Model):
         verbose_name_plural = "Направления"
 
 
-
 class Specialities(models.Model):
     short_name = models.CharField(verbose_name="Краткое название", max_length=10, null=False, unique=True)
     full_name = models.CharField(verbose_name="Полное название", max_length=150, null=False, unique=True)
@@ -50,8 +49,7 @@ class Pair_numbers(models.Model):
     time_finish = models.CharField(max_length=20, verbose_name="Конец пары")
 
     def __str__(self):
-        return f"{self.discipline_name}"
-
+        return f"{self.time_start} - {self.time_finish}"
 
     class Meta():
         verbose_name = "Время пары"
@@ -70,16 +68,6 @@ class Buildings(models.Model):
         verbose_name_plural = "Здания"
 
 
-# class Shedules(models.Model):
-#     pair_number = models.ForeignKey(Pair_numbers, on_delete=models.CASCADE, null=False, verbose_name="Номер пары")
-#     group = models.ForeignKey(Groups, on_delete=models.CASCADE, null=False, verbose_name="Группа")
-#     audience = models.CharField(max_length=10, verbose_name="Аудитория", null=True, default="")
-#     building = models.ForeignKey(Buildings, on_delete=models.CASCADE, null=False, verbose_name="Корпус")
-#     date = models.DateField(verbose_name="Дата проведения", null=True)
-#     is_change = models.BooleanField(verbose_name="Замена", null=False, default=False)
-#     is_cancel = models.BooleanField(verbose_name="")
-
-
 class Disciplines(models.Model):
     discipline_name = models.CharField(max_length=200, verbose_name="Название дисциплины", unique=True, null=False)
 
@@ -91,13 +79,26 @@ class Disciplines(models.Model):
         verbose_name_plural = "Направления"
 
 
-class Employeers(models.Model):
-    name = models.CharField(max_length=50, verbose_name="Имя", null=False)
-    surname = models.CharField(max_length=50, verbose_name="Фамилия", null=False)
-    patronymic = models.CharField(max_length=50, verbose_name="Отчество", null=True, default="")
+class Disciplines_Specialities_Hours(models.Model):
+    speciality = models.ForeignKey(Specialities, on_delete=models.CASCADE, verbose_name="Специальность")
+    discipline = models.ForeignKey(Disciplines, on_delete=models.CASCADE, verbose_name="Дисциплина")
+    hours_amount = models.PositiveIntegerField(verbose_name="Время по рабочему плану", default=0, null=True)
+
+    def __str__(self):
+        return f"{self.speciality.name} - Дисциплина {self.discipline.name} {self.hours_amount} "
+
+    class Meta():
+        verbose_name = "Количество часов"
+        verbose_name_plural = "Количества часов"
+
+
+class Employees(models.Model):
+    surname = models.CharField(verbose_name="Фамилия", max_length=50, default="")
+    name = models.CharField(verbose_name="Имя", max_length=50, null=False, default='')
+    patronymic = models.CharField(verbose_name="Отчество", max_length=50, null=True, default="")
     education = models.TextField(verbose_name="Образование", null=True, default="")
     qualification = models.TextField(verbose_name="Квалификация", null=True, default="")
-    post = models.CharField(verbose_name="Должность",max_length=300, null=True, default="")
+    post = models.CharField(verbose_name="Должность", max_length=300, null=True, default="")
     total_work_experience = models.TextField(verbose_name="Общий стаж работы", null=True, default="")
     teaching_work_experience = models.TextField(verbose_name="Педагогический стаж", null=True, default="")
     teaching_work_experience_MPT = models.TextField(verbose_name="Стаж рабооты в техникуме", null=True, default="")
@@ -113,10 +114,58 @@ class Employeers(models.Model):
         verbose_name_plural = "Работники"
 
 
+class Teacher_Disciplines(models.Model):
+    discipline = models.ForeignKey(Disciplines, on_delete=models.CASCADE, verbose_name="Дисциплина")
+    employee = models.ForeignKey(Employees, on_delete=models.CASCADE, verbose_name="Сотрудник")
+
+    def __str__(self):
+        return f"{self.discipline.name} - {self.employee.surname} {self.employee.name[0]}. {self.employee.patronymic[0]}."
+
+    class Meta():
+        verbose_name = "Преподаваемую дисциплину"
+        verbose_name_plural = "Преподаваемые дисциплины"
+
+
+class Pair_statuses(models.Model):
+    name = models.CharField(verbose_name="Название статуса", max_length=50, null=False, default='')
+
+    def __str__(self):
+        return f"{self.name}"
+
+    class Meta():
+        verbose_name = "Статус пары"
+        verbose_name_plural = "Статусы пар"
+
+
+class DateTemplates(models.Model):
+    name = models.CharField(verbose_name="Название статуса", max_length=50, null=False, default='')
+    date_from = models.DateField(verbose_name='Блок с')
+    date_end = models.DateField(verbose_name='Блок по')
+
+    def __str__(self):
+        return f"{self.name}: с {self.date_from} по {self.date_end}"
+
+    class Meta():
+        verbose_name = "Блок расписания"
+        verbose_name_plural = "Блоки генерации расписания"
+
+
+class Schedules(models.Model):
+    pair_number = models.ForeignKey(Pair_numbers, on_delete=models.CASCADE, null=False, verbose_name="Номер пары")
+    group = models.ForeignKey(Groups, on_delete=models.CASCADE, null=False, verbose_name="Группа")
+    audience = models.CharField(max_length=10, verbose_name="Аудитория", null=True, default="")
+    building = models.ForeignKey(Buildings, on_delete=models.CASCADE, null=False, verbose_name="Корпус")
+    date = models.DateField(verbose_name="Дата проведения", null=True)
+    teacher = models.ForeignKey(Teacher_Disciplines, on_delete=models.CASCADE, verbose_name="Преподаватель")
+    is_change = models.BooleanField(verbose_name="Является заменой?", null=False, default=False)
+    is_cancel = models.ForeignKey(Pair_statuses, on_delete=models.CASCADE, verbose_name="Отмена?")
+    is_remote = models.BooleanField(verbose_name='Дистанционно?', null=False, default=False)
+
 
 class Users(models.Model):
     token = models.CharField(verbose_name='Токен доступа', max_length=256, null=False, blank=False, unique=True)
-    secret_user = models.CharField(verbose_name='Секрет пользователя', max_length=256, null=False, blank=False, unique=True)
+    secret_user = models.CharField(verbose_name='Секрет пользователя', max_length=256, null=False, blank=False,
+                                   unique=True)
     sex = models.BooleanField(verbose_name='Мужчина?', null=False, default=False)
     birth_date = models.DateField(verbose_name='Дата рождения', null=False)
     group = models.ForeignKey(Groups, on_delete=models.CASCADE, null=True, verbose_name="Группа")
@@ -124,8 +173,6 @@ class Users(models.Model):
     class Meta:
         verbose_name = "Пользователь"
         verbose_name_plural = "Пользователи"
-
-
 
 
 class News(models.Model):
@@ -159,7 +206,8 @@ class Category_of_questions(models.Model):
 class Questions(models.Model):
     question = models.CharField(verbose_name="Вопрос", max_length=300, null=False)
     answer = models.TextField(verbose_name="Ответ", null=False)
-    category_id = models.ForeignKey(Category_of_questions, on_delete=models.CASCADE, verbose_name="Категория", null=False)
+    category_id = models.ForeignKey(Category_of_questions, on_delete=models.CASCADE, verbose_name="Категория",
+                                    null=False)
 
     def __str__(self):
         return f"Вопрос: {self.question}"
@@ -178,4 +226,4 @@ class DaySchedule:
         self.lessons = schedules_list
 
     def __str__(self):
-        return  f"{self.cur_date} | {self.lessons}"
+        return f"{self.cur_date} | {self.lessons}"

@@ -1,6 +1,6 @@
 from django.shortcuts import get_object_or_404
 
-from ...models import Schedules, Group, DaySchedule, DateTemplates
+from ...models import Schedules, Groups, DaySchedule, DateTemplates
 from .date_helper import DateHelper
 from datetime import datetime, timedelta
 
@@ -33,13 +33,13 @@ class ScheduleGenerator:
     ###
 
     @staticmethod
-    def generate_by_day(group: Group, selected_date: datetime = datetime.today()):
+    def generate_by_day(group: Groups, selected_date: datetime = datetime.today()):
         schedule = ScheduleGenerator.__get_base_schedule__(group, selected_date).order_by('number_pair')
         day = [DaySchedule(datetime.today(), schedule)]
         return day
 
     @staticmethod
-    def generate_current_week(group: Group):
+    def generate_current_week(group: Groups):
         helper = DateHelper(datetime.today())
 
         dates = helper.get_week_by_date()
@@ -49,7 +49,7 @@ class ScheduleGenerator:
         return day
 
     @staticmethod
-    def generate_next_week(group: Group):
+    def generate_next_week(group: Groups):
         helper = DateHelper(datetime.today() + timedelta(weeks=1))
 
         dates = helper.get_week_by_date()
@@ -60,7 +60,7 @@ class ScheduleGenerator:
         return day
 
     @staticmethod
-    def generate_by_two_dates(group: Group, start_date: datetime, end_date: datetime):
+    def generate_by_two_dates(group: Groups, start_date: datetime, end_date: datetime):
         helper = DateHelper(start_date)
 
         dates = helper.get_all_days_until(end_date)
@@ -74,7 +74,7 @@ class ScheduleGenerator:
     # ------------------------------ Главный метод по генерации расписания
 
     @staticmethod
-    def __get_base_schedule__(group: Group, selected_date: datetime):
+    def __get_base_schedule__(group: Groups, selected_date: datetime):
         selected_date = datetime(2024, selected_date.month, selected_date.day)
 
         blocks = get_object_or_404(DateTemplates, date_from__lte=selected_date, date_end__gte=selected_date)
