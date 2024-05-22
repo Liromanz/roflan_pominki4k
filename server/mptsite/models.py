@@ -124,6 +124,7 @@ class Teacher_Disciplines(models.Model):
     class Meta():
         verbose_name = "Преподаваемую дисциплину"
         verbose_name_plural = "Преподаваемые дисциплины"
+        unique_together = ('discipline', 'employee',)
 
 
 class Pair_statuses(models.Model):
