@@ -9,15 +9,15 @@ from .modules.Direction_add import Additions
 
 def home_page(request):
     # Additions.Add_zamena()
-    return render(request, 'index.html')
     # Additions.Add_napr()
     # Additions.Add_speciality()
     # Additions.Add_group()
     # Additions.Add_pairs_numbers()
     # Additions.Add_building()
     # Additions.Add_disps()
-    # Additions.Add_prep()
-    #Additions.Add_schedule()
+    Additions.Add_prep()
+    # Additions.Add_schedule()
+    return render(request, 'index.html')
 
 
 def prepods(request):

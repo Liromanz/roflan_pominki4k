@@ -164,4 +164,3 @@ class Parser:
                         legend = True
         return pairs
 
-print(*[str(i) for i in Parser.Get_pairs()], sep='\n')

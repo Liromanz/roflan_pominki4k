@@ -6,12 +6,17 @@ import requests
 import time as tm
 import datetime as dt
 from bs4 import BeautifulSoup
+
+
 class Additions:
     @staticmethod
     def Add_napr():
-        napr = {"09.02.01":"Компьютерные системы и комплексы","09.02.06":"Сетевое и системное администрирование", "09.02.07":"Информационные системы и программирование","10.02.05":"Обеспечение информационной безопасности автоматизированных систем","40.02.01":"Право и организация социального обеспечения"}
+        napr = {"09.02.01": "Компьютерные системы и комплексы", "09.02.06": "Сетевое и системное администрирование",
+                "09.02.07": "Информационные системы и программирование",
+                "10.02.05": "Обеспечение информационной безопасности автоматизированных систем",
+                "40.02.01": "Право и организация социального обеспечения"}
         for i in list(napr.keys()):
-            d = CodeDirection(code=i, name=napr[i])
+            d = Directions(code_name=i, name=napr[i], is_active=True)
             try:
                 d.save()
             except:
@@ -20,49 +25,51 @@ class Additions:
     @staticmethod
     def Add_speciality():
         napr_ids = {}
-        for i in CodeDirection.objects.all():
-            napr_ids[i.code] = i
+        for i in Directions.objects.all():
+            napr_ids[i.code_name] = i
         print(napr_ids)
         for g in ["П", "БД", "ВД", "Т", "ИС", "ИСиП"]:
-            d = Speciality(code=CodeDirection.objects.get(code="09.02.07"), name=g)
-            try:
-                d.save()
-            except:
-                continue
+            d = Specialities(direction=Directions.objects.get(code_name="09.02.07"), short_name=g)
+            print(d)
+            d.save()
+            # try:
+            #     d.save()
+            # except:
+            #     continue
         for g in ["СА"]:
-            d = Speciality(code=CodeDirection.objects.get(code="09.02.06"), name=g)
+            d = Specialities(direction=Directions.objects.get(code_name="09.02.06"), short_name=g)
             try:
                 d.save()
             except:
                 continue
         for g in ["Э"]:
-            d = Speciality(code=CodeDirection.objects.get(code="09.02.01"), name=g)
+            d = Specialities(direction=Directions.objects.get(code_name="09.02.01"), short_name=g)
             try:
                 d.save()
             except:
                 continue
         for g in ["Ю"]:
-            d = Speciality(code=CodeDirection.objects.get(code="40.02.01"), name=g)
+            d = Specialities(direction=Directions.objects.get(code_name="40.02.01"), short_name=g)
             try:
                 d.save()
             except:
                 continue
         for g in ["БИ"]:
-            d = Speciality(code=CodeDirection.objects.get(code="10.02.05"), name=g)
+            d = Specialities(direction=Directions.objects.get(code_name="10.02.05"), short_name=g)
             try:
                 d.save()
             except:
                 continue
-
 
     @staticmethod
     def Add_group():
         for group in Parser.Get_groups():
             print(group)
             for i in range(4):
-                if group[0:4-i] in [j.name for j in Speciality.objects.all()]:
-                    g = Group(speciality_id=int((Speciality.objects.get(name=f"{group[0:4-i]}")).id), name=group)
+                if group[0:4 - i] in [j.short_name for j in Specialities.objects.all()]:
+                    g = Groups(speciality=Specialities.objects.get(short_name=f"{group[0:4 - i]}"), group_name=group)
                     print(g)
+                    g.save()
                     try:
                         g.save()
                     except:
@@ -73,7 +80,7 @@ class Additions:
     @staticmethod
     def Add_disps():
         for i in Parser.Get_disps()['disps']:
-            d = Disciplines(name=i)
+            d = Disciplines(discipline_name=i)
             try:
                 d.save()
             except:
@@ -84,7 +91,7 @@ class Additions:
         cl = 0
         buildings = {"Нахимовский": "Нахимовский проспект, 21", "Нежинская": "Нежинская, 7"}
         for i in list(buildings.keys()):
-            d = Building(id=cl, name=i, address=buildings[i])
+            d = Buildings(id=cl, name=i, address=buildings[i])
             d.save()
             cl += 1
 
@@ -112,21 +119,25 @@ class Additions:
 
             prepod_card = prepod_html.find('div', class_="inner-page-content clearfix").text.replace('&nbsp;', '')
             Education = prepod_card[prepod_card.find("Образование:"):prepod_card.find(
-                "Данные о повышении квалификации и (или) профессиональной подготовки:")].replace('Образование:', '').strip()
+                "Данные о повышении квалификации и (или) профессиональной подготовки:")].replace('Образование:',
+                                                                                                 '').strip()
             # print(Education)
             Qualification = prepod_card[prepod_card.find(
                 "Данные о повышении квалификации и (или) профессиональной подготовки:"):prepod_card.find(
-                "Должность:")].replace('Данные о повышении квалификации и (или) профессиональной подготовки:', '').strip()
+                "Должность:")].replace('Данные о повышении квалификации и (или) профессиональной подготовки:',
+                                       '').strip()
             # print(Qualification)
             Post = prepod_card[prepod_card.find("Должность:"):prepod_card.find("Преподаваемые дисциплины:")].replace(
                 'Должность:', '').strip()
             # print(Post)
             Disciplines = prepod_card[
-                          prepod_card.find("Преподаваемые дисциплины:"):prepod_card.find("Общий трудовой стаж:")].replace(
+                          prepod_card.find("Преподаваемые дисциплины:"):prepod_card.find(
+                              "Общий трудовой стаж:")].replace(
                 'Преподаваемые дисциплины:', '').strip()
             # print(Disciplines)
             Full_expirience = prepod_card[
-                              prepod_card.find("Общий трудовой стаж:"):prepod_card.find("Педагогический стаж:")].replace(
+                              prepod_card.find("Общий трудовой стаж:"):prepod_card.find(
+                                  "Педагогический стаж:")].replace(
                 'Общий трудовой стаж:', '').strip()
             # print(Full_expirience)
 
@@ -145,22 +156,21 @@ class Additions:
             Degree = prepod_html.find('div', class_="inner-page-content clearfix").find_all('p')[-1].text.replace(
                 'Ученая степень/категория:', '').strip()
             # print(Degree)
-            t = Prepods(name=FIO.split()[1], surname=FIO.split()[0], patronymic=FIO.split()[2], education=Education,
-                        qualification=Qualification, post=Post, disciplines=Disciplines,
-                        full_expirience=Full_expirience, prepod_expirience=Prepod_expirience,
-                        sharaga_expirience=Sharaga_expirience, contacts=Contacts, degree=Degree)
+            t = Employees(name=FIO.split()[1], surname=FIO.split()[0], patronymic=FIO.split()[2], education=Education,
+                          qualification=Qualification, post=Post,
+                          total_work_experience=Full_expirience, teaching_work_experience=Prepod_expirience,
+                          teaching_work_experience_MPT=Sharaga_expirience, email=Contacts, degree=Degree)
             t.save()
-
 
     @staticmethod
     def Add_pairs_numbers():
-        cl = 0
-        for i in [((8, 30, 0), (10, 0, 0)),((10, 10, 0), (11, 40, 0)),((12, 0, 0), (13, 30, 0)), ((13, 50, 0),
-                  (15, 20, 0)), ((15, 30, 0), (17, 0, 0)), ((17, 10, 0), (18, 40, 0))]:
-            p = Pairs(id=cl, number=cl+1, time_start=dt.time(*i[0]) , time_end=dt.time(*i[1]))
+        cl = 1
+        for i in [((8, 30, 0), (10, 0, 0)), ((10, 10, 0), (11, 40, 0)), ((12, 0, 0), (13, 30, 0)), ((13, 50, 0),
+                                                                                                    (15, 20, 0)),
+                  ((15, 30, 0), (17, 0, 0)), ((17, 10, 0), (18, 40, 0))]:
+            p = Pair_numbers(id=cl, time_start=dt.time(*i[0]), time_finish=dt.time(*i[1]))
             p.save()
             cl += 1
-
 
     @staticmethod
     def Add_schedule():
@@ -168,8 +178,8 @@ class Additions:
         for i in data:
             print(i)
             date_schedul = date.fromisoformat(i['date'])
-            number_id = Pairs.objects.get(id=i['number'] - 1)
-            group = Group.objects.get(name=f"{i['group']}")
+            number_id = Pair_numbers.objects.get(id=i['number'] - 1)
+            group = Groups.objects.get(name=f"{i['group']}")
             disp = Disciplines.objects.get(name=f"{i['name']}")
             if i['name'] == 'ПРАКТИКА':
                 s = Schedules(number_pair=number_id, discipline=disp, group=group, date=date_schedul)
@@ -179,21 +189,22 @@ class Additions:
                 continue
 
             prepod_fio = i['prepod']
-            biulding = Building.objects.get(name=f"{i['platform']}") if i['platform'] != '' else None
+            biulding = Buildings.objects.get(name=f"{i['platform']}") if i['platform'] != '' else None
             cl = 0
             for i in range(len(prepod_fio.split(','))):
                 fio = prepod_fio.split(',')[i].split('.')
-                prepods_variant = Prepods.objects.filter(surname=fio[2].strip())
+                prepods_variant = Employees.objects.filter(surname=fio[2].strip())
                 if len(prepods_variant) == 0:
-                    p = Prepods(surname=fio[2].strip(), name=fio[0].strip(), patronymic=fio[1].strip())
+                    p = Employees(surname=fio[2].strip(), name=fio[0].strip(), patronymic=fio[1].strip())
                     p.save()
-                    prepods_variant = Prepods.objects.filter(surname=fio[2].strip())
+                    prepods_variant = Employees.objects.filter(surname=fio[2].strip())
                 for prepod in prepods_variant:
                     if prepod.name.startswith(fio[0].strip()) and prepod.patronymic.startswith(fio[1].strip()):
                         prepod_id = prepod
                         s = Schedules(number_pair=number_id, discipline=disp, group=group, prepod=prepod_id,
-                                        date=date_schedul, building=biulding)
+                                      date=date_schedul, building=biulding)
                         s.save()
+
     @staticmethod
     def Add_zamena():
         data = Parser_zamena.Get_zamens()
@@ -201,11 +212,11 @@ class Additions:
         for i in data:
             # print(i)
             date_schedul = date.fromisoformat(i['date'])
-            number_id = Pairs.objects.get(id=int(i['number']) - 1)
+            number_id = Pair_numbers.objects.get(id=int(i['number']) - 1)
             group = ''
             iscanceled = i['iscanceled']
             isdistance = i['idistance']
-            for gr in Group.objects.all():
+            for gr in Groups.objects.all():
                 if gr.name.lower() == i['group'].lower():
                     group = gr
                     break
@@ -222,13 +233,14 @@ class Additions:
             #     except:
             #         continue
             disp = Disciplines.objects.get(name=f"{i['name']}")
-            #for dis in Disciplines.objects.all():
+            # for dis in Disciplines.objects.all():
             #    if dis.name.lower() == i['name'].lower():
             #        disp = dis
             #        break
 
             if i['name'] == 'ПРАКТИКА':
-                s = Schedules(number_pair=number_id, building=None, discipline=disp, group=group, date=date_schedul, ischange=True, iscanceled=iscanceled, isdistance=isdistance)
+                s = Schedules(number_pair=number_id, building=None, discipline=disp, group=group, date=date_schedul,
+                              ischange=True, iscanceled=iscanceled, isdistance=isdistance)
                 # s.save()
                 try:
                     s.save()
@@ -243,20 +255,21 @@ class Additions:
             prepod_fio = i['prepod']
             cl = 0
             fio = prepod_fio.split('.')
-            prepods_variant = Prepods.objects.filter(surname=fio[2].strip())
+            prepods_variant = Employees.objects.filter(surname=fio[2].strip())
             if len(prepods_variant) == 0:
-                p = Prepods(surname=fio[2].strip(), name=fio[0].strip(), patronymic=fio[1].strip())
+                p = Employees(surname=fio[2].strip(), name=fio[0].strip(), patronymic=fio[1].strip())
                 p.save()
                 try:
                     p.save()
                 except:
                     continue
-                prepods_variant = Prepods.objects.filter(surname=fio[2].strip())
+                prepods_variant = Employees.objects.filter(surname=fio[2].strip())
             for prepod in prepods_variant:
                 if prepod.name.startswith(fio[0].strip()) and prepod.patronymic.startswith(fio[1].strip()):
                     prepod_id = prepod
                     s = Schedules(number_pair=number_id, discipline=disp, group=group, prepod=prepod_id,
-                                    date=date_schedul, building=None, ischange=True, iscanceled=iscanceled, isdistance=isdistance)
+                                  date=date_schedul, building=None, ischange=True, iscanceled=iscanceled,
+                                  isdistance=isdistance)
                     # s.save()
                     try:
                         s.save()

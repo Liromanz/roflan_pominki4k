@@ -17,14 +17,14 @@ class Directions(models.Model):
 
 class Specialities(models.Model):
     short_name = models.CharField(verbose_name="Краткое название", max_length=10, null=False, unique=True)
-    full_name = models.CharField(verbose_name="Полное название", max_length=150, null=False, unique=True)
+    full_name = models.CharField(verbose_name="Полное название", max_length=150, null=False)
     base_on_9 = models.BooleanField(verbose_name="На базе 9-го", null=False, default=False)
     base_on_11 = models.BooleanField(verbose_name="На базе 11-го", null=False, default=False)
     description = models.TextField(verbose_name="Описание", null=False, default="")
     direction = models.ForeignKey(Directions, on_delete=models.CASCADE, null=True, verbose_name="Направление")
 
     def __str__(self):
-        return f"{self.short_name} - {self.full_name}"
+        return f"{self.short_name} - {self.direction}"
 
     class Meta():
         verbose_name = "Специальность"
@@ -34,7 +34,7 @@ class Specialities(models.Model):
 class Groups(models.Model):
     group_name = models.CharField(max_length=50, verbose_name="Название группы", unique=True, null=False)
     speciality = models.ForeignKey(Specialities, on_delete=models.CASCADE, null=False, verbose_name="Специальность")
-    course = models.IntegerField(verbose_name="Курс")
+    course = models.IntegerField(verbose_name="Курс", default=2)
 
     def __str__(self):
         return f"{self.group_name} - {self.course}"
@@ -103,7 +103,7 @@ class Employees(models.Model):
     teaching_work_experience = models.TextField(verbose_name="Педагогический стаж", null=True, default="")
     teaching_work_experience_MPT = models.TextField(verbose_name="Стаж рабооты в техникуме", null=True, default="")
     phone = models.CharField(max_length=20, verbose_name="Телефон", null=True, default="")
-    email = models.EmailField(max_length=50, verbose_name="Почта", null=True, default="")
+    email = models.EmailField(max_length=300, verbose_name="Почта", null=True, default="")
     degree = models.TextField(verbose_name="Ученая степень")
 
     def __str__(self):
