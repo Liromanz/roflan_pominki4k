@@ -3,6 +3,7 @@ from . import models as m
 from datetime import datetime
 from .modules.schedule.schedule_generator import ScheduleGenerator as gen
 from .modules.Direction_add import Additions
+from .modules.excel.excel_schedule import ExcelParser
 
 
 # Create your views here.
@@ -17,6 +18,7 @@ def home_page(request):
     # Additions.Add_disps()
     # Additions.Add_prep()
     # Additions.Add_schedule()
+    ExcelParser.import_schedule()
     return render(request, 'index.html')
 
 

@@ -159,8 +159,11 @@ class Schedules(models.Model):
     date = models.DateField(verbose_name="Дата проведения", null=True)
     teacher = models.ForeignKey(Teacher_Disciplines, on_delete=models.CASCADE, verbose_name="Преподаватель")
     is_change = models.BooleanField(verbose_name="Является заменой?", null=False, default=False)
-    is_cancel = models.ForeignKey(Pair_statuses, on_delete=models.CASCADE, verbose_name="Отмена?")
+    is_cancel = models.ForeignKey(Pair_statuses, on_delete=models.CASCADE, verbose_name="Отмена?", null=True, default=None)
     is_remote = models.BooleanField(verbose_name='Дистанционно?', null=False, default=False)
+
+    def __str__(self):
+        return f"{self.pair_number.pk} {self.group.group_name} {self.audience} {self.building} {self.date}"
 
 
 class Users(models.Model):

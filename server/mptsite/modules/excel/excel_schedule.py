@@ -7,6 +7,8 @@ from ...models import *
 
 class ExcelParser:
 
+
+
     @staticmethod
     def __generate_teacher_disciplines():
         pass
@@ -21,16 +23,17 @@ class ExcelParser:
 
         # тут надо поебаться с преподом
         # group_schedule.teacher = Teacher_Disciplines.objects.get()
-
-        group_schedule.save()
+        print(group_schedule)
+        #group_schedule.save()
 
     @staticmethod
     def import_schedule():
+        discipline_list = set()
         days_of_week = ['Понедельник', 'Вторник', 'Среда', 'Четверг', 'Пятница', 'Суббота']
         index_week = 0
         pair_number = 1
 
-        book = xlrd.open_workbook("rasp.xls")
+        book = xlrd.open_workbook("D:\\pipon\\roflan_pominki4k\\rasp.xls")
         # print("The number of worksheets is {0}".format(book.nsheets))
         # print("Worksheet name(s): {0}".format(book.sheet_names()))
 
@@ -65,29 +68,37 @@ class ExcelParser:
                         if re.search(r".\..\. .*$", upper_cell) or (upper_cell == "" and lower_cell != ""):
                             # числитель
                             if upper_cell != "":
-                                print(pair_number, "В числитель: ",
-                                      " ".join(sh.row(paraCell)[groupColumn].value.split()))
-                                ExcelParser.__generate_one_day(pair_number, sh.cell_value(rowx=8, colx=groupColumn),
-                                                               building, starting_date + timedelta(days=index_week), "")
+                                discipline_list.add((re.split(r".\..\. .*$", upper_cell)[0].strip(),
+                                                     re.findall(r".\..\. .*$", " ".join(upper_cell.split()))[0]))
+
+                                print(pair_number, "В числитель: ", " ".join(upper_cell.split()))
+                                #ExcelParser.__generate_one_day(pair_number, sh.cell_value(rowx=8, colx=groupColumn),
+                                #                               building, starting_date + timedelta(days=index_week), "")
 
                             # знаменатель
                             if lower_cell != "":
-
-                                print("  В знаменатель: ", " ".join(sh.row(paraCell + 1)[groupColumn].value.split()))
-                                ExcelParser.__generate_one_day(pair_number, sh.cell_value(rowx=8, colx=groupColumn),
-                                                               building, starting_date + timedelta(days=index_week+7), "")
+                                discipline_list.add((re.split(r".\..\. .*$", lower_cell)[0].strip(),
+                                                     re.findall(r".\..\. .*$", " ".join(lower_cell.split()))[0]))
+                                print(pair_number, "В знаменатель: ", " ".join(lower_cell.split()))
+                                #ExcelParser.__generate_one_day(pair_number, sh.cell_value(rowx=8, colx=groupColumn),
+                                #                               building, starting_date + timedelta(days=index_week+7), "")
                         else:
                             # общая пара
-                            print(pair_number, " ".join(sh.row(paraCell)[groupColumn].value.split()),
-                                  " ".join(sh.row(paraCell + 1)[groupColumn].value.split()))
+                            discipline_list.add((" ".join(upper_cell.split()), " ".join(lower_cell.split())))
+                            print(pair_number, " ".join(upper_cell.split()),
+                                  " ".join(lower_cell.split()))
                             #и для числителя
-                            ExcelParser.__generate_one_day(pair_number, sh.cell_value(rowx=8, colx=groupColumn),
-                                                           building, starting_date + timedelta(days=index_week), "")
+                            #ExcelParser.__generate_one_day(pair_number, sh.cell_value(rowx=8, colx=groupColumn),
+                            #                               building, starting_date + timedelta(days=index_week), "")
                             #и для знаменателя
-                            ExcelParser.__generate_one_day(pair_number, sh.cell_value(rowx=8, colx=groupColumn),
-                                                           building, starting_date + timedelta(days=index_week + 7), "")
+                            #ExcelParser.__generate_one_day(pair_number, sh.cell_value(rowx=8, colx=groupColumn),
+                            #                               building, starting_date + timedelta(days=index_week + 7), "")
 
                         pair_number += 1
 
                     index_week += 1
                     print("----------")
+
+        #вот тут тусятся список дисциплин и их преподов
+        for item in discipline_list:
+            print(item)
