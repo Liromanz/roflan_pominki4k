@@ -1,3 +1,5 @@
+from datetime import datetime
+
 from django.db import models
 from django.db.models import UniqueConstraint
 
@@ -104,7 +106,7 @@ class Employees(models.Model):
     teaching_work_experience_MPT = models.TextField(verbose_name="Стаж рабооты в техникуме", null=True, default="")
     phone = models.CharField(max_length=20, verbose_name="Телефон", null=True, default="")
     email = models.EmailField(max_length=300, verbose_name="Почта", null=True, default="")
-    degree = models.TextField(verbose_name="Ученая степень")
+    degree = models.TextField(verbose_name="Ученая степень", null=True, default="")
 
     def __str__(self):
         return f"{self.surname} {self.name[0]}. {self.patronymic[0]}. "
@@ -116,7 +118,7 @@ class Employees(models.Model):
 
 class Teacher_Disciplines(models.Model):
     discipline = models.ForeignKey(Disciplines, on_delete=models.CASCADE, verbose_name="Дисциплина")
-    employee = models.ForeignKey(Employees, on_delete=models.CASCADE, verbose_name="Сотрудник")
+    employee = models.ForeignKey(Employees, on_delete=models.CASCADE, verbose_name="Сотрудник", null=True, default=None)
 
     def __str__(self):
         return f"{self.discipline.name} - {self.employee.surname} {self.employee.name[0]}. {self.employee.patronymic[0]}."
@@ -124,7 +126,11 @@ class Teacher_Disciplines(models.Model):
     class Meta():
         verbose_name = "Преподаваемую дисциплину"
         verbose_name_plural = "Преподаваемые дисциплины"
-        unique_together = ('discipline', 'employee',)
+        constraints = [
+            models.UniqueConstraint(fields=['discipline', 'employee'], name='Teacher_Disc_UQ'),
+            models.UniqueConstraint(fields=['discipline'], condition=models.Q(employee=None),
+                                    name='Teacher_Null_Disc_UQ'),
+        ]
 
 
 class Pair_statuses(models.Model):
@@ -159,7 +165,8 @@ class Schedules(models.Model):
     date = models.DateField(verbose_name="Дата проведения", null=True)
     teacher = models.ForeignKey(Teacher_Disciplines, on_delete=models.CASCADE, verbose_name="Преподаватель")
     is_change = models.BooleanField(verbose_name="Является заменой?", null=False, default=False)
-    is_cancel = models.ForeignKey(Pair_statuses, on_delete=models.CASCADE, verbose_name="Отмена?", null=True, default=None)
+    is_cancel = models.ForeignKey(Pair_statuses, on_delete=models.CASCADE, verbose_name="Отмена?", null=True,
+                                  default=None)
     is_remote = models.BooleanField(verbose_name='Дистанционно?', null=False, default=False)
 
     def __str__(self):
@@ -231,3 +238,39 @@ class DaySchedule:
 
     def __str__(self):
         return f"{self.cur_date} | {self.lessons}"
+
+
+class ExcelSchedule:
+
+    def __init__(self, pair_number: int, group: str, building: str, date: datetime, teacher: str, discipline: str):
+        self.group = Groups.objects.get(group_name=group)
+        self.building = Buildings.objects.get(name=building)
+        self.pair_number = Pair_numbers.objects.get(id=pair_number)
+        self.date = date
+        self.teacher = teacher
+        self.discipline = Disciplines.objects.get(discipline_name=discipline)
+
+    def __str__(self):
+        print(f"{self.pair_number} | {self.group} | {self.discipline} {self.teacher}")
+
+    # при переборе класса вместо него делаем нормальное расписание из бд
+    def make_db_schedule(self) -> Schedules:
+        group_schedule = Schedules()
+        group_schedule.group = self.group
+        group_schedule.building = self.building
+        group_schedule.pair_number = self.pair_number
+        group_schedule.date = self.date
+
+        # поиск препода
+        result_prepod: Employees = None
+        fio = self.teacher.split('.')
+        if len(fio) != 1:
+            fio[2] = fio[2].replace('ё', 'е')
+            prepods_variant = Employees.objects.filter(surname=fio[2].strip())
+            for prepod in prepods_variant:
+                if prepod.name.startswith(fio[0].strip()) and prepod.patronymic.startswith(fio[1].strip()):
+                    result_prepod = prepod
+
+        group_schedule.teacher = Teacher_Disciplines.objects.get(discipline=self.discipline, employee=result_prepod)
+
+        return group_schedule
