@@ -69,17 +69,16 @@ class ExcelParser:
                 print(para)
                 print(error)
 
-
     @staticmethod
     def import_schedule():
         discipline_set = set()
         discipline_teacher_set = set()
         result_schedule = []
         days_of_week = ['Понедельник', 'Вторник', 'Среда', 'Четверг', 'Пятница', 'Суббота']
-        index_week : int
-        pair_number : int
+        index_week: int
+        pair_number: int
 
-        book = xlrd.open_workbook("D:\\pipon\\roflan_pominki4k\\rasp.xls")
+        book = xlrd.open_workbook("D:\\PythonRep\\roflan_pominki4k\\rasp.xls")
 
         # ОГРОМНАЯ строка чипсов лейс для того, чтобы взять данные из ячейки первого листа, а потом переконверить ее в дату
         starting_date = datetime.strptime(
@@ -125,7 +124,12 @@ class ExcelParser:
                             if upper_cell != "":
                                 disc = re.sub(r".\..\. .*$", "", upper_cell).strip()
                                 teacher = re.findall(r".\..\. .*$", " ".join(upper_cell.split()))[0]
-                                para_date = starting_date + timedelta(days=index_week)
+                                para_date: datetime
+                                if index_week < starting_week_day:
+                                    para_date = starting_date + timedelta(days=14 - starting_week_day + index_week)
+                                else:
+                                    para_date = starting_date + timedelta(days=index_week - starting_week_day)
+
                                 print(pair_number, "Числитель: ", disc, teacher)
 
                                 discipline_set.add(disc)
@@ -141,7 +145,11 @@ class ExcelParser:
                             if lower_cell != "":
                                 disc = re.sub(r".\..\. .*$", "", lower_cell).strip()
                                 teacher = re.findall(r".\..\. .*$", " ".join(lower_cell.split()))[0]
-                                para_date = starting_date + timedelta(days=index_week + 7)
+                                para_date: datetime
+                                if index_week < starting_week_day:
+                                    para_date = starting_date + timedelta(days=7 - starting_week_day + index_week)
+                                else:
+                                    para_date = starting_date + timedelta(days=7 + (index_week - starting_week_day))
                                 print(pair_number, "Знаменатель:", disc, teacher)
 
                                 discipline_set.add(disc)
@@ -162,15 +170,25 @@ class ExcelParser:
 
                                 angl = teacher.split(",")
                                 for prepod in angl:
+                                    para_date: datetime
+
                                     # и для числителя
+                                    if index_week < starting_week_day:
+                                        para_date = starting_date + timedelta(days=14 - starting_week_day + index_week)
+                                    else:
+                                        para_date = starting_date + timedelta(days=index_week - starting_week_day)
                                     result_schedule.append(
                                         ExcelSchedule(pair_number, sh.cell_value(rowx=8, colx=groupColumn), building,
-                                                      starting_date + timedelta(days=index_week), prepod, disc))
+                                                      para_date, prepod, disc))
 
                                     # и для знаменателя
+                                    if index_week < starting_week_day:
+                                        para_date = starting_date + timedelta(days=7 - starting_week_day + index_week)
+                                    else:
+                                        para_date = starting_date + timedelta(days=7 + (index_week - starting_week_day))
                                     result_schedule.append(
                                         ExcelSchedule(pair_number, sh.cell_value(rowx=8, colx=groupColumn), building,
-                                                      starting_date + timedelta(days=index_week+7), prepod, disc))
+                                                      para_date, prepod, disc))
 
                                 print(pair_number, disc, teacher)
 
