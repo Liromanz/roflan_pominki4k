@@ -8,6 +8,16 @@ from ...models import *
 class ExcelParser:
 
     @staticmethod
+    def __generate_groups(group_set: set):
+        for item in group_set:
+            try:
+                Groups.save(Groups(group_name=item))
+            except Exception as error:
+                print(error)
+
+        print(group_set)
+
+    @staticmethod
     def __generate_disciplines(discipline_set: set):
         for item in discipline_set:
             try:
@@ -73,6 +83,7 @@ class ExcelParser:
     def import_schedule():
         discipline_set = set()
         discipline_teacher_set = set()
+        group_set = set()
         result_schedule = []
         days_of_week = ['Понедельник', 'Вторник', 'Среда', 'Четверг', 'Пятница', 'Суббота']
         index_week: int
@@ -94,6 +105,7 @@ class ExcelParser:
                 # группа:
                 print("------------------------------------------------------------")
                 print("Группа: ", sh.cell_value(rowx=8, colx=groupColumn))
+                group_set.add(sh.cell_value(rowx=8, colx=groupColumn))
                 index_week = 0
 
                 for rx in range(9, 93, 14):
@@ -196,6 +208,9 @@ class ExcelParser:
 
                     index_week += 1
                     print("----------")
+
+        #сначала генерятся группы, основываясь на сете из групп
+        ExcelParser.__generate_groups(group_set)
 
         # вот здесь, основываясь на сете из дисциплин, которые мы набрали выше, делаются дисциплины
         ExcelParser.__generate_disciplines(discipline_set)

@@ -19,7 +19,7 @@ def home_page(request):
     # Additions.Add_prep()
     # Additions.Add_schedule()
 
-    # добавляет дисциплины из файла, обьединяет дисциплину с преподом, и делает расписание
+    # добавляет группы дисциплины из файла, обьединяет дисциплину с преподом, и делает расписание
     # ExcelParser.import_schedule()
     return render(request, 'index.html')
 
