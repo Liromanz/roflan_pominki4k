@@ -14,9 +14,9 @@
 <a href="rsp/">Новое расписание</a>
 <br/>
 <center>
-    <form method="post">
-        <input type="submit" value="авторизоваться за гугол"/>
-    </form>
+    <div class="google">
+        <a href="{% url "social:begin" "google-oauth2" %}">Login with Google</a>
+    </div>
 </center>
 </body>
 </html>
