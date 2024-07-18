@@ -24,7 +24,7 @@ SECRET_KEY = 'django-insecure-zdmp$3temh5bvlk&)!m+qj7+5!zlc9y@w#%hmwdiy&obj)jysd
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['mpt-site.ru', '127.0.0.1', 'localhost']
 
 # Application definition
 
@@ -130,7 +130,9 @@ LOGIN_URL = "/admin"
 # https://docs.djangoproject.com/en/5.0/howto/static-files/
 
 STATIC_URL = 'static/'
+
 STATICFILES_DIRS = [
+    BASE_DIR / 'static',
     BASE_DIR / 'server/static'
 ]
 # Default primary key field type
