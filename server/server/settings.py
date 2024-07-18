@@ -24,7 +24,7 @@ SECRET_KEY = 'django-insecure-zdmp$3temh5bvlk&)!m+qj7+5!zlc9y@w#%hmwdiy&obj)jysd
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['mpt-site.ru', '127.0.0.1', 'localhost']
+ALLOWED_HOSTS = ['mpt-site.ru', '92.246.76.7', '127.0.0.1', 'localhost']
 
 # Application definition
 
