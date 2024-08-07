@@ -9,19 +9,22 @@ from .modules.excel.excel_schedule import ExcelParser
 # Create your views here.
 
 def home_page(request):
-    # Additions.Add_zamena()
-    # Additions.Add_napr()
-    # Additions.Add_speciality()
-    # Additions.Add_group()
-    # Additions.Add_pairs_numbers()
-    # Additions.Add_building()
-    # Additions.Add_disps()
-    # Additions.Add_prep()
-    # Additions.Add_schedule()
+    if request.method == "POST":
+        pass
+    else:
+        # Additions.Add_zamena()
+        # Additions.Add_napr()
+        # Additions.Add_speciality()
+        # Additions.Add_group()
+        # Additions.Add_pairs_numbers()
+        # Additions.Add_building()
+        # Additions.Add_disps()
+        # Additions.Add_prep()
+        # Additions.Add_schedule()
 
-    # добавляет группы дисциплины из файла, обьединяет дисциплину с преподом, и делает расписание
-    # ExcelParser.import_schedule()
-    return render(request, 'mptsite/index.html')
+        # добавляет группы дисциплины из файла, обьединяет дисциплину с преподом, и делает расписание
+        # ExcelParser.import_schedule()
+        return render(request, 'mptsite/index.html')
 
 
 def prepods(request):
