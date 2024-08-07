@@ -1,0 +1,1 @@
+SECRET_KEY = 'django-insecure-zdmp$3temh5bvlk&)!m+qj7+5!zlc9y@w#%hmwdiy&obj)jysd'
