@@ -84,15 +84,22 @@ WSGI_APPLICATION = 'server.wsgi.application'
 #    }
 #}
 
+# DATABASES = {
+#    'default': {
+#        'ENGINE': 'django.db.backends.postgresql',
+#        'HOST': '89.23.118.157',
+#        'PORT': '5432',
+#        'USER': 'mptsite',
+#        'PASSWORD': 'hehe_he\'s_a_l0w_pri0r_chel',
+#        'NAME': 'site_database'
+#    }
+# }
+
 DATABASES = {
-   'default': {
-       'ENGINE': 'django.db.backends.postgresql',
-       'HOST': '89.23.118.157',
-       'PORT': '5432',
-       'USER': 'mptsite',
-       'PASSWORD': 'hehe_he\'s_a_l0w_pri0r_chel',
-       'NAME': 'site_database'
-   }
+    'default': {
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': BASE_DIR / 'db.sqlite3',
+    }
 }
 
 # Password validation
