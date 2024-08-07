@@ -24,8 +24,7 @@ def home_page(request):
 
         # добавляет группы дисциплины из файла, обьединяет дисциплину с преподом, и делает расписание
         # ExcelParser.import_schedule()
-        return render(request, 'index.html')
-
+        return render(request, 'mptsite/index.html')
 
 
 def prepods(request):

@@ -1,0 +1,83 @@
+.arrow {
+    font-size: 1.5rem !important;
+    background-color: var(--background-color) !important;
+    color: var(--font-secondary-fg-color) !important;
+    border-radius: 100% !important;
+}
+
+.main-button {
+    border-radius: 0.65rem !important;
+    border-width: 0.15rem !important;
+    border-color: var(--background-color) !important;
+    color: var(--font-secondary-fg-color) !important;
+}
+
+.main-button:hover {
+    border-color: transparent !important;
+    color: var(--foreground-color) !important;
+    background-color: var(--font-secondary-fg-color);
+}
+
+.uniqe-btn {
+    background-color: var(--background-color) !important;
+}
+
+.uniqe-btn:hover {
+    background-color: transparent !important;
+    color: var(--font-secondary-fg-color) !important;
+    border-color: var(--font-secondary-fg-color) !important;
+}
+
+.way-card {
+    background-image: url(../source/img/BLURED_WAY_IMAGE.jpg) !important;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+
+    display: flex !important;
+
+    flex-direction: column !important;
+    justify-content: space-between !important;
+}
+
+.way-card h4 {
+    font-weight: 700 !important;
+    color: var(--foreground-color) !important;
+}
+
+.way-card p {
+    font-weight: 300 !important;
+    color: var(--foreground-color) !important;
+    font-size: 20px !important;
+}
+
+.way-card button {
+    color: var(--foreground-color) !important;
+}
+
+.way-card button:hover {
+    color: var(--font-secondary-fg-color) !important;
+    background-color: var(--foreground-color) !important;
+    font-weight: 300 !important;
+}
+
+#card-container {
+    overflow-x: auto !important;
+    scroll-behavior: smooth !important;
+}
+
+#card-container div {
+    width: 18rem !important;
+}
+
+#left-arrow img {
+    transform: scaleX(-1);
+}
+
+.program-btn {
+    font-size: 0.9rem !important;
+}
+
+#hidden-btn {
+    visibility: hidden !important;
+}
