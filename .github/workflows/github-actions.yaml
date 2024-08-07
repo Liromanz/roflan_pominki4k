@@ -21,6 +21,6 @@ jobs:
           pip install -r requirements.txt
       - name: Run Tests
         run: |
-          cd .
+          cd ./server
           echo "SECRET_KEY = 'django-insecure-dummy-secret'" > ./server/secrets.py
           python3 manage.py test
