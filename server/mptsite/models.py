@@ -26,7 +26,7 @@ class Specialities(models.Model):
     direction = models.ForeignKey(Directions, on_delete=models.CASCADE, null=True, verbose_name="Направление")
 
     def __str__(self):
-        return f"{self.short_name} - {self.direction}"
+        return f"{self.short_name} - {self.direction.name}"
 
     class Meta():
         verbose_name = "Специальность"
@@ -87,7 +87,7 @@ class Disciplines_Specialities_Hours(models.Model):
     hours_amount = models.PositiveIntegerField(verbose_name="Время по рабочему плану", default=0, null=True)
 
     def __str__(self):
-        return f"{self.speciality.name} - Дисциплина {self.discipline.name} {self.hours_amount} "
+        return f"{self.speciality.short_name} - Дисциплина {self.discipline.discipline_name} {self.hours_amount}"
 
     class Meta():
         verbose_name = "Количество часов"
@@ -109,7 +109,7 @@ class Employees(models.Model):
     degree = models.TextField(verbose_name="Ученая степень", null=True, default="")
 
     def __str__(self):
-        return f"{self.surname} {self.name[0]}. {self.patronymic[0]}. "
+        return f"{self.surname} {self.name[0]}. {self.patronymic[0]}."
 
     class Meta():
         verbose_name = "Работника"
@@ -121,7 +121,7 @@ class Teacher_Disciplines(models.Model):
     employee = models.ForeignKey(Employees, on_delete=models.CASCADE, verbose_name="Сотрудник", null=True, default=None)
 
     def __str__(self):
-        return f"{self.discipline.name} - {self.employee.surname} {self.employee.name[0]}. {self.employee.patronymic[0]}."
+        return f"{self.discipline.discipline_name} - {self.employee.surname} {self.employee.name[0]}. {self.employee.patronymic[0]}."
 
     class Meta():
         verbose_name = "Преподаваемую дисциплину"
