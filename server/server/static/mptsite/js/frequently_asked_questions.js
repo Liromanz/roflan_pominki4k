@@ -7,3 +7,4 @@ Array.from(document.getElementsByClassName('custom-dropdown-toggle'))
             listDropdownContent[index].classList.toggle('show');
         });
     });
+

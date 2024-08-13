@@ -30,7 +30,7 @@
 .custom-dropdown-toggle::after {
     content: ">";
     display: inline-block;
-    vertical-align: middle;
+    margin: auto;
     font-size: 1.4rem;
     font-weight: 700;
     transition: transform 0.3s;
@@ -61,4 +61,19 @@ hr {
     background: #B8B8B8 !important;
     height: 2px !important;
     border: none !important;
+}
+
+@media (max-width: 991px) {
+    .custom-dropdown-toggle-text {
+        font-size: 1.8rem;
+    }
+
+    .custom-dropdown-toggle::after {
+        font-size: 2rem;
+        font-weight: 400;
+    }
+
+    .dropdown-content {
+        font-size: 1.2rem;
+    }
 }

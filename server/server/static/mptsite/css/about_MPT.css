@@ -3,14 +3,28 @@
     border: none !important;
 }
 
-@media (max-width: 768px) {
+@media (max-width: 991px) {
     .mobile-card {
         border-radius: 0 !important;
         border: none !important;
     }
 }
 
+.block-info p {
+    font-size: 1.3rem;
+}
+
 .card-base h2 {
     color: var(--foreground-color);
     font-weight: 300 !important;
+}
+
+.text-align {
+    text-align: left;
+}
+
+@media (max-width: 991px) {
+    .text-align {
+        text-align: center;
+    }
 }

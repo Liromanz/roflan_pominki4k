@@ -7,7 +7,7 @@
 @import url(footer.css);
 @import url(map_block.css);
 @import url(frequently_asked_questions.css);
-
+@import url(applicant.css);
 
 * {
     transition: all 0.3s ease-out;
@@ -31,10 +31,6 @@
     color: var(--font-fg-color);
 }
 
-.info-text{
-    font-size: 20px;
-}
-
 body {
     background-color: var(--background-color) !important;
 }
@@ -47,8 +43,15 @@ footer {
     background-color: var(--foreground-color) !important;
 }
 
-@media (max-width: 768px) {
+@media (max-width: 991px) {
     h1 {
         font-size: 2rem !important;
     }
+}
+
+.main-container {
+    max-width: 1920px;
+    width: 100%;
+    margin-right: auto;
+    margin-left: auto;
 }

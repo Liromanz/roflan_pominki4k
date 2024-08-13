@@ -30,12 +30,4 @@ class Migration(migrations.Migration):
             name='employee',
             field=models.ForeignKey(default=None, null=True, on_delete=django.db.models.deletion.CASCADE, to='mptsite.employees', verbose_name='Сотрудник'),
         ),
-        migrations.AddConstraint(
-            model_name='teacher_disciplines',
-            constraint=models.UniqueConstraint(fields=('discipline', 'employee'), name='Teacher_Disc_UQ'),
-        ),
-        migrations.AddConstraint(
-            model_name='teacher_disciplines',
-            constraint=models.UniqueConstraint(condition=models.Q(('employee', None)), fields=('discipline',), name='Teacher_Null_Disc_UQ'),
-        ),
     ]

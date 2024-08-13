@@ -18,12 +18,13 @@ class Directions(models.Model):
 
 
 class Specialities(models.Model):
-    short_name = models.CharField(verbose_name="Краткое название", max_length=10, null=False, unique=True)
+    short_name = models.CharField(verbose_name="Краткое название", max_length=10, null=False)
     full_name = models.CharField(verbose_name="Полное название", max_length=150, null=False)
     base_on_9 = models.BooleanField(verbose_name="На базе 9-го", null=False, default=False)
     base_on_11 = models.BooleanField(verbose_name="На базе 11-го", null=False, default=False)
     description = models.TextField(verbose_name="Описание", null=False, default="")
     direction = models.ForeignKey(Directions, on_delete=models.CASCADE, null=True, verbose_name="Направление")
+    is_active = models.BooleanField(null=False, default=True, verbose_name="Активна для набора")
 
     def __str__(self):
         return f"{self.short_name} - {self.direction.name}"
@@ -191,7 +192,7 @@ class News(models.Model):
     name = models.CharField(verbose_name="Заголовок", max_length=100, null=False, default='')
     description = models.TextField(verbose_name="Содержимое новости", null=True, default='')
     link = models.URLField(verbose_name="Ссылка на подробную запись", null=True)
-    picture = models.ImageField(verbose_name="Превью-картинка", null=True, upload_to='server/static/mptsite/img/news')
+    picture = models.ImageField(verbose_name="Превью-картинка", null=True, upload_to='news/')
     short_description = models.CharField(verbose_name="Краткое описание", max_length=100, null=False, default='')
     date_to = models.DateField(verbose_name="Актуально до", null=False)
 

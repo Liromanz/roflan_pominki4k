@@ -1,6 +1,8 @@
 from django.shortcuts import render
 from . import models as m
 from datetime import datetime
+
+from .models import Specialities, Directions, News
 from .modules.schedule.schedule_generator import ScheduleGenerator as gen
 from .modules.Direction_add import Additions
 from .modules.excel.excel_schedule import ExcelParser
@@ -24,7 +26,14 @@ def home_page(request):
 
         # добавляет группы дисциплины из файла, обьединяет дисциплину с преподом, и делает расписание
         # ExcelParser.import_schedule()
-        return render(request, 'mptsite/index.html')
+
+
+
+        specialities=Specialities.objects.filter(is_active=True)
+        news=News.objects.all()
+        context = {'specialities':specialities, 'news':news }
+
+        return render(request, 'mptsite/index.html', context=context)
 
 
 def prepods(request):
