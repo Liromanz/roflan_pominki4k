@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/5.1/ref/settings/
 """
 import os
 from pathlib import Path
+from . import secrets
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -20,7 +21,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/5.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-_@lnu#sn-b%(6)tn19p=y6$^d*hjh6vyo2lm*9j6@fvyo3=3(3'
+SECRET_KEY = secrets.SECRET_KEY
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -86,16 +87,41 @@ WSGI_APPLICATION = 'roflan_pominki_4k.wsgi.application'
 #     }
 # }
 
-DATABASES = {
-   'default': {
-       'ENGINE': 'django.db.backends.postgresql',
-       'HOST': '89.23.118.157',
-       'PORT': '5432',
-       'USER': 'mptsite',
-       'PASSWORD': 'hehe_he\'s_a_l0w_pri0r_chel',
-       'NAME': 'site_database'
-   }
-}
+# DATABASES = {
+#    'default': {
+#        'ENGINE': 'django.db.backends.postgresql',
+#        'HOST': '89.23.118.157',
+#        'PORT': '5432',
+#        'USER': 'mptsite',
+#        'PASSWORD': 'hehe_he\'s_a_l0w_pri0r_chel',
+#        'NAME': 'site_database',
+#        'TEST': {
+#            'NAME': 'mytestdatabase',
+#        },
+#    }
+# }
+
+import sys
+TESTING = sys.argv[1:2] == ['test']
+if TESTING==False:
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.postgresql',
+            'HOST': '89.23.118.157',
+            'PORT': '5432',
+            'USER': 'mptsite',
+            'PASSWORD': 'hehe_he\'s_a_l0w_pri0r_chel',
+            'NAME': 'site_database',
+             }
+           }
+else:
+    DATABASES = {
+        'default': {
+        "ENGINE": "django.db.backends.sqlite3",
+        "TEST": {
+            "NAME": os.path.join(BASE_DIR, "test_db.sqlite3"),
+        }
+    }}
 
 # Password validation
 # https://docs.djangoproject.com/en/5.1/ref/settings/#auth-password-validators
