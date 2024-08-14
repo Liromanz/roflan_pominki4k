@@ -1,0 +1,130 @@
+.container-applicant {
+    width: 28% !important;
+}
+
+
+.subsections {
+    display: none;
+    margin-top: 2rem;
+
+    &.show {
+        display: block;
+        position: absolute;
+        top: 0;
+        left: 28%;
+        bottom: 0;
+        right: 0;
+    }
+}
+
+.section-button {
+    display: flex !important;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    text-align: left;
+    border: 3px solid var(--background-color);
+    border-radius: 15px;
+    background: transparent;
+    padding:  0.8rem 1.5rem;
+
+    &:hover{
+        color: #6EA8FE !important;
+    }
+
+    &.collapsed {
+        border: 3px solid transparent;
+        background-image: linear-gradient(white, white), var(--gradient) !important;
+        background-origin: border-box;
+        background-clip: padding-box, border-box;
+    }
+}
+
+.paddings {
+    padding-top: 0.9rem;
+    padding-right: 2.8rem;
+    padding-left: 2.3rem;
+}
+
+.subsections-content{
+    flex-grow: 1;
+    text-align: left;
+    font-size: 1.2rem;
+    font-weight: 500;
+
+    &:hover {
+        color: #6EA8FE !important;
+        text-decoration: underline;
+    }
+}
+
+.section-button-content:hover{
+    color: #6EA8FE !important;
+    text-decoration: underline;
+}
+
+.paddings-dropdown{
+    padding-left: 2.3rem;
+    padding-right: 2.8rem;
+}
+
+@media (max-width: 991px) {
+    .subsections.show {
+        display: block;
+        position: relative;
+        left: 0;
+        margin-top: 0;
+    }
+
+    .section-button {
+        border: none;
+        border-radius: 15px;
+        background: white;
+        margin-left: 0;
+        padding: 1.9rem 2rem;
+
+        &::after {
+            display: inline-block;
+            content: ">";
+            margin-top: auto;
+            margin-bottom: auto;
+            font-size: 2.4rem;
+            font-weight: 400;
+            transition: transform 0.3s;
+        }
+
+        &.collapsed {
+            background-image: none !important;
+            border: none;
+            border-radius: 15px 15px 0 0;
+            padding: 1.9rem 2rem 0 2rem;
+        }
+
+        &.collapsed::after {
+            transform: rotate(90deg);
+        }
+    }
+
+    .subsections {
+        background: white;
+    }
+
+    .subsections-content {
+        font-size: 1.4rem;
+    }
+
+    .section-button-content {
+        font-size: 2rem;
+        font-weight: 500;
+    }
+
+    .container-applicant {
+        width: 100% !important;
+        background: var(--background-color);
+    }
+
+    .paddings {
+        padding-left: 3.5rem;
+    }
+}
+

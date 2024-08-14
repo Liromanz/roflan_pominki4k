@@ -1,0 +1,24 @@
+{% load static %}
+<div class="ms-0 ms-lg-5 me-0 me-lg-5 pt-3 pb-3 pe-2 ps-2 pt-lg-4 pb-lg-4 pe-lg-3 ps-lg-3 d-flex gap-4 flex-column card card-base mobile-card">
+    <div class="d-flex flex-row gap-2 align-items-center justify-content-between ">
+        <button class="d-lg-block d-none btn btn-light arrow" id="l-arrow"><img
+                src="{% static '/source/img/ARROW.svg' %}"
+                alt="Влево"></button>
+        <div class="d-flex gap-4" id="news-card-container">
+            {% for new in news %}
+            <div class="way-background d-flex" id="news-card">
+                <div class="card-base news-content flex-grow-1 p-3 way-card"
+                     style="background-image: url('media/{{ new.picture }}') !important">
+                    <div>
+                        <h4 class="main-font">{{ new.name }}</h4>
+                        <p class="main-font">{{ new.short_description }}</p>
+                    </div>
+                    <button class="main-font btn btn-outline-secondary main-button" href="{{ new.link }}">Подробнее</button>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+        <button class="d-lg-block d-none btn btn-light arrow" id="r-arrow"><img
+                src="{% static '/source/img/ARROW.svg' %}" alt="Вправо"></button>
+    </div>
+</div>
