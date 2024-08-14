@@ -35,4 +35,5 @@ admin.site.register(m.DateTemplates, DateTemplatesAdmin)
 
 admin.site.register(m.News)
 admin.site.register(m.Category_of_questions)
+admin.site.register(m.Subcategory_of_questions)
 admin.site.register(m.Questions)

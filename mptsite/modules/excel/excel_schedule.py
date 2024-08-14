@@ -89,7 +89,7 @@ class ExcelParser:
         index_week: int
         pair_number: int
 
-        book = xlrd.open_workbook("D:\\PythonRep\\roflan_pominki4k\\rasp.xls")
+        book = xlrd.open_workbook("D:\PythonRep\roflan_pominki4k\mptsite\modules\excel\rasp.xls")
 
         # ОГРОМНАЯ строка чипсов лейс для того, чтобы взять данные из ячейки первого листа, а потом переконверить ее в дату
         starting_date = datetime.strptime(

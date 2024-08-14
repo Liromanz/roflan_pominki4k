@@ -172,6 +172,10 @@ class Schedules(models.Model):
     def __str__(self):
         return f"{self.pair_number.pk} {self.group.group_name} {self.audience} {self.building} {self.date}"
 
+    class Meta():
+        verbose_name = "Пара"
+        verbose_name_plural = "Пары"
+
 
 class Users(models.Model):
     token = models.CharField(verbose_name='Токен доступа', max_length=256, null=False, blank=False, unique=True)
@@ -204,28 +208,46 @@ class News(models.Model):
 
 
 class Category_of_questions(models.Model):
-    category_name = models.CharField(verbose_name="Наименование категории", max_length=100, null=False)
+    category_name = models.CharField(verbose_name="Наименование блока", max_length=100, null=False)
 
     def __str__(self):
         return f"{self.category_name}"
 
     class Meta:
-        verbose_name = "Категория вопроса"
-        verbose_name_plural = "Категории вопросов"
+        verbose_name = "Блок вопросов"
+        verbose_name_plural = "Блоки вопросов"
+
+
+class Subcategory_of_questions(models.Model):
+    subcategory_name = models.CharField(verbose_name="Наименование подкатегории", max_length=100, null=False)
+
+    def __str__(self):
+        return f"{self.subcategory_name}"
+
+    class Meta:
+        verbose_name = "Подкатегория вопроса"
+        verbose_name_plural = "Подкатегории вопросов"
 
 
 class Questions(models.Model):
     question = models.CharField(verbose_name="Вопрос", max_length=300, null=False)
     answer = models.TextField(verbose_name="Ответ", null=False)
-    category_id = models.ForeignKey(Category_of_questions, on_delete=models.CASCADE, verbose_name="Категория",
+    category_id = models.ForeignKey(Category_of_questions, on_delete=models.CASCADE, verbose_name="Блок для расположения",
                                     null=False)
+    subcategory_id = models.ForeignKey(Subcategory_of_questions, on_delete=models.CASCADE, verbose_name="Подкатегория", null=True)
 
     def __str__(self):
-        return f"Вопрос: {self.question}"
+        if self.subcategory_id is not None:
+            return f"{self.subcategory_id.subcategory_name}: {self.question}"
+        else:
+            return f"Вопрос: {self.question}"
+
 
     class Meta:
         verbose_name = "Вопрос"
         verbose_name_plural = "Вопросы"
+
+
 
 
 # -------------------------------- Модели, которые не идут в базу данных
