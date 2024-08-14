@@ -25,5 +25,5 @@ jobs:
           pip install social-auth-app-django
       - name: Тесты
         run: |
-          echo "SECRET_KEY = 'django-insecure-dummy-secret'" > secrets.py
+          echo "SECRET_KEY = 'django-insecure-dummy-secret'" > ./roflan_pominki_4k/secrets.py
           python3 manage.py test
