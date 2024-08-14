@@ -3,7 +3,7 @@ run-name: ${{ github.actor }} is testing out GitHub Actions 🚀
 on: [pull_request]
 jobs:
   run_unittests:
-    runs-on: ubuntu-latest
+    runs-on: windows-latest
     strategy:
       max-parallel: 4
       matrix:
@@ -26,4 +26,4 @@ jobs:
       - name: Тесты
         run: |
           echo "SECRET_KEY = 'django-insecure-dummy-secret'" > secrets.py
-          py manage.py test
+          python3 manage.py test
