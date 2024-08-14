@@ -7,24 +7,24 @@ jobs:
     strategy:
       max-parallel: 4
       matrix:
-        python-version: ['3.9', '3.10']
+        python-version: ['3.9', '3.10', '3.11']
     steps:
-      - name: Checkout repository code
-        uses: actions/checkout@v3
+      - name: Выгрузка проекта
+        uses: actions/checkout@v4
       - name: Set up Python ${{ matrix.python-version }}
         uses: actions/setup-python@v4
         with:
           python-version: ${{ matrix.python-version }}
-      - name: Install Dependencies
+      - name: Установка зависимостей
         run: |
           python3 -m pip install --upgrade pip
           pip install -r requirements.txt
 
-      - name: Ebanoe django-social
+      - name: Установка доп зависимости django-social
         run: |
           pip install social-auth-app-django
-      - name: Run Tests
+      - name: Тесты
         run: |
-          cd ./server
           echo "SECRET_KEY = 'django-insecure-dummy-secret'" > ./server/secrets.py
-          python3 manage.py test
+          pip install pytest pytest-cov
+          pytest mptsite/tests.py --doctest-modules --junitxml=junit/test-results.xml --cov=com --cov-report=xml --cov-report=html
