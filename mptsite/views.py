@@ -30,11 +30,11 @@ def home_page(request):
 
         specialities = Specialities.objects.filter(is_active=True)
         news = News.objects.all()
-        questions = QuestionHelper(m.Category_of_questions.objects.get(category_name="Абитуриенту"))
+        questions = QuestionHelper.get_questions_with_subcategories(
+            m.Category_of_questions.objects.get(category_name="Абитуриенту"))
+        faq = QuestionHelper.get_questions(m.Category_of_questions.objects.get(category_name="Вопрос-ответ"))
 
-        context = {'specialities': specialities, 'news': news,
-                   "questions": questions.get_questions_with_subcategories()}
-
+        context = {'specialities': specialities, 'news': news, "questions": questions, "faq": faq}
         return render(request, 'mptsite/index.html', context=context)
 
 
