@@ -15,6 +15,7 @@ from .models import (
     Users,
     News,
     Category_of_questions,
+    Subcategory_of_questions,
     Questions
 )
 
@@ -84,6 +85,10 @@ class NewsAdmin(admin.ModelAdmin):
     list_display = ('date', 'name', 'short_description', 'date_to')
     search_fields = ('name', 'short_description')
 
+@admin.register(Subcategory_of_questions)
+class SubcategoryOfQuestionsAdmin(admin.ModelAdmin):
+    list_display = ('subcategory_name',) 
+   
 @admin.register(Category_of_questions)
 class CategoryOfQuestionsAdmin(admin.ModelAdmin):
     list_display = ('category_name',)
