@@ -93,3 +93,4 @@ local_settings.py
 .env
 venv
 db.sqlite3
+roflan_pominki_4k/secrets.py
