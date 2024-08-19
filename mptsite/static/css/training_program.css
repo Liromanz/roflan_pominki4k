@@ -5,27 +5,76 @@
     border-radius: 100% !important;
 }
 
+form {
+    width: 100%;
+}
+
+.checkbox-container {
+    display: inline-block;
+}
+
+.checkbox-button {
+    display: none;
+}
+
+.button-label {
+    display: inline-block;
+    background-color: transparent;
+    cursor: pointer;
+    text-align: center;
+    transition: background-color 0.3s, box-shadow 0.3s;
+    border: 0.15rem solid var(--background-color);
+    border-radius: 0.65rem !important;
+    font-size: 1.2rem !important;
+    color: var(--font-secondary-fg-color) !important;
+}
+
+.checkbox-button:checked + .button-label {
+    border: 0.15rem solid transparent;
+    background-image: linear-gradient(white, white), var(--gradient);
+    background-origin: border-box;
+    background-clip: padding-box, border-box;
+    border-color: transparent !important;
+}
+
+.button-label:hover {
+    border-color: transparent !important;
+    color: var(--foreground-color) !important;
+    background-color: var(--font-secondary-fg-color) !important;
+    background-image: none !important;
+}
+
 .main-button {
     border-radius: 0.65rem !important;
     border-width: 0.15rem !important;
     border-color: var(--background-color) !important;
     color: var(--font-secondary-fg-color) !important;
+
+    &:hover {
+        border-color: transparent !important;
+        color: var(--foreground-color) !important;
+        background-color: var(--font-secondary-fg-color) !important;
+        background-image: none !important;
+    }
 }
 
-.main-button:hover {
-    border-color: transparent !important;
-    color: var(--foreground-color) !important;
-    background-color: var(--font-secondary-fg-color);
+.input-text-container {
+    width: 25rem;
 }
 
-.uniqe-btn {
-    background-color: var(--background-color) !important;
-}
+.input-text {
+    font-size: 1.2rem;
+    width: 100%;
+    background-color: var(--background-color);
+    border: 0.15rem solid var(--background-color);
+    color: var(--font-secondary-fg-color);
+    border-radius: 0.65rem;
 
-.uniqe-btn:hover {
-    background-color: transparent !important;
-    color: var(--font-secondary-fg-color) !important;
-    border-color: var(--font-secondary-fg-color) !important;
+    &:hover {
+        background-color: transparent;
+        color: var(--font-secondary-fg-color);
+        border: 0.15rem solid var(--font-secondary-fg-color);
+    }
 }
 
 .way-card {
@@ -174,5 +223,9 @@
 
     #card-container {
         height: 33rem !important;
+    }
+
+    .input-text-container {
+        width: auto;
     }
 }

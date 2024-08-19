@@ -15,8 +15,50 @@
 <title>Главная</title>
 </head>
 <body>
+
 {% include 'header_top.html' %}
-{% include 'header_main.html' %}
+<header class="header">
+    {% include 'header_main.html' %}
+</header>
+<section class="photo-block">
+      <section class="info-block container-lg">
+        <div class="block-wrapper ">
+          <div class="left-info container">
+            <div class="title-and-subtitle-block">
+              <img src="../../source/img/asd.svg" alt="" />
+              <p class="subtitle">
+                Московский приборостроительный техникум при РЭУ им. Г.В.
+                Плеханова, обучающая высококлассных программистов и юристов
+              </p>
+            </div>
+            <p class="slogan">Построй своё будущее вместе с нами</p>
+            <div class="button-block">
+              <button type="button" class="choose-specialty">
+                Подобрать специальность
+              </button>
+              <button type="button" class="submit-documents">
+                Подать документы
+              </button>
+            </div>
+          </div>
+          <div class="right-info">
+            <div class="date-info">
+              <div>
+                <div class="date-number">15</div>
+                <div class="date-month">МАРТА</div>
+              </div>
+              <div class="date-time">в 15:00</div>
+            </div>
+            <div class="day-info">
+              <div class="day-name">День открытых дверей</div>
+              <div class="day-info">
+                <p class="adress">ул. Нежинская дом 7 <br>Вход свободный <br> При себе иметь паспорт</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </section>
 <main class="p-0 m-ms-0 p-lg-auto me-lg-auto ms-lg-auto mt-4 main-container">
     <div class="ms-0 ms-md-5 me-0 me-md-5 card p-2 p-md-5 card-base mobile-card">
         <div class="row">
@@ -73,15 +115,15 @@
     <div class="ms-0 ms-md-5 me-0 me-md-5 card pt-3 pb-1 pe-3 ps-3 card-base mt-4">
         <div class="row">
             {% for ques in faq.questions %}
-                <div class="dropdown">
-                    <button class="custom-dropdown-toggle pe-4 ps-4 pt-3">
-                        <span class="custom-dropdown-toggle-text">{{ ques.question }}</span>
-                    </button>
-                    <div class="dropdown-content p-1 pe-md-4 ps-md-4">
-                        <p> {{ ques.answer }}</p>
-                    </div>
-                    <hr class="m-0"/>
+            <div class="dropdown">
+                <button class="custom-dropdown-toggle pe-4 ps-4 pt-3">
+                    <span class="custom-dropdown-toggle-text">{{ ques.question }}</span>
+                </button>
+                <div class="dropdown-content p-1 pe-md-4 ps-md-4">
+                    <p> {{ ques.answer }}</p>
                 </div>
+                <hr class="m-0"/>
+            </div>
             {% endfor %}
         </div>
     </div>
