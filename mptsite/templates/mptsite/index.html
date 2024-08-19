@@ -15,50 +15,59 @@
 <title>Главная</title>
 </head>
 <body>
+<header>
+    {% include 'header_top.html' %}
 
-{% include 'header_top.html' %}
-<header class="header">
-    {% include 'header_main.html' %}
 </header>
+
+<header class="header" style="position: sticky; top: 0px; z-index: 2">
+    <hr class="p-0 m-0">
+    {% include 'header_main.html' %}
+    <hr class="p-0 m-0">
+</header>
+
 <section class="photo-block">
-      <section class="info-block container-lg">
+    <section class="info-block container-xxl">
         <div class="block-wrapper ">
-          <div class="left-info container">
-            <div class="title-and-subtitle-block">
-              <img src="../../source/img/asd.svg" alt="" />
-              <p class="subtitle">
-                Московский приборостроительный техникум при РЭУ им. Г.В.
-                Плеханова, обучающая высококлассных программистов и юристов
-              </p>
+            <div class="left-info container">
+                <div class="title-and-subtitle-block">
+                    <img src="{% static '/source/img/asd.svg' %}" alt=""/>
+                    <p class="subtitle">
+                        Московский приборостроительный техникум при РЭУ им. Г.В.
+                        Плеханова, обучающая высококлассных программистов и юристов
+                    </p>
+                </div>
+                <p class="slogan">Построй своё будущее вместе с нами</p>
+                <div class="button-block">
+                    <button type="button" class="choose-specialty">
+                        Подобрать специальность
+                    </button>
+                    <button type="button" class="submit-documents">
+                        Подать документы
+                    </button>
+                </div>
             </div>
-            <p class="slogan">Построй своё будущее вместе с нами</p>
-            <div class="button-block">
-              <button type="button" class="choose-specialty">
-                Подобрать специальность
-              </button>
-              <button type="button" class="submit-documents">
-                Подать документы
-              </button>
+            <div class="right-info">
+                <div class="date-info">
+                    <div>
+                        <div class="date-number">15</div>
+                        <div class="date-month">МАРТА</div>
+                    </div>
+                    <div class="date-time">в 15:00</div>
+                </div>
+                <div class="day-info">
+                    <div class="day-name">День открытых дверей</div>
+                    <div class="day-info">
+                        <!-- <div class="adress">ул. Нежинская дом 7</div>
+                        <div class="enter">Вход свободный</div>
+                        <div class="take-info">При себе иметь паспорт</div> -->
+                        <p class="adress">ул. Нежинская дом 7 <br>Вход свободный <br> При себе иметь паспорт</p>
+                    </div>
+                </div>
             </div>
-          </div>
-          <div class="right-info">
-            <div class="date-info">
-              <div>
-                <div class="date-number">15</div>
-                <div class="date-month">МАРТА</div>
-              </div>
-              <div class="date-time">в 15:00</div>
-            </div>
-            <div class="day-info">
-              <div class="day-name">День открытых дверей</div>
-              <div class="day-info">
-                <p class="adress">ул. Нежинская дом 7 <br>Вход свободный <br> При себе иметь паспорт</p>
-              </div>
-            </div>
-          </div>
         </div>
-      </section>
     </section>
+</section>
 <main class="p-0 m-ms-0 p-lg-auto me-lg-auto ms-lg-auto mt-4 main-container">
     <div class="ms-0 ms-md-5 me-0 me-md-5 card p-2 p-md-5 card-base mobile-card">
         <div class="row">
@@ -73,7 +82,8 @@
                     занятия. Кроме основного обучения, Московский приборостроительный техникум предлагает программу
                     ДоВуз,
                     позволяющую сократить сроки получения образования на различных этапах их учебной карьеры. </p>
-                <p class="main-font">Учебное заведение основано в 1940 году и принимает школьников после окончания 9-го
+                <p class="main-font">Учебное заведение основано в 1940 году и принимает школьников после окончания
+                    9-го
                     или 11-го
                     классов.
                     Студенты имеют доступ к современным лабораториям и оборудованию, что способствует глубокому
