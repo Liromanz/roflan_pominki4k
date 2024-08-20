@@ -1,0 +1,39 @@
+.card-base {
+    border-radius: 15px !important;
+    border: none !important;
+}
+
+@media (max-width: 991px) {
+    .mobile-card {
+        border-radius: 0 !important;
+        border: none !important;
+    }
+}
+
+.block-info p {
+    font-size: 1.3rem;
+}
+
+.card-base h2 {
+    color: var(--foreground-color);
+    font-weight: 300 !important;
+}
+
+.text-align {
+    text-align: left;
+}
+
+.clamped-text {
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    -webkit-line-clamp: 3;
+}
+
+
+@media (max-width: 991px) {
+    .text-align {
+        text-align: center;
+    }
+}
