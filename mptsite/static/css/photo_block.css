@@ -142,7 +142,6 @@ body .photo-block .block-wrapper .right-info {
   align-items: center;
 }
 body .photo-block .block-wrapper .right-info .date-info {
-  height: 225px;
   display: grid;
   grid-template-rows: 2fr 1fr;
   align-items: center;
@@ -159,14 +158,12 @@ body .photo-block .block-wrapper .right-info .date-info .date-month {
   justify-content: center;
   font-size: 40px;
   font-weight: 500;
-  line-height: 40px;
+  line-height: 50px;
 }
 body .photo-block .block-wrapper .right-info .date-info .date-time {
   align-self: flex-start;
   font-size: 40px;
   font-weight: 500;
-  line-height: 15px;
-  padding-top: 10px;
 }
 body .photo-block .block-wrapper .right-info .day-info {
   align-self: flex-start;
@@ -177,9 +174,7 @@ body .photo-block .block-wrapper .right-info .day-info .day-name {
 }
 body .photo-block .block-wrapper .right-info .day-info .adress {
   font-size: 20px;
-  text-align: right;
-  text-wrap: nowrap;
-  line-height: 40px;
+  white-space: pre-line;
 }
 body .photo-block .block-wrapper .right-info .day-info .enter {
   font-size: 20px;
@@ -259,6 +254,7 @@ body .photo-block .block-wrapper .right-info .day-info .take-info {
   .adress {
     text-align: start !important;
     text-wrap: wrap !important;
+    white-space: pre-line !important;
   }
 }
 @media (max-width: 1200px) {

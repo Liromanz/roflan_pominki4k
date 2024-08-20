@@ -30,11 +30,25 @@ def home_page(request):
 
         specialities = Specialities.objects.filter(is_active=True)
         news = News.objects.all()
-        questions = QuestionHelper.get_questions_with_subcategories(
-            m.Category_of_questions.objects.get(category_name="Абитуриенту"))
-        faq = QuestionHelper.get_questions(m.Category_of_questions.objects.get(category_name="Вопрос-ответ"))
+        try:
+            main_news = News.objects.get(is_on_main_page=True)
+        except m.News.DoesNotExist:
+            main_news = None
 
-        context = {'specialities': specialities, 'news': news, "questions": questions, "faq": faq}
+        try:
+            block_abit = m.Category_of_questions.objects.get(category_name="Абитуриенту")
+        except m.Category_of_questions.DoesNotExist:
+            block_abit = None
+        questions = QuestionHelper.get_questions_with_subcategories(block_abit)
+
+        try:
+            block_faq = m.Category_of_questions.objects.get(category_name="Вопрос-ответ")
+        except m.Category_of_questions.DoesNotExist:
+            block_faq = None
+        faq = QuestionHelper.get_questions(block_faq)
+
+        context = {'specialities': specialities, 'news': news, 'main_news': main_news, "questions": questions,
+                   "faq": faq}
         return render(request, 'mptsite/index.html', context=context)
 
 

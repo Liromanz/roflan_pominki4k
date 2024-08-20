@@ -1,4 +1,5 @@
 from datetime import datetime
+import pgtrigger as pg
 
 from django.db import models
 
@@ -191,16 +192,22 @@ class Users(models.Model):
 
 
 class News(models.Model):
-    date = models.DateField(verbose_name="Дата новости")
+    date = models.DateTimeField(verbose_name="Дата новости")
     name = models.CharField(verbose_name="Заголовок", max_length=100, null=False, default='')
     description = models.TextField(verbose_name="Содержимое новости", null=True, default='')
     link = models.URLField(verbose_name="Ссылка на подробную запись", null=True)
     picture = models.ImageField(verbose_name="Превью-картинка", null=True, upload_to='news/')
-    short_description = models.CharField(verbose_name="Краткое описание", max_length=100, null=False, default='')
+    short_description = models.TextField(verbose_name="Краткое описание", max_length=100, null=False, default='')
     date_to = models.DateField(verbose_name="Актуально до", null=False)
+    is_on_main_page = models.BooleanField(verbose_name="Показать на главной странице", null=False, default=False)
 
     def __str__(self):
         return f"{self.date} - {self.name}"
+
+    def save(self, *args, **kwargs):
+        if self.is_on_main_page:
+            News.objects.filter(is_on_main_page=True).update(is_on_main_page=False)
+        super().save(*args, **kwargs)
 
     class Meta:
         verbose_name = "Новость"
