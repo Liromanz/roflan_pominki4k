@@ -26,7 +26,7 @@ SECRET_KEY = secrets.SECRET_KEY
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['www.mpt-site.ru', 'mpt-site.ru', '92.246.76.7', '127.0.0.1', 'localhost']
 
 
 # Application definition
