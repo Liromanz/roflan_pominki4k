@@ -79,7 +79,7 @@ class Disciplines(models.Model):
 
     class Meta():
         verbose_name = "Дисциплину"
-        verbose_name_plural = "Направления"
+        verbose_name_plural = "Дисциплины"
 
 
 class Disciplines_Specialities_Hours(models.Model):
@@ -241,7 +241,8 @@ class Questions(models.Model):
     answer = models.TextField(verbose_name="Ответ", null=False)
     category_id = models.ForeignKey(Category_of_questions, on_delete=models.CASCADE, verbose_name="Блок для расположения",
                                     null=False)
-    subcategory_id = models.ForeignKey(Subcategory_of_questions, on_delete=models.CASCADE, verbose_name="Подкатегория", null=True)
+    subcategory_id = models.ForeignKey(Subcategory_of_questions, on_delete=models.SET_NULL, verbose_name="Подкатегория",
+                                       null=True, default=None, blank=True)
 
     def __str__(self):
         if self.subcategory_id is not None:
