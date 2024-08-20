@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'social_django',
+    'pgtrigger',
     'mptsite',
     'docsite'
 ]
@@ -90,14 +91,11 @@ WSGI_APPLICATION = 'roflan_pominki_4k.wsgi.application'
 # DATABASES = {
 #    'default': {
 #        'ENGINE': 'django.db.backends.postgresql',
-#        'HOST': '89.23.118.157',
-#        'PORT': '5432',
-#        'USER': 'mptsite',
-#        'PASSWORD': 'hehe_he\'s_a_l0w_pri0r_chel',
-#        'NAME': 'site_database',
-#        'TEST': {
-#            'NAME': 'mytestdatabase',
-#        },
+#        'HOST': 'localhost',
+#        'PORT': '9090',
+#        'USER': 'postgres',
+#        'PASSWORD': '123456789',
+#        'NAME': 'boje_blyat'
 #    }
 # }
 
