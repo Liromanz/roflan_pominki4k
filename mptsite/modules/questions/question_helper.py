@@ -13,7 +13,6 @@ class QuestionHelper:
         if category is None:
             return None
         questions_in_filter = Questions.objects.filter(category_id=category).filter(subcategory_id__isnull=True)
-        print(list(questions_in_filter))
         return {"category": category, "questions": list(questions_in_filter)}
 
 

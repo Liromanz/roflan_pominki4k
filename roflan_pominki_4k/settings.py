@@ -88,38 +88,38 @@ WSGI_APPLICATION = 'roflan_pominki_4k.wsgi.application'
 #     }
 # }
 
-DATABASES = {
-   'default': {
-       'ENGINE': 'django.db.backends.postgresql',
-       'HOST': 'localhost',
-       'PORT': '9090',
-       'USER': 'postgres',
-       'PASSWORD': '123456789',
-       'NAME': 'boje_blyat'
-   }
-}
+# DATABASES = {
+#    'default': {
+#        'ENGINE': 'django.db.backends.postgresql',
+#        'HOST': 'localhost',
+#        'PORT': '9090',
+#        'USER': 'postgres',
+#        'PASSWORD': '123456789',
+#        'NAME': 'boje_blyat'
+#    }
+# }
 
-# import sys
-# TESTING = sys.argv[1:2] == ['test']
-# if TESTING==False:
-#     DATABASES = {
-#         'default': {
-#             'ENGINE': 'django.db.backends.postgresql',
-#             'HOST': '89.23.118.157',
-#             'PORT': '5432',
-#             'USER': 'mptsite',
-#             'PASSWORD': 'hehe_he\'s_a_l0w_pri0r_chel',
-#             'NAME': 'site_database',
-#              }
-#            }
-# else:
-#     DATABASES = {
-#         'default': {
-#         "ENGINE": "django.db.backends.sqlite3",
-#         "TEST": {
-#             "NAME": os.path.join(BASE_DIR, "test_db.sqlite3"),
-#         }
-#     }}
+import sys
+TESTING = sys.argv[1:2] == ['test']
+if TESTING==False:
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.postgresql',
+            'HOST': '89.23.118.157',
+            'PORT': '5432',
+            'USER': 'mptsite',
+            'PASSWORD': 'hehe_he\'s_a_l0w_pri0r_chel',
+            'NAME': 'site_database',
+             }
+           }
+else:
+    DATABASES = {
+        'default': {
+        "ENGINE": "django.db.backends.sqlite3",
+        "TEST": {
+            "NAME": os.path.join(BASE_DIR, "test_db.sqlite3"),
+        }
+    }}
 
 # Password validation
 # https://docs.djangoproject.com/en/5.1/ref/settings/#auth-password-validators
