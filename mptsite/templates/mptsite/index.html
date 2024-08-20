@@ -50,18 +50,18 @@
             <div class="right-info">
                 <div class="date-info">
                     <div>
-                        <div class="date-number">15</div>
-                        <div class="date-month">МАРТА</div>
+                        <div class="date-number">{{ main_news.date|date:"j" }}</div>
+                        <div class="date-month">{{ main_news.date|date:"F" }}</div>
                     </div>
                     <div class="date-time">в 15:00</div>
                 </div>
                 <div class="day-info">
-                    <div class="day-name">День открытых дверей</div>
+                    <div class="day-name">{{ main_news.name }}</div>
                     <div class="day-info">
                         <!-- <div class="adress">ул. Нежинская дом 7</div>
                         <div class="enter">Вход свободный</div>
                         <div class="take-info">При себе иметь паспорт</div> -->
-                        <p class="adress">ул. Нежинская дом 7 <br>Вход свободный <br> При себе иметь паспорт</p>
+                        <p class="adress">{{ main_news.short_description }}</p>
                     </div>
                 </div>
             </div>
