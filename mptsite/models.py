@@ -204,19 +204,13 @@ class News(models.Model):
     def __str__(self):
         return f"{self.date} - {self.name}"
 
+    def save(self, *args, **kwargs):
+        News.objects.filter(is_on_main_page=True).update(is_on_main_page=False)
+        super().save(*args, **kwargs)
+
     class Meta:
         verbose_name = "Новость"
         verbose_name_plural = "Новости"
-        triggers = [
-            pg.Trigger(
-                name="no_main_news_insert",
-                when=pg.Before,
-                operation=pg.Insert,
-                func=pg.Func("""
-                    update {meta.db_table} set {columns.is_on_main_page} = NOT {columns.is_on_main_page} where {columns.is_on_main_page} = true; return new; 
-                """)
-            )
-        ]
 
 
 class Category_of_questions(models.Model):
