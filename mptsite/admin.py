@@ -82,8 +82,9 @@ class UsersAdmin(admin.ModelAdmin):
 
 @admin.register(News)
 class NewsAdmin(admin.ModelAdmin):
-    list_display = ('date', 'name', 'short_description', 'date_to')
+    list_display = ('date', 'name', 'short_description', 'date_to', 'is_on_main_page')
     search_fields = ('name', 'short_description')
+    list_editable = ('is_on_main_page',)
 
 @admin.register(Subcategory_of_questions)
 class SubcategoryOfQuestionsAdmin(admin.ModelAdmin):
