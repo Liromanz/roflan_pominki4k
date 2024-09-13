@@ -1,7 +1,8 @@
 {% load static %}
-<header class="header container">
-    <nav class="navbar navbar-expand-md p-0 pt-1 pb-1">
-        <div class="container">
+
+<header class="header main-container">
+    <div class="ms-0 ms-lg-5 me-0 me-lg-5">
+        <nav class="navbar navbar-expand-md pt-1 pb-1">
             <!-- Ссылки -->
             <div class="collapse navbar-collapse justify-content-center">
                 <ul class="navbar-nav w-100 justify-content-between">
@@ -18,9 +19,14 @@
                         <a class="nav-link p-0" href="#contact">Войти</a>
                     </li>
                     <li class="nav-item">
-                        <button class="p-0 w-10" style="border: none; background: none;" ><img style="width: 1.5rem;" src="{% static '/source/img/THEME_SWITCHER_MOBILE.svg' %}" alt="тема"></button>
+                        <button class="p-0 w-10" style="border: none; background: none;">
+                            <img style="width: 1.5rem;"
+                                 src="{% static '/source/img/THEME_SWITCHER_MOBILE.svg' %}"
+                                 alt="тема">
+                        </button>
                     </li>
                 </ul>
             </div>
-    </nav>
+        </nav>
+    </div>
 </header>

@@ -1,3 +1,9 @@
+fetch("../main-page/header_top.html")
+    .then(response => response.text())
+    .then(data => {
+        document.getElementById('first-header').innerHTML = data;
+    });
+
 fetch('../main-page/second_header.html')
 	.then(response => response.text())
 	.then(data => {

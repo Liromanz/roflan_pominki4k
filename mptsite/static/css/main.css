@@ -2,6 +2,8 @@
 /*# sourceMappingURL=main.css.map */
 
 @import url('https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300..900;1,300..900&display=swap');
+@import url(drop_style.css);
+@import url(header_top.css);
 @import url(second_header.css);
 @import url(photo_block.css);
 @import url(about_MPT.css);
@@ -10,18 +12,12 @@
 @import url(map_block.css);
 @import url(frequently_asked_questions.css);
 @import url(applicant.css);
+@import url(root.css);
+
 
 * {
     transition: all 0.3s ease-out;
     font-family: "Rubik", sans-serif !important;
-}
-
-:root {
-    --background-color: #E8EBF4;
-    --foreground-color: white;
-    --font-fg-color: #323232;
-    --font-secondary-fg-color: #606060;
-    --gradient: linear-gradient(91.53deg, #6373FF, #6373FF, #BB4040);
 }
 
 .gradient {
@@ -30,15 +26,15 @@
 
 .main-font {
     font-family: "Rubik", sans-serif !important;
-    color: var(--font-fg-color);
+    color: var(--font-color);
 }
 
 body {
-    background-color: var(--background-color) !important;
+    background-color: var(--background) !important;
 }
 
 header {
-    background-color: var(--foreground-color) !important;
+    background-color: var(--header-font-color) !important;
 }
 
 footer {

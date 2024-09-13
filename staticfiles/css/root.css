@@ -1,0 +1,90 @@
+/*!* Шрифты *!*/
+/*@font-face {
+    font-family: "Rubik";
+    src: url("../source/fonts/Rubik-Light.ttf") format("truetype");
+    font-weight: 300; !* Light *!
+    font-style: normal;
+}*/
+@font-face {
+    font-family: "Rubik";
+    src: url("../fonts/Rubik-Regular.ttf") format("truetype");
+    font-weight: 400; /*!* Normal *!*/
+    font-style: normal;
+}
+@font-face {
+    font-family: "Rubik";
+    src: url("../fonts/Rubik-Bold.ttf") format("truetype");
+    font-weight: 700; /*!* Bold *!*/
+    font-style: normal;
+}
+@font-face {
+    font-family: "Rubik";
+    src: url("../fonts/Rubik-ExtraBold.ttf") format("truetype");
+    font-weight: 800; /*!* Extra Bold *!*/
+    font-style: normal;
+}
+@font-face {
+    font-family: "Rubik";
+    src: url("../fonts/Rubik-Medium.ttf") format("truetype");
+    font-weight: 500; /*!* Medium *!*/
+    font-style: normal;
+}
+@font-face {
+    font-family: "Rubik";
+    src: url("../fonts/Rubik-Black.ttf") format("truetype");
+    font-weight: 900; /*!* Black *!*/
+    font-style: normal;
+}
+@media (min-width: 992px) {
+    :root {
+        /* ? Цвета */
+        --Light: 300;
+        --Normal: 400;
+        --Medium: 500;
+        --Bold:700;
+        --Extra-bold:800;
+        --Black:900;
+        --main-gradient: linear-gradient(91.53deg, #6373ff, #6373ff, #bb4040);
+        --top-header-gradient: linear-gradient(
+                90deg,
+                rgba(0, 0, 0, 0.33) 0%,
+                rgba(0, 0, 0, 0.49) 60%,
+                rgba(0, 0, 0, 0.6) 100%
+        );
+
+    }
+}
+
+:root[data-theme="light"] {
+    /* !Светлая тема */
+    --primary-background: #E8EBF4;
+    --secondary-background: #ffffff;
+    --primary-foreground: #000000;
+    --secondary-foreground: #5E5E5E;
+    /*Потом переименовать*/
+    --ternary: #F4F1F1;
+    /* !Светлая тема */
+}
+
+:root[data-theme="dark"] {
+    /* !Тёмная тема */
+    --primary-background: #2A2E44;
+    --secondary-background: #363B4F;
+    --primary-foreground: #EAEAEA;;
+    --secondary-foreground: #DCDCDC;
+    /*Потом переименовать*/
+    --ternary: #F4F1F1;
+    /* !Тёмная тема */
+}
+@media (max-width: 991px) {
+    :root {
+        /* ?Размерности */
+        /* !Размеры шрифтов */
+        --font-size-smallest: 20px; /* ? ну мы решили, что 18 не читабельно */
+        --font-size-small: 25px; /*? объединили 24 и 25,чтобы не загромождать рут */
+        --font-size-medium: 30px;
+        --font-size-large: 40px;
+        --font-size-bigger: 45px;
+        /*!Размеры шрифтов */
+    }
+}

@@ -15,13 +15,12 @@
 <title>Главная</title>
 </head>
 <body>
-<header>
+
+<header id="first-header d-lg-none">
     {% include 'header_top.html' %}
-
-</header>
-
-<header class="header" style="position: sticky; top: 0px; z-index: 2">
     <hr class="p-0 m-0">
+</header>
+<header id="second-header">
     {% include 'header_main.html' %}
     <hr class="p-0 m-0">
 </header>
@@ -48,22 +47,22 @@
                 </div>
             </div>
             {% if main_news is not None %}
-            <div class="right-info">
-                <div class="date-info">
-                    <div class="date-number">{{ main_news.date|date:"j" }}</div>
-                    <div class="date-month">{{ main_news.date|date:"F" }}</div>
-                    <div class="date-time">в {{ main_news.date|date:"G:i" }}</div>
-                </div>
-                <div class="day-info">
-                    <div class="day-name">{{ main_news.name }}</div>
+                <div class="right-info">
+                    <div class="date-info">
+                        <div class="date-number">{{ main_news.date|date:"j" }}</div>
+                        <div class="date-month">{{ main_news.date|date:"F" }}</div>
+                        <div class="date-time">в {{ main_news.date|date:"G:i" }}</div>
+                    </div>
                     <div class="day-info">
-                        <!-- <div class="adress">ул. Нежинская дом 7</div>
-                        <div class="enter">Вход свободный</div>
-                        <div class="take-info">При себе иметь паспорт</div> -->
-                        <p class="adress">{{ main_news.short_description }}</p>
+                        <div class="day-name">{{ main_news.name }}</div>
+                        <div class="day-info">
+                            <!-- <div class="adress">ул. Нежинская дом 7</div>
+                            <div class="enter">Вход свободный</div>
+                            <div class="take-info">При себе иметь паспорт</div> -->
+                            <p class="adress">{{ main_news.short_description }}</p>
+                        </div>
                     </div>
                 </div>
-            </div>
             {% endif %}
         </div>
     </section>
@@ -147,5 +146,6 @@
 <script src="{% static 'js/frequently_asked_questions.js' %}"></script>
 <script src="{% static 'js/training_programs.js' %}"></script>
 <script src="{% static 'js/applicant.js' %}"></script>
+<script src="{% static 'js/header_top.js' %}"></script>
 
 </html>

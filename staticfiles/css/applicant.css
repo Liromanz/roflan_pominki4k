@@ -1,7 +1,6 @@
-.container-applicant {
-    width: 28% !important;
+#container-content {
+    width: 73%;
 }
-
 
 .subsections {
     display: none;
@@ -9,11 +8,6 @@
 
     &.show {
         display: block;
-        position: absolute;
-        top: 0;
-        left: 28%;
-        bottom: 0;
-        right: 0;
     }
 }
 
@@ -69,13 +63,6 @@
 }
 
 @media (max-width: 991px) {
-    .subsections.show {
-        display: block;
-        position: relative;
-        left: 0;
-        margin-top: 0;
-    }
-
     .section-button {
         border: none;
         border-radius: 15px;
@@ -107,6 +94,7 @@
 
     .subsections {
         background: white;
+        margin-top: 0;
     }
 
     .subsections-content {
@@ -119,8 +107,11 @@
     }
 
     .container-applicant {
-        width: 100% !important;
         background: var(--background-color);
+    }
+
+    #container-content {
+        display: none;
     }
 
     .paddings {
