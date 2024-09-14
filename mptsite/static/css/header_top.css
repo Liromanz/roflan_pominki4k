@@ -9,7 +9,7 @@
 }
 
 .Fs {
-    font-size: 18px !important;
+    font-size: var(--font-size-smallest);
 }
 
 
