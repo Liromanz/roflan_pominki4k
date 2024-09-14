@@ -5,7 +5,7 @@
 @import url(drop_style.css);
 @import url(header_top.css);
 @import url(second_header.css);
-@import url(photo_block.css);
+
 @import url(about_MPT.css);
 @import url(training_program.css);
 @import url(footer.css);
@@ -21,7 +21,7 @@
 }
 
 .gradient {
-    background: linear-gradient(91.53deg, #6373FF, #6373FF, #BB4040) !important;
+    background: linear-gradient(90deg, #6373FF, #BB4040) !important;
 }
 
 .main-font {
