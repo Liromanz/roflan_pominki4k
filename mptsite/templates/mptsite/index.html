@@ -2,7 +2,7 @@
 {% load static %}
 <html lang="en">
 <head>
-    <link rel="stylesheet" href="{% static 'css/main.css' %}"/>
+<!--    <link rel="stylesheet" href="{% static 'css/main.css' %}"/>-->
     <link rel="preconnect" href="https://fonts.googleapis.com"/>
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
     <link href="https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300..900;1,300..900&display=swap"
@@ -11,6 +11,7 @@
           integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous"/>
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Главная</title>
 </head>
 
@@ -18,129 +19,123 @@
 
 {% include 'header_top.html' %}
 <hr class="p-0 m-0">
+{% include 'header_main.html' %}
+<!--<section class="photo-block">-->
+<!--    <section class="info-block container-xxl">-->
+<!--        <div class="block-wrapper ">-->
+<!--            <div class="left-info container">-->
+<!--                <div class="title-and-subtitle-block">-->
+<!--                    <img src="{% static '/source/img/asd.svg' %}" alt=""/>-->
+<!--                    <p class="subtitle">-->
+<!--                        Московский приборостроительный техникум при РЭУ им. Г.В.-->
+<!--                        Плеханова, обучающая высококлассных программистов и юристов-->
+<!--                    </p>-->
+<!--                </div>-->
+<!--                <p class="slogan">Построй своё будущее вместе с нами</p>-->
+<!--                <div class="button-block">-->
+<!--                    <button type="button" class="choose-specialty">-->
+<!--                        Подобрать специальность-->
+<!--                    </button>-->
+<!--                    <button type="button" class="submit-documents">-->
+<!--                        Подать документы-->
+<!--                    </button>-->
+<!--                </div>-->
+<!--            </div>-->
+<!--            {% if main_news is not None %}-->
+<!--                <div class="right-info">-->
+<!--                    <div class="date-info">-->
+<!--                        <div class="date-number">{{ main_news.date|date:"j" }}</div>-->
+<!--                        <div class="date-month">{{ main_news.date|date:"F" }}</div>-->
+<!--                        <div class="date-time">в {{ main_news.date|date:"G:i" }}</div>-->
+<!--                    </div>-->
+<!--                    <div class="day-info">-->
+<!--                        <div class="day-name">{{ main_news.name }}</div>-->
+<!--                        <div class="day-info">-->
+<!--                            &lt;!&ndash; <div class="adress">ул. Нежинская дом 7</div>-->
+<!--                            <div class="enter">Вход свободный</div>-->
+<!--                            <div class="take-info">При себе иметь паспорт</div> &ndash;&gt;-->
+<!--                            <p class="adress">{{ main_news.short_description }}</p>-->
+<!--                        </div>-->
+<!--                    </div>-->
+<!--                </div>-->
+<!--            {% endif %}-->
+<!--        </div>-->
+<!--    </section>-->
+<!--</section>-->
 
-<div class="">
-    {% include 'header_main.html' %}
-    <hr class="p-0 m-0">
-</div>
+<!--<main class="main-container mt-4">-->
+<!--    <div class="ms-0 me-0 ms-md-5 me-md-5 card p-2 p-md-5 card-base ">-->
+<!--        <div class="row">-->
+<!--            <div class="col-lg-6 block-info">-->
+<!--                <h1 class="main-font  text-sm-start">О техникуме</h1>-->
+<!--                <p class="main-font"><b>Московский приборостроительный техникум при РЭУ им. Г.В. Плеханова</b> - это-->
+<!--                    учебное-->
+<!--                    заведение,-->
+<!--                    специализирующееся в области информационных технологий, подготавливающее специалистов, включая-->
+<!--                    программистов. Техникум предоставляет студентам современное IT-образование с акцентом на-->
+<!--                    практические-->
+<!--                    занятия. Кроме основного обучения, Московский приборостроительный техникум предлагает программу-->
+<!--                    ДоВуз,-->
+<!--                    позволяющую сократить сроки получения образования на различных этапах их учебной карьеры. </p>-->
+<!--                <p class="main-font">Учебное заведение основано в 1940 году и принимает школьников после окончания-->
+<!--                    9-го-->
+<!--                    или 11-го-->
+<!--                    классов.-->
+<!--                    Студенты имеют доступ к современным лабораториям и оборудованию, что способствует глубокому-->
+<!--                    пониманию-->
+<!--                    предметов и практическому применению знаний.</p>-->
+<!--                <p class="main-font"><b>Московский приборостроительный техникум при РЭУ им. Г.В. Плеханова</b>-->
+<!--                    привлекает студентов-->
+<!--                    своим-->
+<!--                    престижем и проходным баллом на бюджетные места. С общим числом студентов на всех курсах в 2 346-->
+<!--                    человек, учебное заведение предоставляет обширные возможности для развития в области-->
+<!--                    информационных-->
+<!--                    технологий. Студенты имеют доступ к современным лабораториям и оборудованию, что способствует их-->
+<!--                    успешной подготовке к будущей карьере.</p>-->
+<!--            </div>-->
+<!--            <div class="col-lg-6 d-flex gap-4 flex-column">-->
+<!--                <div class="ps-3 pt-3 pb-3 card-base gradient d-flex flex-row justify-content-between">-->
+<!--                    <h2 class="main-font text-break">12 специальностей*</h2>-->
+<!--                    <img src="{% static '/source/logo/GERB_REY.svg' %}" alt="РЭУ">-->
+<!--                </div>-->
+<!--                <div class="ps-3 pt-3 pb-3 card-base gradient d-flex flex-row justify-content-between">-->
+<!--                    <h2 class="main-font text-break">3-4 года обучения</h2>-->
+<!--                    <img src="{% static '/source/logo/GERB_REY.svg' %}" alt="РЭУ">-->
+<!--                </div>-->
+<!--                <div class="ps-3 pt-3 pb-3 card-base gradient d-flex flex-row justify-content-between">-->
+<!--                    <h2 class="main-font text-break">Дополнительное <br>-->
+<!--                        образование</h2>-->
+<!--                    <img src="{% static '/source/logo/GERB_REY.svg' %}" alt="РЭУ">-->
+<!--                </div>-->
+<!--            </div>-->
+<!--        </div>-->
+<!--    </div>-->
 
+<!--    <h1 class="m-4 main-font text-center">Программы обучения</h1>-->
+<!--    {% include 'training-program.html' %}-->
 
-<section class="photo-block">
-    <section class="info-block container-xxl">
-        <div class="block-wrapper ">
-            <div class="left-info container">
-                <div class="title-and-subtitle-block">
-                    <img src="{% static '/source/img/asd.svg' %}" alt=""/>
-                    <p class="subtitle">
-                        Московский приборостроительный техникум при РЭУ им. Г.В.
-                        Плеханова, обучающая высококлассных программистов и юристов
-                    </p>
-                </div>
-                <p class="slogan">Построй своё будущее вместе с нами</p>
-                <div class="button-block">
-                    <button type="button" class="choose-specialty">
-                        Подобрать специальность
-                    </button>
-                    <button type="button" class="submit-documents">
-                        Подать документы
-                    </button>
-                </div>
-            </div>
-            {% if main_news is not None %}
-                <div class="right-info">
-                    <div class="date-info">
-                        <div class="date-number">{{ main_news.date|date:"j" }}</div>
-                        <div class="date-month">{{ main_news.date|date:"F" }}</div>
-                        <div class="date-time">в {{ main_news.date|date:"G:i" }}</div>
-                    </div>
-                    <div class="day-info">
-                        <div class="day-name">{{ main_news.name }}</div>
-                        <div class="day-info">
-                            <!-- <div class="adress">ул. Нежинская дом 7</div>
-                            <div class="enter">Вход свободный</div>
-                            <div class="take-info">При себе иметь паспорт</div> -->
-                            <p class="adress">{{ main_news.short_description }}</p>
-                        </div>
-                    </div>
-                </div>
-            {% endif %}
-        </div>
-    </section>
-</section>
+<!--    <h1 class="m-4 main-font text-center">Новости</h1>-->
+<!--    {% include 'news.html' %}-->
 
-<main class="main-container mt-4">
-    <div class="ms-0 me-0 ms-md-5 me-md-5 card p-2 p-md-5 card-base ">
-        <div class="row">
-            <div class="col-lg-6 block-info">
-                <h1 class="main-font  text-sm-start">О техникуме</h1>
-                <p class="main-font"><b>Московский приборостроительный техникум при РЭУ им. Г.В. Плеханова</b> - это
-                    учебное
-                    заведение,
-                    специализирующееся в области информационных технологий, подготавливающее специалистов, включая
-                    программистов. Техникум предоставляет студентам современное IT-образование с акцентом на
-                    практические
-                    занятия. Кроме основного обучения, Московский приборостроительный техникум предлагает программу
-                    ДоВуз,
-                    позволяющую сократить сроки получения образования на различных этапах их учебной карьеры. </p>
-                <p class="main-font">Учебное заведение основано в 1940 году и принимает школьников после окончания
-                    9-го
-                    или 11-го
-                    классов.
-                    Студенты имеют доступ к современным лабораториям и оборудованию, что способствует глубокому
-                    пониманию
-                    предметов и практическому применению знаний.</p>
-                <p class="main-font"><b>Московский приборостроительный техникум при РЭУ им. Г.В. Плеханова</b>
-                    привлекает студентов
-                    своим
-                    престижем и проходным баллом на бюджетные места. С общим числом студентов на всех курсах в 2 346
-                    человек, учебное заведение предоставляет обширные возможности для развития в области
-                    информационных
-                    технологий. Студенты имеют доступ к современным лабораториям и оборудованию, что способствует их
-                    успешной подготовке к будущей карьере.</p>
-            </div>
-            <div class="col-lg-6 d-flex gap-4 flex-column">
-                <div class="ps-3 pt-3 pb-3 card-base gradient d-flex flex-row justify-content-between">
-                    <h2 class="main-font text-break">12 специальностей*</h2>
-                    <img src="{% static '/source/logo/GERB_REY.svg' %}" alt="РЭУ">
-                </div>
-                <div class="ps-3 pt-3 pb-3 card-base gradient d-flex flex-row justify-content-between">
-                    <h2 class="main-font text-break">3-4 года обучения</h2>
-                    <img src="{% static '/source/logo/GERB_REY.svg' %}" alt="РЭУ">
-                </div>
-                <div class="ps-3 pt-3 pb-3 card-base gradient d-flex flex-row justify-content-between">
-                    <h2 class="main-font text-break">Дополнительное <br>
-                        образование</h2>
-                    <img src="{% static '/source/logo/GERB_REY.svg' %}" alt="РЭУ">
-                </div>
-            </div>
-        </div>
-    </div>
+<!--    <h1 class="m-4 main-font text-center d-none d-md-block">Абитуриенту</h1>-->
+<!--    {% include 'applicant.html' %}-->
 
-    <h1 class="m-4 main-font text-center">Программы обучения</h1>
-    {% include 'training-program.html' %}
-
-    <h1 class="m-4 main-font text-center">Новости</h1>
-    {% include 'news.html' %}
-
-    <h1 class="m-4 main-font text-center d-none d-md-block">Абитуриенту</h1>
-    {% include 'applicant.html' %}
-
-    <h1 class="m-4 main-font text-center d-none d-md-block">Вопрос-Ответ</h1>
-    <div class="ms-0 ms-md-5 me-0 me-md-5 card pt-3 pb-1 pe-3 ps-3 card-base mt-4">
-        <div class="row">
-            {% for ques in faq.questions %}
-            <div class="dropdown">
-                <button class="custom-dropdown-toggle pe-4 ps-4 pt-3">
-                    <span class="custom-dropdown-toggle-text">{{ ques.question }}</span>
-                </button>
-                <div class="dropdown-content p-1 pe-md-4 ps-md-4">
-                    <p> {{ ques.answer }}</p>
-                </div>
-                <hr class="m-0"/>
-            </div>
-            {% endfor %}
-        </div>
-    </div>
+<!--    <h1 class="m-4 main-font text-center d-none d-md-block">Вопрос-Ответ</h1>-->
+<!--    <div class="ms-0 ms-md-5 me-0 me-md-5 card pt-3 pb-1 pe-3 ps-3 card-base mt-4">-->
+<!--        <div class="row">-->
+<!--            {% for ques in faq.questions %}-->
+<!--            <div class="dropdown">-->
+<!--                <button class="custom-dropdown-toggle pe-4 ps-4 pt-3">-->
+<!--                    <span class="custom-dropdown-toggle-text">{{ ques.question }}</span>-->
+<!--                </button>-->
+<!--                <div class="dropdown-content p-1 pe-md-4 ps-md-4">-->
+<!--                    <p> {{ ques.answer }}</p>-->
+<!--                </div>-->
+<!--                <hr class="m-0"/>-->
+<!--            </div>-->
+<!--            {% endfor %}-->
+<!--        </div>-->
+<!--    </div>-->
 
     {% include 'map_short.html' %}
 </main>
