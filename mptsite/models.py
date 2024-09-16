@@ -27,7 +27,7 @@ class Specialities(models.Model):
     is_active = models.BooleanField(null=False, default=True, verbose_name="Активна для набора")
 
     def __str__(self):
-        return f"{self.short_name} - {self.direction.name}"
+        return f"{self.direction.code_name} - {self.full_name}"
 
     class Meta():
         verbose_name = "Специальность"
@@ -194,15 +194,15 @@ class Users(models.Model):
 class News(models.Model):
     date = models.DateTimeField(verbose_name="Дата новости")
     name = models.CharField(verbose_name="Заголовок", max_length=100, null=False, default='')
-    description = models.TextField(verbose_name="Содержимое новости", null=True, default='')
+    description = models.TextField(verbose_name="Краткое описание", max_length=100, null=False, default='')
+    news_content = models.TextField(verbose_name="Содержимое новости", null=True, default='')
     link = models.URLField(verbose_name="Ссылка на подробную запись", null=True)
     picture = models.ImageField(verbose_name="Превью-картинка", null=True, upload_to='news/')
-    short_description = models.TextField(verbose_name="Краткое описание", max_length=100, null=False, default='')
     date_to = models.DateField(verbose_name="Актуально до", null=False)
     is_on_main_page = models.BooleanField(verbose_name="Показать на главной странице", null=False, default=False)
 
     def __str__(self):
-        return f"{self.date} - {self.name}"
+        return f"{self.name}"
 
     def save(self, *args, **kwargs):
         if self.is_on_main_page:
@@ -256,9 +256,18 @@ class Questions(models.Model):
         verbose_name_plural = "Вопросы"
 
 
-
-
 # -------------------------------- Модели, которые не идут в базу данных
+
+class CardInfo:
+    def __init__(self, name, description, picture, link):
+        self.name = name
+        self.description = description
+        self.image_url = picture
+        self.link = link
+
+    def __str__(self):
+        return f"Карточка {self.name}. Ссылка: {self.link}"
+
 
 class DaySchedule:
     # инит и переменные внутри были основаны на элементе из миро

@@ -13,10 +13,6 @@
     border-radius: 100% !important;
 }
 
-form {
-    width: 100%;
-}
-
 .checkbox-container {
     display: inline-block;
 }
@@ -181,17 +177,6 @@ form {
     width: 85% !important;
 }
 
-.news-content::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    left: 0;
-    background: linear-gradient(89.94deg, rgba(0, 0, 0, 0.4) 22.91%, rgba(102, 102, 102, 0) 96.41%);
-    z-index: 0;
-    border-radius: inherit;
-}
 
 .way-card h4,
 .way-card p,
@@ -199,4 +184,3 @@ form {
     position: relative;
     z-index: 1;
 }
-
