@@ -29,11 +29,11 @@ def home_page(request):
         # ExcelParser.import_schedule()
 
         specialities = Specialities.objects.filter(is_active=True)
-        news = News.objects.all()
-        try:
-            main_news = News.objects.get(is_on_main_page=True)
-        except m.News.DoesNotExist:
-            main_news = None
+        # news = News.objects.all()
+        # try:
+        #     main_news = News.objects.get(is_on_main_page=True)
+        # except m.News.DoesNotExist:
+        #     main_news = None
 
         try:
             block_abit = m.Category_of_questions.objects.get(category_name="Абитуриенту")
@@ -47,7 +47,7 @@ def home_page(request):
             block_faq = None
         faq = QuestionHelper.get_questions(block_faq)
 
-        context = {'specialities': specialities, 'news': news, 'main_news': main_news, "questions": questions,
+        context = {'specialities': specialities, "questions": questions,
                    "faq": faq}
         return render(request, 'mptsite/index.html', context=context)
 

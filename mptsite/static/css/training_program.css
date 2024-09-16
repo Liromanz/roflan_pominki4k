@@ -1,3 +1,11 @@
+:root {
+    --background-color: #E8EBF4;
+    --foreground-color: white;
+    --font-fg-color: #323232;
+    --font-secondary-fg-color: #606060;
+    --gradient: linear-gradient(91.53deg, #6373FF, #6373FF, #BB4040);
+}
+
 .arrow {
     font-size: 1.5rem !important;
     background-color: var(--background-color) !important;
@@ -192,40 +200,3 @@ form {
     z-index: 1;
 }
 
-@media (max-width: 991px) {
-    .way-card {
-        justify-content: space-between !important;
-    }
-
-    .news-content button {
-        width: 90%  ;
-    }
-
-    .training-program-card button {
-        width: 94%;
-    }
-
-    .news-content div *{
-        width: 70% !important;
-    }
-
-    .way-card p {
-        font-size: 1.5rem !important;
-    }
-
-    .way-card h4 {
-        font-size: 1.7rem !important;
-    }
-
-    #card-container div {
-        width: 23rem !important;
-    }
-
-    #card-container {
-        height: 33rem !important;
-    }
-
-    .input-text-container {
-        width: auto;
-    }
-}
