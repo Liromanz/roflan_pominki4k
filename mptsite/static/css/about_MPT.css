@@ -12,10 +12,6 @@
     font-weight: 300 !important;
 }
 
-.text-align {
-    text-align: left;
-}
-
 .clamped-text {
     display: -webkit-box;
     -webkit-box-orient: vertical;
