@@ -1,4 +1,44 @@
 {% load static %}
+<!--<header class="main-container navbar-expand-lg">-->
+<!--    <div class="ms-0 ms-lg-5 me-0 me-lg-5 p-1 p-lg-3 d-flex justify-content-between">-->
+<!--        <a href="#" class="navbar-brand"><img style="width: 9.5rem !important;"-->
+<!--                                              src="{% static 'source/logo/MPT_MAIN_LOGO.svg' %}" alt="REY"></a>-->
+<!--        <div class="d-lg-none justify-content-between d-flex align-items-center me-3 flex-grow-1">-->
+<!--            <button class="p-0 w-100" style="border: none; background: none;">-->
+<!--                <img style="width: 2.5rem;"-->
+<!--                     src="{% static '/source/img/THEME_SWITCHER_MOBILE.svg' %}"-->
+<!--                     alt="тема">-->
+<!--            </button>-->
+<!--            <a class="w-100" href="#"><img style="width: 2.5rem;" src="{% static '/source/img/BLIND_V_MOBILE.svg' %}"-->
+<!--                                           alt="Версия для слабовидящих"></a>-->
+<!--            <a href="#" style="font-size: 1rem !important;"-->
+<!--               class="header-font main-font nav-link rounded-pill gradient text-light p-2 w-100 text-center">Вход</a>-->
+<!--        </div>-->
+<!--        <button class="navbar-toggler p-0" style="background: none; border: none" type="button"-->
+<!--                data-bs-toggle="collapse" data-bs-target="#navbarContent"-->
+<!--                aria-controls="navbarContent" aria-expanded="false" aria-label="Toggle navigation">-->
+<!--            <span class="navbar-toggler-icon" id="burger"><img src="{% static '/source/img/BURGER.svg' %}"-->
+<!--                                                               alt="Меню"></span>-->
+<!--        </button>-->
+<!--        <div class="collapse navbar-collapse" id="navbarContent">-->
+<!--            <ul class="navbar-nav flex-grow-1 justify-content-between align-items-center">-->
+<!--                <li class="nav-item w-100"><a href="#" class="nav-link text-center text-nowrap header-font main-font">О-->
+<!--                    техникуме</a></li>-->
+<!--                <li class="nav-item w-100"><a href="#" class="nav-link text-center text-nowrap header-font main-font">Специальности</a>-->
+<!--                </li>-->
+<!--                <li class="nav-item w-100"><a href="#" class="nav-link text-center text-nowrap header-font main-font">Абитуриенту</a>-->
+<!--                </li>-->
+<!--                <li class="nav-item w-100"><a href="#" class="nav-link text-center text-nowrap header-font main-font">Доп.-->
+<!--                    образование</a></li>-->
+<!--                <li class="nav-item w-100"><a href="#" class="nav-link text-center text-nowrap header-font main-font">Контакты</a>-->
+<!--                </li>-->
+<!--                <li class="nav-item w-100"><a href="#"-->
+<!--                                              class="nav-link text-center text-nowrap header-font main-font gradient text-light rounded-pill">Студенту</a>-->
+<!--                </li>-->
+<!--            </ul>-->
+<!--        </div>-->
+<!--    </div>-->
+<!--</header>-->
 <header>
     <div class="container-lg sticky-top bg-white p-0">
         <nav
@@ -12,31 +52,41 @@
                         style="height: 42px"
                         alt="#"
                 /></a>
-                <div>
-                <button class="d-lg-none p-0 " style="border: none; background: none;"><img style="width: 2.5rem;"
-                    src="{% static '/source/img/THEME_SWITCHER_MOBILE.svg' %}"
-                    alt="тема">
-                </button>
-                                <button class="d-lg-none p-0 " style="border: none; background: none;"><img style="width: 2.5rem;"
-                    src="{% static '/source/img/BLIND_V_MOBILE.svg' %}"
-                    alt="тема">
-                </button>
-                <button
-                        class="navbar-toggler"
-                        type="button"
-                        data-bs-toggle="collapse"
-                        data-bs-target="#navbarNavAltMarkup"
-                        aria-controls="navbarNavAltMarkup"
-                        aria-expanded="false"
-                        aria-label="Переключатель навигации"
-                >
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-</div>
-                <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+                <div class="">
+                    <button class="d-lg-none px-1" style="border: none; background: none;"><img style="width: 2.5rem;"
+                                                                                                src="{% static '/source/img/THEME_SWITCHER_MOBILE.svg' %}"
+                                                                                                alt="тема">
+                    </button>
+                    <button class="d-lg-none px-1 " style="border: none; background: none;"><img style="width: 2.5rem;"
+                                                                                                src="{% static '/source/img/BLIND_V_MOBILE.svg' %}"
+                                                                                                alt="тема">
+                    </button>
+                    <button
+                            class="navbar-toggler px-1"
+                            type="button"
+                            data-bs-toggle="offcanvas"
+                            data-bs-target="#navbarNavAltMarkup"
+                            aria-controls="offcanvasRight"
+                            aria-expanded="false"
+                            aria-label="Переключатель навигации"
+                    >
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                </div>
+                <div class="offcanvas offcanvas-end" id="navbarNavAltMarkup">
                     <div
                             class="navbar-nav w-100 justify-content-lg-between align-items-lg-center bg-white"
                     >
+                        <div class="offcanvas-header">
+                                           <a class="navbar-brand d-lg-none" href="#"
+                ><img
+                        src="{% static 'source/logo/MPT_MAIN_LOGO.svg' %}"
+                        style="height: 42px"
+                        alt="#"
+                /></a>
+                            <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas"
+                                    aria-label="Закрыть"></button>
+                        </div>
                         <a class="navbar-brand d-none d-lg-block" href="#"
                         ><img
                                 src="{% static 'source/logo/MPT_MAIN_LOGO.svg' %}"
