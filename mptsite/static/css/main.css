@@ -7,17 +7,16 @@
 
 @import url(header_top.css);
 @import url(second_header.css);
-
 @import url(photo_block.css);
 
 @import url(about_MPT.css);
-/*@import url(training_program.css);*/
+@import url(training_program.css);
 
-/*@import url(map_block.css);*/
-/*@import url(frequently_asked_questions.css);*/
-/*@import url(applicant.css);*/
+@import url(map_block.css);
+@import url(frequently_asked_questions.css);
+@import url(applicant.css);
 
-/*@import url(footer.css);*/
+@import url(footer.css);
 
 
 
@@ -30,11 +29,6 @@
     background: linear-gradient(90deg, #6373FF, #BB4040) !important;
 }
 
-.main-font {
-    font-family: "Rubik", sans-serif !important;
-    color: var(--font-color);
-}
-
 body {
     background-color: var(--primary-background);
 }
@@ -44,5 +38,11 @@ header {
 }
 
 footer {
-    background-color: var(--foreground-color) !important;
+    background-color: var(--secondary-background);
 }
+
+h1{
+    font-size: 32px;
+    font-weight: var(--Medium);
+}
+
