@@ -1,31 +1,19 @@
 {% load static %}
 
-<header>
+<header class="header-top">
     <div class="container-lg p-0 d-none d-lg-block">
-        <nav class="navbar navbar-expand-md p-0 pb-1 pt-1 m-0">
-            <!-- Ссылки -->
-            <div class="collapse navbar-collapse justify-content-center">
-                <ul class="navbar-nav w-100 justify-content-between">
-                    <li class="nav-item">
-                        <a class="nav-link p-0" href="#home">Сведения об образовательной организации</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link p-0" href="#about">Психологическая помощь</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link p-0" href="#services">Версия для слабовидящих</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link p-0" href="#contact">Войти</a>
-                    </li>
-                    <li class="nav-item">
-                        <button class="p-0 w-10" style="border: none; background: none;">
-                            <img style="width: 1.5rem;"
-                                 src="{% static '/source/img/THEME_SWITCHER_MOBILE.svg' %}"
-                                 alt="тема">
-                        </button>
-                    </li>
-                </ul>
+        <nav class="navbar navbar-expand-md p-0 pb-1 pt-1 m-0 ">
+
+            <div class="collapse navbar-collapse justify-content-between">
+                <a class="nav-link p-0" href="#home">Сведения об образовательной организации</a>
+                <a class="nav-link p-0" href="#about">Психологическая помощь</a>
+                <a class="nav-link p-0" href="#services">Версия для слабовидящих</a>
+                <a class="nav-link p-0" href="#contact">Войти</a>
+                <button class="p-0 w-10" style="border: none; background: none;">
+                    <img style="width: 1.5rem;"
+                         src="{% static '/source/img/THEME_SWITCHER_MOBILE.svg' %}"
+                         alt="тема">
+                </button>
             </div>
         </nav>
     </div>

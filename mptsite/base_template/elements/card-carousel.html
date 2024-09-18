@@ -1,9 +1,9 @@
 {% load static %}
 
-<div class="d-flex">
-    <button class="btn btn-light arrow me-2 my-auto" id="{{ left_arrow_id }}"><img
-            src="{% static '/source/img/ARROW.svg' %}"
-            alt="Влево"></button>
+<div class="d-flex gap-2">
+    <button class="my-auto arrow d-flex align-center" id="{{ left_arrow_id }}">
+        <img src="{% static '/source/img/ARROW.svg' %}" alt="Влево">
+    </button>
     <div class="d-flex gap-4" id="{{ container_id }}">
         {% for card_info in passed_cards %}
             <div class="d-flex" id="{{ card_id }}">

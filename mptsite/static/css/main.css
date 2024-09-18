@@ -2,17 +2,20 @@
 /*# sourceMappingURL=main.css.map */
 
 @import url('https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300..900;1,300..900&display=swap');
+@import url(root.css);
 @import url(drop_style.css);
+
 @import url(header_top.css);
 @import url(second_header.css);
 
 @import url(about_MPT.css);
-@import url(training_program.css);
-@import url(footer.css);
-@import url(map_block.css);
-@import url(frequently_asked_questions.css);
-@import url(applicant.css);
-@import url(root.css);
+/*@import url(training_program.css);*/
+
+/*@import url(map_block.css);*/
+/*@import url(frequently_asked_questions.css);*/
+/*@import url(applicant.css);*/
+
+/*@import url(footer.css);*/
 
 
 
@@ -31,30 +34,13 @@
 }
 
 body {
-    background-color: var(--background) !important;
+    background-color: var(--primary-background);
 }
 
 header {
-    background-color: var(--header-font-color) !important;
+    background-color: var(--secondary-background) !important;
 }
 
 footer {
     background-color: var(--foreground-color) !important;
-}
-
-@media (max-width: 991px) {
-    h1 {
-        font-size: 2rem !important;
-    }
-
-    .main-container {
-        width: 100% !important;
-    }
-}
-
-.main-container {
-    max-width: 1920px;
-    width: 83%;
-    margin-right: auto;
-    margin-left: auto;
 }

@@ -1,10 +1,10 @@
 /*!* Шрифты *!*/
-/*@font-face {
+@font-face {
     font-family: "Rubik";
     src: url("../source/fonts/Rubik-Light.ttf") format("truetype");
-    font-weight: 300; !* Light *!
+    font-weight: 300; /*!* Light *!*/
     font-style: normal;
-}*/
+}
 @font-face {
     font-family: "Rubik";
     src: url("../fonts/Rubik-Regular.ttf") format("truetype");
@@ -76,15 +76,13 @@
     --ternary: #F4F1F1;
     /* !Тёмная тема */
 }
-@media (max-width: 991px) {
-    :root {
-        /* ?Размерности */
-        /* !Размеры шрифтов */
-        --font-size-smallest: 20px; /* ? ну мы решили, что 18 не читабельно */
-        --font-size-small: 25px; /*? объединили 24 и 25,чтобы не загромождать рут */
-        --font-size-medium: 30px;
-        --font-size-large: 40px;
-        --font-size-bigger: 45px;
-        /*!Размеры шрифтов */
-    }
+:root {
+    /* ?Размерности */
+    /* !Размеры шрифтов */
+    --font-size-smallest: 20px; /* ? ну мы решили, что 18 не читабельно */
+    --font-size-small: 25px; /*? объединили 24 и 25,чтобы не загромождать рут */
+    --font-size-medium: 30px;
+    --font-size-large: 40px;
+    --font-size-bigger: 45px;
+    /*!Размеры шрифтов */
 }
