@@ -30,19 +30,31 @@
 }
 
 body {
-    background-color: var(--primary-background);
+    background-color: #E8EBF4;
 }
 
-header {
-    background-color: var(--secondary-background) !important;
-}
+/*header {*/
+/*    background-color: var(--secondary-background) !important;*/
+/*}*/
 
-footer {
-    background-color: var(--secondary-background);
-}
+/*footer {*/
+/*    background-color: var(--secondary-background);*/
+/*}*/
 
 h1{
     font-size: 32px;
     font-weight: var(--Medium);
+}
+
+.bold {
+    font-weight: 500;
+}
+
+.normal {
+    font-weight: 400;
+}
+
+.light {
+    font-weight: 300;
 }
 

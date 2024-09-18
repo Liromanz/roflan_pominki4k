@@ -7,10 +7,10 @@
 }
 
 .arrow {
-    font-size: 1.5rem !important;
-    background-color: var(--background-color) !important;
-    color: var(--font-secondary-fg-color) !important;
-    border-radius: 100% !important;
+    background-color: var(--background-color) ;
+    color: var(--font-secondary-fg-color) ;
+    border-radius: 100% ;
+    height: 46.5px;
 }
 
 .checkbox-container {

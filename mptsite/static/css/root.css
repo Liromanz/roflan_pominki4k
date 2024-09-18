@@ -1,10 +1,5 @@
 /*!* Шрифты *!*/
-@font-face {
-    font-family: "Rubik";
-    src: url("../source/fonts/Rubik-Light.ttf") format("truetype");
-    font-weight: 300; /*!* Light *!*/
-    font-style: normal;
-}
+/**/
 @font-face {
     font-family: "Rubik";
     src: url("../fonts/Rubik-Regular.ttf") format("truetype");
@@ -35,24 +30,21 @@
     font-weight: 900; /*!* Black *!*/
     font-style: normal;
 }
-@media (min-width: 992px) {
-    :root {
-        /* ? Цвета */
-        --Light: 300;
-        --Normal: 400;
-        --Medium: 500;
-        --Bold:700;
-        --Extra-bold:800;
-        --Black:900;
-        --main-gradient: linear-gradient(91.53deg, #6373ff, #6373ff, #bb4040);
-        --top-header-gradient: linear-gradient(
-                90deg,
-                rgba(0, 0, 0, 0.33) 0%,
-                rgba(0, 0, 0, 0.49) 60%,
-                rgba(0, 0, 0, 0.6) 100%
-        );
-
-    }
+:root {
+    /* ? Цвета */
+    --Light: 300;
+    --Normal: 400;
+    --Medium: 500;
+    --Bold:700;
+    --Extra-bold:800;
+    --Black:900;
+    --main-gradient: linear-gradient(91.53deg, #6373ff, #6373ff, #bb4040);
+    --top-header-gradient: linear-gradient(
+            90deg,
+            rgba(0, 0, 0, 0.33) 0%,
+            rgba(0, 0, 0, 0.49) 60%,
+            rgba(0, 0, 0, 0.6) 100%
+    );
 }
 
 :root[data-theme="light"] {
