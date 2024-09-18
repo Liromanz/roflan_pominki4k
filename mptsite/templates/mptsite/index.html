@@ -2,26 +2,71 @@
 {% load static %}
 <html lang="en">
 <head>
-<!--    <link rel="stylesheet" href="{% static 'css/main.css' %}"/>-->
+    <link rel="stylesheet" href="{% static 'css/main.css' %}"/>
     <link rel="preconnect" href="https://fonts.googleapis.com"/>
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
     <link href="https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300..900;1,300..900&display=swap"
           rel="stylesheet"/>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
           integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous"/>
-<!--    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">-->
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta charset="UTF-8">
     <title>Главная</title>
 </head>
 
-<body style="background-color: gray !important">
+<body class="bg-secondary">
 
 {% include 'header_top.html' %}
 <hr class="p-0 m-0">
 
 {% include 'header_main.html' %}
 <hr class="p-0 m-0">
+
+
+<div class="photo-block">
+    <div class="container info-block mb-5">
+        <div class="row p-4">
+            <div class="col order-1 order-lg-0">
+                <div class="d-lg-flex mb-4 ">
+                    <img class="d-none d-lg-block" src="{% static '/source/img/asd.svg' %}" alt="МПТ"/>
+                    <div class="d-none d-lg-block mx-lg-3">
+                        <p class="m-0">
+                            Московский приборостроительный техникум при РЭУ им. Г.В.
+                            Плеханова, обучающая высококлассных программистов и юристов
+                        </p>
+                        <p class="m-0 bold">Построй своё будущее вместе с нами!</p>
+                    </div>
+                </div>
+                <div class="row gap-4 m-0 d-flex flex-column flex-lg-row">
+                    <button type="button" class="choose-specialty col py-2">
+                        Подобрать специальность
+                    </button>
+                    <button type="button" class="submit-documents col py-2">
+                        Подать документы
+                    </button>
+                </div>
+            </div>
+            {% if main_news is not None %}
+            <div class="d-block d-lg-none d-xl-block col-lg-4 order-0 order-lg-1">
+                <div class="d-flex">
+                    <div class="d-flex flex-row flex-lg-column ">
+                        <div class="date-number my-auto me-3 me-lg-0">{{ main_news.date|date:"j" }}</div>
+                        <div class="d-flex flex-column d-xl-block">
+                            <p class="text-uppercase fs-2 fs-lg-1 text-lg-center bold my-auto">{{ main_news.date|date:"F" }}</p>
+                            <p class="text-uppercase fs-2 fs-lg-1 text-lg-center bold my-auto ">в {{ main_news.date|date:"G:i" }}</p>
+                            <p class="d-lg-none fs-2 bold m-0">{{ main_news.name }}</p>
+                        </div>
+                    </div>
+                    <div class="d-none d-lg-flex flex-column">
+                        <p class="fs-4 text-end bold m-0">{{ main_news.name }}</p>
+                        <p class="mt-auto mb-0 text-end" >{{ main_news.description }}</p>
+                    </div>
+                </div>
+            </div>
+            {% endif %}
+        </div>
+    </div>
+</div>
 
 <div class="container card card-base p-5">
     <div class="row">
@@ -96,7 +141,7 @@
     </div>
 </div>
 
-{% include 'map_short.html' %}
+
 
 {% include 'footer_main.html' %}
 
