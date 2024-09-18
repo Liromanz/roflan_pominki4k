@@ -1,19 +1,21 @@
 {% load static %}
 <div class="container py-4 px-3 gap-4 flex-column card card-base ">
-        <form class="d-flex gap-4">
-            <label class="flex-grow">
-                <input class="input-text main-font ps-2 pe-2 py-2 ps-lg-4 pe-lg-4 text-nowrap"
+    <div class="d-flex ms-5">
+        <form>
+            <label class="input-text-container">
+                <input class="input-text main-font p-2 px-lg-4 text-nowrap"
                        type="text" placeholder="выберите направление"/>
             </label>
-            <div class="flex-grow">
-                <input type="checkbox" id="9" class="checkbox-button ">
-                <label for="9" class="button-label ps-2 pe-2 py-2 ps-lg-4 pe-lg-4 main-font w-100">9 классов</label>
+            <div class="checkbox-container">
+                <input type="checkbox" id="9" class="checkbox-button">
+                <label for="9" class="button-label p-2 px-lg-4 main-font">9 классов</label>
             </div>
-            <div class="flex-grow">
-                <input type="checkbox" id="11" class="checkbox-button ">
-                <label for="11" class="button-label ps-2 pe-2 py-2 ps-lg-4 pe-lg-4 main-font w-100">11 классов</label>
+            <div class="checkbox-container">
+                <input type="checkbox" id="11" class="checkbox-button">
+                <label for="11" class="button-label p-2 px-lg-4 main-font">11 классов</label>
             </div>
         </form>
+    </div>
 
     {% include "elements/card-carousel.html" with passed_cards=specialities left_arrow_id="left-arrow" right_arrow_id="right-arrow" container_id="card-container" card_id="card"%}
 
