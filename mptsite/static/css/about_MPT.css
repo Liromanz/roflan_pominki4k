@@ -3,24 +3,14 @@
     border: none !important;
 }
 
-@media (max-width: 991px) {
-    .mobile-card {
-        border-radius: 0 !important;
-        border: none !important;
-    }
-}
-
 .block-info p {
-    font-size: 1.3rem;
+    font-size: 18px;
 }
 
 .card-base h2 {
+    font-size: 32px;
     color: var(--foreground-color);
-    font-weight: 300 !important;
-}
-
-.text-align {
-    text-align: left;
+    font-weight: var(--Medium);
 }
 
 .clamped-text {
@@ -31,9 +21,6 @@
     -webkit-line-clamp: 3;
 }
 
-
-@media (max-width: 991px) {
-    .text-align {
-        text-align: center;
-    }
+.about-mpt{
+    line-height: 1.7em;
 }

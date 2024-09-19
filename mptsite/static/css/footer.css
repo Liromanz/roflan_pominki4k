@@ -1,7 +1,12 @@
-.style-text{
-    line-height: 23.7px;
-    color: black !important;
-    font-size: 1.1rem !important;
+:root{
+    /* !Светлая тема */
+    --primary-background: #E8EBF4;
+    --secondary-background: #ffffff;
+    --primary-foreground: #000000;
+    --secondary-foreground: #5E5E5E;
+    /*Потом переименовать*/
+    --ternary: #F4F1F1;
+    /* !Светлая тема */
 }
 
 a {
@@ -12,39 +17,13 @@ a {
     }
 }
 
-.vertical-hr {
-    border-left: 2px solid #E3E3E3;
-    height: 100%;
+footer{
+    background: var(--secondary-background);
+    line-height: 1.8em;
+    font-size: 18px;
 }
 
-.container-info {
-    display: flex;
-    flex-wrap: nowrap;
-    align-items: center;
-}
-
-.container-hr {
-    width: 3% !important;
-}
-
-.bold {
-    font-weight: 500;
-}
-
-.normal {
-    font-weight: 400;
-}
-
-.light {
-    font-weight: 300;
-}
-
-.container {
-    padding: 0 !important;
-}
-
-@media (max-width: 700px){
-    .container{
-        padding: 0 15px !important;
-    }
+.image-block {
+    width: 30px;
+    height: 30px;
 }

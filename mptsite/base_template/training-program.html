@@ -1,43 +1,22 @@
 {% load static %}
-<div class="ms-0 ms-lg-5 me-0 me-lg-5 p-1 p-lg-3 d-flex gap-4 flex-column card card-base mobile-card">
-    <div class="d-flex gap-2 gap-lg-2 mt-lg-0 mt-4 ms-1 ms-lg-0 me-1 me-lg-0 align-items-baseline">
-        <button class="d-lg-block d-none btn btn-light arrow" id="hidden-btn"><img
-                src="{% static '/source/img/ARROW.svg' %}"
-                alt="Влево"></button>
+<div class="container py-4 px-3 gap-4 flex-column card card-base ">
+    <div class="d-flex ms-5">
         <form>
-            <label class="me-0 me-lg-2 input-text-container">
-                <input class="input-text main-font ps-2 pe-2 py-2 ps-lg-4 pe-lg-4 text-nowrap"
+            <label class="input-text-container">
+                <input class="input-text main-font p-2 px-lg-4 text-nowrap"
                        type="text" placeholder="выберите направление"/>
             </label>
-            <div class="checkbox-container me-0 me-lg-2">
+            <div class="checkbox-container">
                 <input type="checkbox" id="9" class="checkbox-button">
-                <label for="9" class="button-label ps-2 pe-2 py-2 ps-lg-4 pe-lg-4 main-font">9 классов</label>
+                <label for="9" class="button-label p-2 px-lg-4 main-font">9 классов</label>
             </div>
             <div class="checkbox-container">
                 <input type="checkbox" id="11" class="checkbox-button">
-                <label for="11" class="button-label ps-2 pe-2 py-2 ps-lg-4 pe-lg-4 main-font">11 классов</label>
+                <label for="11" class="button-label p-2 px-lg-4 main-font">11 классов</label>
             </div>
         </form>
     </div>
-    <div class="d-flex flex-row gap-2 align-items-center justify-content-between">
-        <button class="d-lg-block d-none btn btn-light arrow" id="left-arrow"><img
-                src="{% static '/source/img/ARROW.svg' %}"
-                alt="Влево"></button>
-        <div class="d-flex gap-4" id="card-container">
-            {% for speciality in specialities %}
-            <div class="way-background d-flex" id="card">
-                <div class="card-base flex-grow-1 p-3 way-card training-program-card">
-                    <div class="training-program-card-info">
-                        <h4 class="main-font">{{ speciality.direction.code_name }} - {{ speciality.full_name }}</h4>
-                        <p class="main-font clamped-text">{{ speciality.description }}</p>
-                    </div>
-                    <button class="main-font btn btn-outline-secondary main-button">Подробнее</button>
-                </div>
-            </div>
-            {% endfor %}
-        </div>
-        <button class="d-lg-block d-none btn btn-light arrow" id="right-arrow"><img
-                src="{% static '/source/img/ARROW.svg' %}"
-                alt="Вправо"></button>
-    </div>
+
+    {% include "elements/card-carousel.html" with passed_cards=specialities left_arrow_id="left-arrow" right_arrow_id="right-arrow" container_id="card-container" card_id="card"%}
+
 </div>

@@ -1,0 +1,5 @@
+.header-top{
+    a{
+        color: var(--secondary-foreground);
+    }
+}

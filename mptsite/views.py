@@ -47,8 +47,8 @@ def home_page(request):
             block_faq = None
         faq = QuestionHelper.get_questions(block_faq)
 
-        context = {'specialities': specialities, 'news': news, 'main_news': main_news, "questions": questions,
-                   "faq": faq}
+        context = {'specialities': specialities, "questions": questions,
+                   "news": news, "main_news": main_news, "faq": faq}
         return render(request, 'mptsite/index.html', context=context)
 
 

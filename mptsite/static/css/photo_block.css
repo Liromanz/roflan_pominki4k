@@ -1,333 +1,54 @@
-:root {
-  --gradient: linear-gradient(91.53deg, #6373ff, #6373ff, #bb4040);
-}
-
-@font-face {
-  font-family: "Rubik";
-  src: url("../source/fonts/Rubik-Regular.ttf") format("truetype");
-  font-weight: normal;
-  font-style: normal;
-}
-@font-face {
-  font-family: "Rubik";
-  src: url("../source/fonts/Rubik-Bold.ttf") format("truetype");
-  font-weight: bold;
-  font-style: normal;
-}
-@font-face {
-  font-family: "Rubik";
-  src: url("../source/fonts/Rubik-ExtraBold.ttf") format("truetype");
-  font-weight: 800; /* Extra Bold */
-  font-style: normal;
-}
-@font-face {
-  font-family: "Rubik";
-  src: url("../source/fonts/Rubik-Medium.ttf") format("truetype");
-  font-weight: 500; /* Medium */
-  font-style: normal;
-}
-@font-face {
-  font-family: "Rubik";
-  src: url("../source/fonts/Rubik-Black.ttf") format("truetype");
-  font-weight: 900; /* Black */
-  font-style: normal;
-}
-* {
-  font-family: Rubik;
-}
-
-p,
-h2,
-div {
-  margin: 0 !important;
-}
-
-body .photo-block {
+.photo-block {
+  height: 790px;
   display: flex;
   justify-content: center;
   align-items: end;
+  color: white;
   background-image: url(../source/img/background.png);
   background-size: cover;
-  width: 100%;
-  margin: 0;
   background-repeat: no-repeat;
-  color: white;
-  height: 790px;
   background-position: center;
 }
-body .photo-block .info-block {
-  background: rgb(0, 0, 0);
+
+.photo-block p {
+    font-size: 18px;
+}
+
+.info-block {
   background: linear-gradient(90deg, rgba(0, 0, 0, 0.33) 0%, rgba(0, 0, 0, 0.6) 100%);
   display: flex;
   justify-content: center;
   align-items: center;
   border-radius: 26px;
-  height: 230px;
-  width: 1538px;
-  margin-bottom: 60px;
 }
-body .photo-block .block-wrapper {
-  display: grid;
-  grid-template-columns: 2fr 1.25fr;
-  height: 90%;
-  align-items: center;
-  justify-items: center;
-  gap: 50px;
-}
-body .photo-block .block-wrapper .left-info {
-  display: grid;
-  grid-template-rows: 1fr 1fr 1fr;
-  height: 200px;
-  align-items: center;
-}
-body .photo-block .block-wrapper .left-info .title-and-subtitle-block {
-  display: grid;
-  grid-template-columns: 1fr 5fr;
-  gap: 15px;
-  justify-items: center;
-  align-items: center;
-}
-body .photo-block .block-wrapper .left-info .title-and-subtitle-block .title {
-  font-size: 120px;
-  font-weight: 1000;
-  height: -moz-min-content;
-  height: min-content;
-}
-body .photo-block .block-wrapper .left-info .title-and-subtitle-block .subtitle {
-  font-size: 20px;
-}
-body .photo-block .block-wrapper .left-info .slogan {
-  font-size: 20px;
-  font-weight: 500;
-}
-body .photo-block .block-wrapper .left-info .button-block {
-  display: flex;
-  gap: 30px;
-}
-body .photo-block .block-wrapper .left-info .button-block button {
-  margin: 0px !important;
-}
-body .photo-block .block-wrapper .left-info .button-block .choose-specialty {
-  width: 360px;
-  height: 37px;
+
+.choose-specialty {
   border-radius: 21px;
   background-color: #ffffff;
   border: none;
   color: #595959;
-  font-weight: 500;
-  margin: 0;
 }
-body .photo-block .block-wrapper .left-info .button-block .choose-specialty:hover {
+.choose-specialty:hover {
   transition: 0.2s !important;
   background-color: #ffffff;
   color: #000000;
 }
-body .photo-block .block-wrapper .left-info .button-block .submit-documents {
-  width: 360px;
-  height: 37px;
+.submit-documents {
   border-radius: 21px;
   background: rgb(99, 115, 255);
   background: linear-gradient(90deg, rgb(99, 115, 255) 0%, rgb(187, 64, 64) 100%);
   border: none;
   color: #ffffff;
-  font-weight: 500;
-  margin-top: 30px;
 }
-body .photo-block .block-wrapper .right-info {
-  width: 400px;
+.right-info {
   text-align: end;
   display: grid;
   grid-template-columns: 1fr 1fr;
   justify-content: center;
-  align-items: center;
 }
-body .photo-block .block-wrapper .right-info .date-info {
-  display: grid;
-  grid-template-rows: 2fr 1fr;
-  align-items: center;
-  justify-items: center;
-}
-body .photo-block .block-wrapper .right-info .date-info .date-number {
+.date-number {
   font-size: 120px;
   font-weight: 900;
   line-height: 90px;
+  text-align: center;
 }
-body .photo-block .block-wrapper .right-info .date-info .date-month {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 40px;
-  font-weight: 500;
-  line-height: 50px;
-}
-body .photo-block .block-wrapper .right-info .date-info .date-time {
-  align-self: flex-start;
-  font-size: 40px;
-  font-weight: 500;
-}
-body .photo-block .block-wrapper .right-info .day-info {
-  align-self: flex-start;
-}
-body .photo-block .block-wrapper .right-info .day-info .day-name {
-  font-size: 24px;
-  font-weight: bold;
-}
-body .photo-block .block-wrapper .right-info .day-info .adress {
-  font-size: 20px;
-  white-space: pre-line;
-}
-body .photo-block .block-wrapper .right-info .day-info .enter {
-  font-size: 20px;
-  text-align: justify;
-}
-body .photo-block .block-wrapper .right-info .day-info .take-info {
-  font-size: 20px;
-  text-align: justify;
-}
-
-@media (max-width: 1400px) {
-  .photo-block .info-block {
-    width: 80vw !important;
-    max-width: 80vw;
-    min-width: 80vw;
-  }
-  .photo-block .container-xxl {
-    width: 80vw !important;
-  }
-  .photo-block .info-block {
-    height: 300px !important;
-  }
-  .photo-block .block-wrapper {
-    grid-template-columns: 5fr 1fr !important;
-    gap: 10px !important;
-    width: 100%;
-    height: 100%;
-  }
-  .photo-block .block-wrapper .left-info .title-and-subtitle-block .subtitle {
-    font-size: 18px !important;
-  }
-  .photo-block .block-wrapper button {
-    width: 18rem !important;
-    max-width: 300px !important;
-    min-width: 200px !important;
-  }
-}
-@media (max-width: 1300px) {
-  .info-block {
-    width: 80vw !important;
-    max-width: 80vw;
-    min-width: 80vw;
-  }
-  .subtitle {
-    width: 95%;
-    height: 60%;
-    text-overflow: ellipsis;
-    overflow: hidden;
-  }
-  .block-wrapper {
-    width: 100% !important;
-    grid-template-columns: 1fr 3fr !important;
-  }
-  .date-number {
-    font-size: 110px !important;
-    text-align: start;
-  }
-  .date-month {
-    font-size: 35px !important;
-    text-align: start;
-  }
-  .date-time {
-    font-size: 35px !important;
-    text-align: start;
-  }
-  .day-name {
-    text-align: start !important;
-  }
-  .date-info {
-    justify-content: start;
-    width: 100% !important;
-  }
-  .right-info {
-    grid-template-columns: 1fr 10fr !important;
-    gap: 10px;
-  }
-  .adress {
-    text-align: start !important;
-    text-wrap: wrap !important;
-    white-space: pre-line !important;
-  }
-}
-@media (max-width: 1200px) {
-  .block-wrapper {
-    width: 100%;
-  }
-  .info-block {
-    height: 300px !important;
-  }
-  .block-wrapper {
-    grid-template-columns: 5fr 1fr !important;
-    gap: 10px !important;
-    width: 100%;
-    height: 100%;
-  }
-  .block-wrapper .left-info .title-and-subtitle-block img {
-    align-self: flex-start !important;
-  }
-  .block-wrapper .left-info .title-and-subtitle-block .subtitle {
-    font-size: 15px !important;
-  }
-  .block-wrapper .right-info .day-info .date-info {
-    align-self: flex-start;
-  }
-  .block-wrapper .right-info .day-info .date-info div {
-    display: flex;
-    align-self: flex-start;
-  }
-  .block-wrapper .right-info .day-info .date-info div .date-number {
-    align-self: flex-start;
-  }
-  .block-wrapper .right-info .day-info .day-name {
-    text-wrap: nowrap;
-    font-size: 20px !important;
-  }
-  .block-wrapper .right-info .day-info .day-info .adress {
-    font-size: 18px !important;
-  }
-  .block-wrapper .button-block {
-    margin-top: 15px !important;
-  }
-  .block-wrapper .button-block button {
-    margin-top: 40px !important;
-    width: 240px !important;
-  }
-}
-@media (max-width: 1000px) {
-  .photo-block container {
-    height: 300px !important;
-    width: 900px !important;
-  }
-  .photo-block .info-block {
-    height: 300px !important;
-    width: 900px !important;
-  }
-  .photo-block .block-wrapper {
-    grid-template-columns: 5fr 1fr !important;
-    gap: 10px !important;
-    width: 100%;
-    height: 100%;
-  }
-  .photo-block .block-wrapper .left-info .title-and-subtitle-block .subtitle {
-    font-size: 15px !important;
-  }
-  .photo-block .block-wrapper .right-info .day-info .day-name {
-    text-wrap: nowrap;
-    font-size: 20px !important;
-  }
-  .photo-block .block-wrapper .button-block {
-    margin-top: 15px !important;
-  }
-  .photo-block .block-wrapper .button-block button {
-    margin-top: 40px !important;
-    width: 240px !important;
-  }
-}/*# sourceMappingURL=photo_block.css.map */
