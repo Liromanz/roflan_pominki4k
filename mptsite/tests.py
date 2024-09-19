@@ -18,7 +18,7 @@ class SpecialitiesModelTest(TestCase):
                                                       direction=self.direction)
 
     def test_str(self):
-        self.assertEqual(str(self.speciality), "IT-9 - Информационные технологии")
+        self.assertEqual(str(self.speciality), "IT - Информационные технологии на базе 9")
 
 
 class GroupsModelTest(TestCase):
