@@ -40,13 +40,13 @@
     <div class="row">
         {% for ques in faq.questions %}
         <div class="dropdown">
-            <button class="custom-dropdown-toggle ">
+            <button class="custom-dropdown-toggle p-3">
                 <span class="custom-dropdown-toggle-text">{{ ques.question }}</span>
             </button>
-            <div class="dropdown-content">
-                <p> {{ ques.answer }}</p>
+            <div class="dropdown-content px-3">
+                <p  style="white-space: pre-wrap"> {{ ques.answer }}</p>
             </div>
-            <hr class="m-0"/>
+            <hr class="mx-2 mx-lg-3 my-0"/>
         </div>
         {% endfor %}
     </div>
