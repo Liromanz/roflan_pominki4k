@@ -32,21 +32,21 @@
 <h1 class="m-4 main-font text-center">Новости</h1>
 {% include 'news.html' %}
 
-<h1 class="m-4 main-font text-center d-none d-md-block">Абитуриенту</h1>
+<h1 class="m-4 main-font text-center">Абитуриенту</h1>
 {% include 'applicant.html' %}
 
-<h1 class="m-4 main-font text-center d-none d-md-block">Вопрос-Ответ</h1>
-<div class="ms-0 ms-md-5 me-0 me-md-5 card pt-3 pb-1 pe-3 ps-3 card-base mt-4">
+<h1 class="m-4 main-font text-center">Вопрос-Ответ</h1>
+<div class="container card card-base">
     <div class="row">
         {% for ques in faq.questions %}
         <div class="dropdown">
-            <button class="custom-dropdown-toggle pe-4 ps-4 pt-3">
+            <button class="custom-dropdown-toggle p-3 pt-4">
                 <span class="custom-dropdown-toggle-text">{{ ques.question }}</span>
             </button>
-            <div class="dropdown-content p-1 pe-md-4 ps-md-4">
-                <p> {{ ques.answer }}</p>
+            <div class="dropdown-content px-3">
+                <p  style="white-space: pre-wrap"> {{ ques.answer }}</p>
             </div>
-            <hr class="m-0"/>
+            <hr class="mx-2 mx-lg-3 my-0"/>
         </div>
         {% endfor %}
     </div>
