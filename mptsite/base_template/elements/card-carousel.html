@@ -1,7 +1,7 @@
 {% load static %}
 
 <div class="d-flex gap-2">
-    <button class="btn btn-light arrow ms-2 my-auto d-none d-md-flex" id="{{ left_arrow_id }}">
+    <button class="btn btn-light arrow ms-2 my-auto d-none d-md-flex align-items-center" id="{{ left_arrow_id }}">
         <img src="{% static '/source/img/ARROW.svg' %}" alt="Влево">
     </button>
     <div class="d-flex gap-4" id="{{ container_id }}">
@@ -20,6 +20,6 @@
         </div>
         {% endfor %}
     </div>
-    <button class="btn btn-light arrow ms-2 my-auto d-none d-md-flex" id="{{ right_arrow_id }}"><img
+    <button class="btn btn-light arrow ms-2 my-auto d-none d-md-flex align-items-center" id="{{ right_arrow_id }}"><img
             src="{% static '/source/img/ARROW.svg' %}" alt="Вправо"></button>
 </div>
