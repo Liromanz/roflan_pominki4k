@@ -4,7 +4,6 @@
 
 .subsections {
     display: none;
-    margin-top: 2rem;
 
     &.show {
         display: block;
@@ -60,62 +59,5 @@
 .paddings-dropdown{
     padding-left: 2.3rem;
     padding-right: 2.8rem;
-}
-
-@media (max-width: 991px) {
-    .section-button {
-        border: none;
-        border-radius: 15px;
-        background: white;
-        margin-left: 0;
-        padding: 1.9rem 2rem;
-
-        &::after {
-            display: inline-block;
-            content: ">";
-            margin-top: auto;
-            margin-bottom: auto;
-            font-size: 2.4rem;
-            font-weight: 400;
-            transition: transform 0.3s;
-        }
-
-        &.collapsed {
-            background-image: none !important;
-            border: none;
-            border-radius: 15px 15px 0 0;
-            padding: 1.9rem 2rem 0 2rem;
-        }
-
-        &.collapsed::after {
-            transform: rotate(90deg);
-        }
-    }
-
-    .subsections {
-        background: white;
-        margin-top: 0;
-    }
-
-    .subsections-content {
-        font-size: 1.4rem;
-    }
-
-    .section-button-content {
-        font-size: 2rem;
-        font-weight: 500;
-    }
-
-    .container-applicant {
-        background: var(--background-color);
-    }
-
-    #container-content {
-        display: none;
-    }
-
-    .paddings {
-        padding-left: 3.5rem;
-    }
 }
 

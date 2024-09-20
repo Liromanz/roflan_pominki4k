@@ -24,7 +24,6 @@
 
 .custom-dropdown-toggle {
     position: relative;
-    padding-top: 1.8rem;
 }
 
 .custom-dropdown-toggle::after {
@@ -47,7 +46,6 @@
     transform: scaleY(0);
     transition: max-height 0.3s ease-out, opacity 0.4s ease-out, transform 0.4s ease-out;
     opacity: 0;
-    margin-top: 10px;
     font-size: 1rem;
 }
 
@@ -61,19 +59,4 @@ hr {
     background: #B8B8B8 !important;
     height: 2px !important;
     border: none !important;
-}
-
-@media (max-width: 991px) {
-    .custom-dropdown-toggle-text {
-        font-size: 1.8rem;
-    }
-
-    .custom-dropdown-toggle::after {
-        font-size: 2rem;
-        font-weight: 400;
-    }
-
-    .dropdown-content {
-        font-size: 1.2rem;
-    }
 }
