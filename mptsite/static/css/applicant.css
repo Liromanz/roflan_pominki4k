@@ -4,11 +4,13 @@
 
 .subsections {
     display: none;
-
+    
     &.show {
         display: block;
     }
 }
+
+
 
 .section-button {
     display: flex !important;
