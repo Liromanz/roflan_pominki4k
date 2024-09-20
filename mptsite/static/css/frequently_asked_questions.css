@@ -4,7 +4,6 @@
     width: 100%;
     border: none;
     background: transparent;
-    padding: 0.2rem 0;
     &:hover {
         color: #6EA8FE !important;
     }
