@@ -1,18 +1,20 @@
 {% load static %}
 <div class="container py-4 px-3 gap-4 flex-column card card-base ">
-    <div class="d-flex ms-5">
-        <form>
-            <label class="input-text-container">
+    <div class="mx-0 mx-md-5">
+        <form class="row mx-md-2 mx-0">
+            <label class="col-6 ps-0 p-md-1 ">
                 <input class="input-text main-font p-2 px-lg-4 text-nowrap"
                        type="text" placeholder="выберите направление"/>
             </label>
-            <div class="checkbox-container">
+            <div class="checkbox-container p-0 p-md-1 col-3">
                 <input type="checkbox" id="9" class="checkbox-button">
-                <label for="9" class="button-label p-2 px-lg-4 main-font">9 классов</label>
+                <label for="9" class="button-label p-2 main-font w-100 d-none d-sm-block">9 классов</label>
+                <label for="9" class="button-label p-2 main-font w-100 d-block d-sm-none">9 кл.</label>
             </div>
-            <div class="checkbox-container">
+            <div class="checkbox-container col-3 pe-0 p-md-1">
                 <input type="checkbox" id="11" class="checkbox-button">
-                <label for="11" class="button-label p-2 px-lg-4 main-font">11 классов</label>
+                <label for="11" class="button-label p-2 main-font w-100 d-none d-sm-block">11 классов</label>
+                <label for="11" class="button-label p-2 main-font w-100 d-block d-sm-none">11 кл.</label>
             </div>
         </form>
     </div>

@@ -1,0 +1,16 @@
+{% load static %}
+<div class="container faq card card-base py-3 px-3 my-4">
+    <div class="row">
+        {% for ques in faq.questions %}
+        <div class="dropdown">
+            <button class="custom-dropdown-toggle px-3 py-4">
+                <span class="custom-dropdown-toggle-text">{{ ques.question }}</span>
+            </button>
+            <div class="dropdown-content px-3">
+                <p  style="white-space: pre-wrap"> {{ ques.answer }}</p>
+            </div>
+            <hr class="mx-2 mx-lg-3 my-0"/>
+        </div>
+        {% endfor %}
+    </div>
+</div>
