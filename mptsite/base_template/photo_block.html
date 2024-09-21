@@ -2,8 +2,8 @@
 <div class="photo-block">
     <div class="container info-block mb-5">
         <div class="row p-4">
-            <div class="col order-1 order-lg-0">
-                <div class="d-lg-flex mb-4 ">
+            <div class="col order-1 order-lg-0 p-0">
+                <div class="d-lg-flex mb-4">
                     <img class="d-none d-lg-block" src="{% static '/source/img/asd.svg' %}" alt="МПТ"/>
                     <div class="d-none d-lg-block mx-lg-3">
                         <p class="m-0">
@@ -23,7 +23,7 @@
                 </div>
             </div>
             {% if main_news is not None %}
-            <div class="d-block d-lg-none d-xl-block col-lg-4 order-0 order-lg-1">
+            <div class="d-block d-lg-none d-xl-block col-lg-4 order-0 order-lg-1 p-0 ps-lg-3">
                 <div class="d-flex">
                     <div class="d-flex flex-row flex-lg-column ">
                         <div class="date-number my-auto me-3 me-lg-0">{{ main_news.date|date:"j" }}</div>
