@@ -11,12 +11,13 @@
 
 .custom-dropdown-toggle-text {
     flex-grow: 1;
-    text-align: left;
     font-size: 1.1rem;
-    font-weight: 700;
+    text-align: left;
+    font-weight: 500;
 }
 
 .custom-dropdown-toggle-text:hover{
+
     color: #6EA8FE !important;
     text-decoration: underline;
 }
@@ -45,7 +46,7 @@
     transform: scaleY(0);
     transition: max-height 0.3s ease-out, opacity 0.4s ease-out, transform 0.4s ease-out;
     opacity: 0;
-    font-size: 1rem;
+    line-height: 1.7rem;
 }
 
 .dropdown-content.show {
