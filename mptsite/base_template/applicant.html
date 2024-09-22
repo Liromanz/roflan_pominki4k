@@ -1,31 +1,31 @@
 {% load static %}
-<div class="ms-0 ms-lg-5 me-0 me-lg-5 card pt-lg-3 pb-lg-4 ps-lg-4 pe-lg-3 pe-1 ps-1 card-base mt-4 main-font">
-    <div class="row">
+<div class="container card card-base main-font">
+    <div class="d-flex">
         <div class="col-lg-3 col-12 ms-lg-3 container-applicant">
             {% for ques in questions.all_questions %}
-            <button class="section-button main-font mt-3">
+            <button class="section-button main-font my-3">
                 <span class="section-button-content">
                     {{  ques.subcategory.subcategory_name  }}
                 </span>
             </button>
-            <div class="subsections">
+            <div class="subsections m-0 m-lg-3 ">
                 {% for every_ques in ques.questions %}
                 <div class="dropdown">
-                    <button class="custom-dropdown-toggle paddings">
+                    <button class="custom-dropdown-toggle p-2 p-lg-3">
                             <span class="subsections-content">
                                 {{ every_ques.question }}
                             </span>
                     </button>
-                    <div class="dropdown-content paddings-dropdown">
+                    <div class="dropdown-content px-2 px-lg-3">
                         <p>{{ every_ques.answer }}</p>
                     </div>
-                    <hr class="mx-4 my-0"/>
+                    <hr class="mx-2 mx-lg-3 my-0"/>
                 </div>
                 {% endfor %}
             </div>
             {% endfor %}
         </div>
-        <div id="container-content">
+        <div id="container-content" class="d-none d-lg-block">
 
         </div>
     </div>

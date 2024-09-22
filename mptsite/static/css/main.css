@@ -5,12 +5,15 @@
 @import url(root.css);
 @import url(drop_style.css);
 
+@import url(preload.css);
+
 @import url(header_top.css);
 @import url(second_header.css);
 @import url(photo_block.css);
 
 @import url(about_MPT.css);
 @import url(training_program.css);
+@import url(faq.css);
 
 @import url(map_block.css);
 @import url(frequently_asked_questions.css);

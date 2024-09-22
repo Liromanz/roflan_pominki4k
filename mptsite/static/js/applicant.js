@@ -8,6 +8,7 @@ const originalPositions = containers.map(container => ({
 }));
 
 const targetParent = document.getElementById('container-content');
+let lastWidth = window.innerWidth;
 
 buttons.forEach((btn, index) => {
     btn.addEventListener('click', function () {
@@ -41,4 +42,17 @@ buttons.forEach((btn, index) => {
             });
         }
     });
+});
+
+window.addEventListener('resize', function() {
+   const currentWidth = window.innerWidth;
+
+    // Проверяем, произошло ли пересечение через 992 пикселя
+    if (currentWidth > 992 && lastWidth <= 992 || lastWidth >= 992 && currentWidth < 992) {
+        // Удаляем классы `show` и `collapsed` у всех контейнеров и кнопок
+        buttons.forEach(button => button.classList.remove('collapsed'));
+        containers.forEach(element => element.classList.remove('show'));
+    }
+
+    lastWidth = currentWidth;
 });
