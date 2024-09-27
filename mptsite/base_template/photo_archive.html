@@ -1,5 +1,37 @@
 {% load static %}
-<div class="container-fluid container-lg">
-    <img src="{% static '/source/img/image4.svg' %}" class="img-fluid">
+<div class="container p-0 mt-4">
+    <div class="image-grid">
+        <div class="image-grid-item" style="grid-row: span 2;">
+            <img src="{% static '/source/img/img.png' %}">
+        </div>
+        <div class="image-grid-item" style="grid-column: span 2">
+             <img src="{% static '/source/img/img.png' %}">
+        </div>
+        <div class="image-grid-item" style="grid-row: span 2">
+            <div class="" style="height: 23%"> <img src="{% static '/source/img/img.png' %}"></div>
+            <div class="" style="height: 75%"> <img src="{% static '/source/img/img.png' %}"></div>
+        </div>
+        <div class="image-grid-item" style="grid-row: span 3">
+            <div class="" style="height: 70%"> <img src="{% static '/source/img/img.png' %}"></div>
+            <div class="" style="height: 30%"> <img src="{% static '/source/img/img.png' %}"></div>
+        </div>
+        <div class="image-grid-item " style="grid-row: span 2">  <img src="{% static '/source/img/img.png' %}"> </div>
+        <div class="image-grid-item ">  <img src="{% static '/source/img/img.png' %}"></div>
+        <div class="image-grid-item" style="flex-direction: row!important;">
+            <div>
+                <div class="">
+                     <img src="{% static '/source/img/img.png' %}">
+                </div>
+                <div class="">
+                     <img src="{% static '/source/img/img.png' %}">
+                </div>
+            </div>
+            <div class="">
+                 <img src="{% static '/source/img/img.png' %}">
+            </div>
+        </div>
+        <div class="image-grid-item " style="grid-column: span 2"> <img src="{% static '/source/img/img.png' %}"></div>
+    </div>
 </div>
+
 
