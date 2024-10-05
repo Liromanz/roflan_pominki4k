@@ -82,5 +82,10 @@ def newrasp(request):
     slovar = {"rasp": day_rasp}
     return render(request, 'mptsite/raspisanie.html', context=slovar)
 
+
+
+
+
 def not_auth_student(request):
-    return render(request, 'mptsite/not_auth_student.html')
+    news = News.objects.all()
+    return render(request, 'mptsite/not_auth_student.html', context={ "news": news})

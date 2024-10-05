@@ -6,20 +6,21 @@
                 style="height: 60px"
         >
             <div class="container-fluid p-0">
-                <a class="navbar-brand d-lg-none me-0" href="#"
+                <a class="navbar-brand d-lg-none me-0" href="{% url 'home' %}"
                 ><img
                         src="{% static 'source/logo/MPT_MAIN_LOGO.svg' %}"
                         style="height: 42px"
                         alt="#"
                 /></a>
                 <div class="d-flex align-center gap-2 gap-sm-3 pe-3 px-lg-0">
-                    <button class="d-lg-none theme-button" style="border: none; background: none;"><img style="width: 2.5rem;"
-                                                                                                src="{% static '/source/img/THEME_SWITCHER_MOBILE.svg' %}"
-                                                                                                alt="тема">
+                    <button class="d-lg-none theme-button" style="border: none; background: none;"><img
+                            style="width: 2.5rem;"
+                            src="{% static '/source/img/THEME_SWITCHER_MOBILE.svg' %}"
+                            alt="тема">
                     </button>
                     <button class="d-lg-none" style="border: none; background: none;"><img style="width: 2.5rem;"
-                                                                                                 src="{% static '/source/img/BLIND_V_MOBILE.svg' %}"
-                                                                                                 alt="тема">
+                           src="{% static '/source/img/BLIND_V_MOBILE.svg' %}"
+                           alt="тема">
                     </button>
                     <button
                             class="navbar-toggler"
@@ -47,7 +48,7 @@
                             <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas"
                                     aria-label="Закрыть"></button>
                         </div>
-                        <a class="navbar-brand d-none d-lg-block" href="#"
+                        <a class="navbar-brand d-none d-lg-block" href="{% url 'main_page' %}"
                         ><img
                                 src="{% static 'source/logo/MPT_MAIN_LOGO.svg' %}"
                                 style="height: 42px"
@@ -60,7 +61,7 @@
                         <a class="nav-link" href="#">Доп. образование</a>
                         <a class="nav-link" href="#">Контакты</a>
 
-                        <button class="px-5 beaut-btn p-2 d-none d-lg-block">Студенту</button>
+                        <a href="{% url 'not_auth_stud'%}"><button class="px-5 beaut-btn p-2 d-none d-lg-block" > Студенту</button></a>
                     </div>
                 </div>
             </div>

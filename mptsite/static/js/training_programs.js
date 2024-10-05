@@ -1,22 +1,44 @@
 const observer = new MutationObserver(() => {
-    const leftArrow = document.getElementById("left-arrow");
-    const rightArrow = document.getElementById("right-arrow");
-    const cardContainer = document.getElementById("card-container");
+    const elements = [
+        {
+            leftArrow: document.getElementById("left-arrow"),
+            rightArrow: document.getElementById("right-arrow"),
+            container: document.getElementById("card-container"),
+            card: document.getElementById("card")
+        },
+        {
+            leftArrow: document.getElementById("l-arrow"),
+            rightArrow: document.getElementById("r-arrow"),
+            container: document.getElementById("news-card-container"),
+            card: document.getElementById("news-card")
+        }
+    ];
 
-    const lArrow = document.getElementById("l-arrow");
-    const rArrow = document.getElementById("r-arrow");
-    const newsCardContainer = document.getElementById("news-card-container");
+    elements.forEach(({ leftArrow, rightArrow, container, card }) => {
+        if (leftArrow && rightArrow && container && card) {
+            const width = card.offsetWidth;
+            const gap = getGapValue(container);
 
-    const card = document.getElementById("card");
-    const width = card.offsetWidth;
+            leftArrow.addEventListener("click", () => {
+                container.scrollBy({
+                    left: (width + gap) * -1,
+                    behavior: "smooth",
+                });
+            });
 
-    const newsCard = document.getElementById("news-card");
-    const newsWidth = newsCard.offsetWidth;
+            rightArrow.addEventListener("click", () => {
+                container.scrollBy({
+                    left: (width + gap),
+                    behavior: "smooth",
+                });
+            });
+        }
+    });
+});
 
-    const cardContainerStyles = window.getComputedStyle(cardContainer);
-    const newsCardContainerStyles = window.getComputedStyle(newsCardContainer);
-    let gap = cardContainerStyles.getPropertyValue("gap");
-    let newsGap = newsCardContainerStyles.getPropertyValue("gap");
+const getGapValue = (container) => {
+    const containerStyles = window.getComputedStyle(container);
+    let gap = containerStyles.getPropertyValue("gap");
 
     if (!gap.includes("px")) {
         const tmpDiv = document.createElement("div");
@@ -26,36 +48,8 @@ const observer = new MutationObserver(() => {
         document.body.removeChild(tmpDiv);
     }
 
-    gap = Number(gap.replace("px", ""))
+    return Number(gap.replace("px", ""));
+}
 
-    leftArrow.addEventListener("click", () => {
-        cardContainer.scrollBy({
-            left: (width + gap) * -1,
-            behavior: "smooth",
-        });
-    });
-
-    rightArrow.addEventListener("click", () => {
-        cardContainer.scrollBy({
-            left: (width + gap),
-            behavior: "smooth",
-        });
-    });
-
-    lArrow.addEventListener("click", () => {
-        newsCardContainer.scrollBy({
-            left: (width + gap) * -1,
-            behavior: "smooth",
-        });
-    });
-
-    rArrow.addEventListener("click", () => {
-        newsCardContainer.scrollBy({
-            left: (width + gap),
-            behavior: "smooth",
-        });
-    });
-})
-
-const config = {subtree: true, childList: true};
+const config = { subtree: true, childList: true };
 observer.observe(document, config);
