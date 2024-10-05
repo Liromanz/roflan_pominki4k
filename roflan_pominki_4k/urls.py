@@ -17,7 +17,7 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 
-from django.conf.urls.static import static as djstat
+from django.conf.urls.static import static
 
 from roflan_pominki_4k import settings
 
@@ -26,4 +26,4 @@ urlpatterns = [
     path('', include('mptsite.urls')),
     path('doc/', include('docsite.urls')),
     path('', include('social_django.urls', namespace='social'))
-] + djstat(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

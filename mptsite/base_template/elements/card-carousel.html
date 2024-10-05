@@ -9,7 +9,7 @@
         <div class="d-flex" id="{{ card_id }}">
             <div class="card-base flex-grow-1 p-3 way-card"
                  {% if card_info.picture %}
-                 style="background-image: url('media/{{ card_info.picture }}') !important"
+                 style="background-image: url('/media/{{ card_info.picture }}') !important"
                  {% endif %}>
                 <h4 class="main-font">{{ card_info }}</h4>
                 <p class="main-font">{{ card_info.description }}</p>
