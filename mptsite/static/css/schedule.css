@@ -1,0 +1,56 @@
+@import url(../css/root.css);
+.cont {
+  height: 100px;
+  width: 100%;
+}
+
+.schedule-word{
+    hyphens: auto;
+}
+h2{
+    font-weight: var(--Medium);
+    margin: 0;
+    font-size: 20px;
+}
+
+.accent{
+    color: #2d2d4460;
+}
+.top-schedule{
+    font-size: 12px;
+    
+}
+.time{
+    color: #6d6d6d;
+}
+
+.scheudle-card{
+    background-color: white ;
+    border-radius: 5px;
+    font-weight: var(--Normal);
+}
+.rspc-card {
+  width: 600px;
+}
+
+
+
+.changed{
+background-color: #8dc8e8;
+}
+.distant{
+background-color: #cde48d;
+}
+.distant , .changed {
+    border-radius: 5px;
+}
+.card{
+    font-size: 14px;
+}
+/* static/css/schedule.css */
+.discipline-name {
+    max-width: 100%; /* Ограничение ширины для переноса */
+    overflow-wrap: break-word; /* Позволяет перенос строк */
+    word-wrap: break-word; /* Для старых браузеров */
+    hyphens: auto; /* Разрешает перенос по слогам */
+}

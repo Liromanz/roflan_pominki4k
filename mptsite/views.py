@@ -69,6 +69,9 @@ def prepods(request):
 def newFile(request):
     return render(request, 'mptsite/newfile.html')
 
+def schedule(request):
+    return render(request, 'mptsite/schedule.html')
+
 
 def newrasp(request):
     group = m.Group.objects.get(name='П50-8-22')
