@@ -1,5 +1,5 @@
 from datetime import datetime
-import pgtrigger as pg
+
 
 from django.db import models
 
