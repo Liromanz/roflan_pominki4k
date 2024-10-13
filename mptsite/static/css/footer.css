@@ -13,14 +13,12 @@ a {
     color: black !important;
     &:hover{
         color: #6EA8FE !important;
-        text-decoration: underline;
     }
 }
 
 footer{
     background: var(--secondary-background);
     line-height: 1.8em;
-    font-size: 18px;
 }
 
 .image-block {
