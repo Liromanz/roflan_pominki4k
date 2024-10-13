@@ -34,10 +34,11 @@
 {% include 'header_top.html' %}
 <hr class="p-0 m-0">
 
-{% include 'header_main.html' %}
+{% include 'header_main.html' with urls=header_urls %}
 
 {% include 'photo_block.html' %}
 
+<div id="about"></div>
 {% include 'about_mpt.html' %}
 
 <h1 class="m-4 text-center">Программы обучения</h1>

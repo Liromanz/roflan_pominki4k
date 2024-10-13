@@ -1,71 +1,49 @@
 {% load static %}
 <header class="main-header sticky-top s-18 bg-white">
     <div class="container-lg sticky-top p-0">
-        <nav
-                class="navbar navbar-expand-lg navbar-light p-0 s-18"
-                style="height: 60px"
-        >
+        <nav class="navbar navbar-expand-lg navbar-light p-0 s-18" style="height: 60px">
             <div class="container-fluid p-0">
-                <a class="navbar-brand d-lg-none me-0" href="{% url 'home' %}"
-                ><img
-                        src="{% static 'source/logo/MPT_MAIN_LOGO.svg' %}"
-                        style="height: 42px"
-                        alt="#"
-                /></a>
+                <a class="navbar-brand d-lg-none me-0" href="{% url 'main_page' %}">
+                    <img src="{% static 'source/logo/MPT_MAIN_LOGO.svg' %}" style="height: 42px" alt="#"/>
+                </a>
                 <div class="d-flex align-center gap-2 gap-sm-3 pe-3 px-lg-0">
-                    <button class="d-lg-none theme-button" style="border: none; background: none;"><img
-                            style="width: 2.5rem;"
-                            src="{% static '/source/img/THEME_SWITCHER_MOBILE.svg' %}"
-                            alt="тема">
+                    <button class="d-lg-none theme-button" style="border: none; background: none;">
+                        <img style="width: 2.5rem;" src="{% static '/source/img/THEME_SWITCHER_MOBILE.svg' %}"
+                             alt="тема">
                     </button>
-                    <button class="d-lg-none" style="border: none; background: none;"><img style="width: 2.5rem;"
-                           src="{% static '/source/img/BLIND_V_MOBILE.svg' %}"
-                           alt="тема">
+                    <button class="d-lg-none" style="border: none; background: none;">
+                        <img style="width: 2.5rem;" src="{% static '/source/img/BLIND_V_MOBILE.svg' %}" alt="тема">
                     </button>
-                    <button
-                            class="navbar-toggler"
-                            type="button"
-                            data-bs-toggle="offcanvas"
-                            data-bs-target="#navbarNavAltMarkup"
-                            aria-controls="offcanvasRight"
-                            aria-expanded="false"
-                            aria-label="Переключатель навигации"
-                    >
+                    <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas"
+                            data-bs-target="#navbarNavAltMarkup" aria-controls="offcanvasRight" aria-expanded="false"
+                            aria-label="Переключатель навигации">
                         <span class="navbar-toggler-icon"></span>
                     </button>
                 </div>
                 <div class="offcanvas offcanvas-end" id="navbarNavAltMarkup">
-                    <div
-                            class="navbar-nav w-100 justify-content-lg-between align-items-lg-center bg-white d-flex px-4 px-lg-0"
-                    >
+                    <div class="navbar-nav w-100 justify-content-lg-between align-items-lg-center bg-white d-flex px-4 px-lg-0">
                         <div class="offcanvas-header">
-                            <a class="navbar-brand d-lg-none" href="#"
-                            ><img
-                                    src="{% static 'source/logo/MPT_MAIN_LOGO.svg' %}"
-                                    style="height: 42px"
-                                    alt="#"
-                            /></a>
+                            <a class="navbar-brand d-lg-none" href="{% url 'main_page' %}">
+                                <img src="{% static 'source/logo/MPT_MAIN_LOGO.svg' %}" style="height: 42px" alt="#"/>
+                            </a>
                             <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas"
                                     aria-label="Закрыть"></button>
                         </div>
-                        <a class="navbar-brand d-none d-lg-block" href="{% url 'main_page' %}"
-                        ><img
-                                src="{% static 'source/logo/MPT_MAIN_LOGO.svg' %}"
-                                style="height: 42px"
-                                alt="#"
-                        /></a>
-                        <a class="nav-link d-lg-none" href="#">Студенту</a>
-                        <a class="nav-link s-18 d-lg-none" href="#">О техникуме</a>
-                        <a class="nav-link" href="#">Специальности</a>
-                        <a class="nav-link" href="#">Абитуриенту</a>
-                        <a class="nav-link" href="#">Доп. образование</a>
-                        <a class="nav-link" href="#">Контакты</a>
-
-                        <a href="{% url 'not_auth_stud'%}"><button class="px-5 beaut-btn p-2 d-none d-lg-block" > Студенту</button></a>
+                        <a class="navbar-brand d-none d-lg-block" href="{% url 'main_page' %}">
+                            <img src="{% static 'source/logo/MPT_MAIN_LOGO.svg' %}" style="height: 42px" alt="#"/>
+                        </a>
+                        {% for url_item in urls %}
+                            {% if url_item.is_main %}
+                                <a href="{{ url_item.url }}">
+                                    <button class="px-5 beaut-btn p-2">{{ url_item.name }}</button>
+                                </a>
+                            {% else %}
+                                <a class="nav-link" href="{{ url_item.url }}">{{ url_item.name }}</a>
+                            {% endif %}
+                        {% endfor %}
                     </div>
                 </div>
             </div>
         </nav>
     </div>
-    <hr class="p-0 m-0">
 </header>
