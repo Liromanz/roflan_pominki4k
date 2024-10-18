@@ -71,14 +71,14 @@ const getMonday = (date) => {
 const renderWeek = (startOfWeek, month) => {
     const weekContainer = document.createElement("div");
     weekContainer.classList.add("week");
-
+    console.log("month: " + month);
     for (let i = 0; i < 7; i++) {
         const currentDate = new Date(startOfWeek.getFullYear(), startOfWeek.getMonth(), startOfWeek.getDate() + i);
         const dayBtn = document.createElement("button");
         dayBtn.textContent = currentDate.getDate();
         dayBtn.dataset.index = alertFormatter.format(currentDate);
         addEvent(dayBtn);
-
+        console.log(currentDate.getMonth());
         if (currentDate.getMonth() === month) {
             dayBtn.classList.add('day');
         } else {
@@ -112,15 +112,33 @@ const deleteWeek = (index) => {
     weeks[index].remove();
 }
 
-const updateMonth = (week, startOrFinish) => {
-    const numberDay = week.getDate();
-    if (numberDay <= 8 && startOrFinish === 'start' || numberDay >= 24 && startOrFinish === 'finish' ) {
+const updateMonthNext = (week) => {
+    if (24 <= week.getDate() ) {
+        currentMonth++;
         const monthStr = monthFormatter.format(new Date(week.getFullYear(), week.getMonth()));
         currentMonthYear.textContent = `${monthStr.charAt(0).toUpperCase() + monthStr.slice(1)}`;
         const allDays = document.querySelectorAll('.calendar-days button');
 
         allDays.forEach(day => {
-            if (parseDate(day.dataset.index) === week.getMonth()){
+            if (parseDate(day.dataset.index).getMonth() === week.getMonth()){
+                day.classList.remove('another-month-day');
+            } else {
+                day.classList.add('another-month-day');
+            }
+        });
+    }
+}
+
+const updateMonthPrevious = (week) => {
+    if (8 >= week.getDate()) {
+        currentMonth--;
+        const monthStr = monthFormatter.format(new Date(week.getFullYear(), week.getMonth()));
+        currentMonthYear.textContent = `${monthStr.charAt(0).toUpperCase() + monthStr.slice(1)}`;
+        const allDays = document.querySelectorAll('.calendar-days button');
+
+        allDays.forEach(day => {
+            console.log(parseDate(day.dataset.index).getMonth());
+            if (parseDate(day.dataset.index).getMonth() <= week.getMonth()){
                 day.classList.remove('another-month-day');
             } else {
                 day.classList.add('another-month-day');
@@ -131,16 +149,16 @@ const updateMonth = (week, startOrFinish) => {
 
 const addNextWeek = () => {
     const week = getMonday(new Date(lastWeek.getFullYear(), lastWeek.getMonth(), lastWeek.getDate() + 1));
-    renderWeek(week);
-    updateMonth(week, 'finish');
+    renderWeek(week, currentMonth);
+    updateMonthNext(week);
     lastWeek = new Date(lastWeek.getFullYear(), lastWeek.getMonth(), lastWeek.getDate() + 7);
     firstWeek = new Date(firstWeek.getFullYear(), firstWeek.getMonth(), firstWeek.getDate() + 7);
 };
 
 const addPreviousWeek = () => {
     const week = getMonday(new Date(firstWeek.getFullYear(), firstWeek.getMonth(), firstWeek.getDate() - 1));
-    const weekContainer = renderWeek(week);
-    updateMonth(week, 'start');
+    const weekContainer = renderWeek(week, currentMonth);
+    updateMonthPrevious(week);
     calendar.prepend(weekContainer);
     firstWeek = new Date(firstWeek.getFullYear(), firstWeek.getMonth(), firstWeek.getDate() - 7);
     lastWeek = new Date(lastWeek.getFullYear(), lastWeek.getMonth(), lastWeek.getDate() - 7);
