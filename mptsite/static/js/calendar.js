@@ -1,75 +1,42 @@
 const calendar = document.getElementById("calendar");
-const currentMonthYear = document.getElementById("currentMonthYear");
-const prevMonthBtn = document.getElementById("prevMonth");
-const nextMonthBtn = document.getElementById("nextMonth");
+const currentMonthYear = document.getElementById("currentMonth");
+const prevWeekBtn = document.getElementById("prevWeek");
+const nextWeekBtn = document.getElementById("nextWeek");
 
 let today = new Date();
 let currentMonth = today.getMonth();
 let currentYear = today.getFullYear();
+let firstWeek = new Date();
+let lastWeek = new Date();
 
 const locale = 'ru-RU';
 const monthFormatter = new Intl.DateTimeFormat(locale, { month: 'long' });
-const alertFormatter = new Intl.DateTimeFormat(locale, {day: "numeric", month: "numeric", year: "numeric"});
+const alertFormatter = new Intl.DateTimeFormat(locale, { day: "numeric", month: "numeric", year: "numeric" });
 
 let isSelecting = false;
 let startIndex = null;
 let endIndex = null;
 
-const getWeek = (date) => {
-    const startOfYear = new Date(date.getFullYear(), 0, 1);
-    const pastDays = (date - startOfYear) / (1000 * 60 * 60 * 24);
-    return Math.ceil((pastDays + startOfYear.getDay()) / 7);
+const parseDate = (dateString) => {
+    const [day, month, year] = dateString.split('.').map(Number);
+    return new Date(year, month - 1, day);
 }
 
-const renderCalendar = (month, year) => {
-    calendar.innerHTML = "";
+const updateSelection = () => {
+    const allDays = document.querySelectorAll('.calendar-days button');
+    allDays.forEach((day, index) => {
+        const currentIndex = day.dataset.index;
+        const start = parseDate(startIndex);
+        const end = parseDate(endIndex);
+        const current = parseDate(currentIndex);
 
-    const monthStr = monthFormatter.format(new Date(year, month));
-    currentMonthYear.textContent  = monthStr.charAt(0).toUpperCase() + monthStr.slice(1);
-
-    let firstDay = new Date(year, month).getDay() || 7;
-    let daysInMonth = new Date(year, month + 1, 0).getDate();
-
-    let prevMonthDays = new Date(year, month, 0).getDate();
-    let daysToShowFromPrevMonth = firstDay - 1;
-    const currentWeek = getWeek(new Date(year, month, today.getDate()))
-
-    for (let i = daysToShowFromPrevMonth; i > 0; i--) {
-        const dayBtn = document.createElement("button");
-        dayBtn.textContent = prevMonthDays - i + 1;
-        dayBtn.classList.add("day", "prev-month-day");
-        dayBtn.dataset.index = alertFormatter.format(new Date(year, month-1, prevMonthDays - i + 1));
-
-        addEvent(dayBtn);
-        calendar.appendChild(dayBtn);
-    }
-
-    for (let day = 1; day <= daysInMonth; day++) {
-        const dayBtn = document.createElement("button");
-        dayBtn.textContent = day;
-        dayBtn.classList.add("day");
-        const date = new Date(year, month, day);
-        dayBtn.dataset.index = alertFormatter.format(date);
-
-        if (getWeek(new Date(year, month, day)) === currentWeek) {
-            dayBtn.classList.add("selected");
+        if (current >= Math.min(start, end) && current <= Math.max(start, end)) {
+            day.classList.add('selected');
+        } else {
+            day.classList.remove('selected');
         }
 
-        addEvent(dayBtn);
-        calendar.appendChild(dayBtn);
-    }
-
-    const remainingCells = 42 - calendar.childNodes.length;
-    for (let i = 1; i <= remainingCells; i++) {
-        const dayBtn = document.createElement("button");
-        dayBtn.textContent = i;
-        dayBtn.classList.add("day", "next-month-day");
-        dayBtn.dataset.index = alertFormatter.format(new Date(year, month+1, i));
-
-
-        addEvent(dayBtn);
-        calendar.appendChild(dayBtn);
-    }
+    });
 }
 
 const addEvent = (btn) => {
@@ -95,44 +62,98 @@ const addEvent = (btn) => {
         });
 }
 
-const parseDate = (dateString) => {
-    const [day, month, year] = dateString.split('.').map(Number);
-    return new Date(year, month - 1, day);
-}
+const getMonday = (date) => {
+    const day = date.getDay();
+    const diff = (day === 0 ? -6 : 1) - day;
+    return new Date(date.setDate(date.getDate() + diff));
+};
 
-const updateSelection = () => {
-    const allDays = document.querySelectorAll('.calendar-days button');
-    allDays.forEach((day, index) => {
-        const currentIndex = day.dataset.index;
-        const start = parseDate(startIndex);
-        const end = parseDate(endIndex);
-        const current = parseDate(currentIndex);
+const renderWeek = (startOfWeek, month) => {
+    const weekContainer = document.createElement("div");
+    weekContainer.classList.add("week");
 
-        if (current >= Math.min(start, end) && current <= Math.max(start, end)) {
-            day.classList.add('selected'); // Диапазон
+    for (let i = 0; i < 7; i++) {
+        const currentDate = new Date(startOfWeek.getFullYear(), startOfWeek.getMonth(), startOfWeek.getDate() + i);
+        const dayBtn = document.createElement("button");
+        dayBtn.textContent = currentDate.getDate();
+        dayBtn.dataset.index = alertFormatter.format(currentDate);
+        addEvent(dayBtn);
+
+        if (currentDate.getMonth() === month) {
+            dayBtn.classList.add('day');
         } else {
-            day.classList.remove('selected');
+            dayBtn.classList.add('day', 'another-month-day');
         }
 
-    });
+        weekContainer.appendChild(dayBtn);
+    }
+
+    calendar.appendChild(weekContainer);
+    return weekContainer;
+};
+
+const renderInitialWeeks = (month, year) => {
+    calendar.innerHTML = "";
+    const firstDayOfMonth = new Date(year, month, 1);
+    let firstMonday = getMonday(firstDayOfMonth);
+    firstWeek = firstMonday;
+    lastWeek = new Date(firstWeek.getFullYear(), firstWeek.getMonth(), firstWeek.getDate()+43);
+
+    for (let i = 0; i < 6; i++) {
+        renderWeek(new Date(firstMonday.getFullYear(), firstMonday.getMonth(), firstMonday.getDate() + i * 7), currentMonth);
+    }
+
+    const monthStr = monthFormatter.format(new Date(year, month));
+    currentMonthYear.textContent = `${monthStr.charAt(0).toUpperCase() + monthStr.slice(1)}`;
+};
+
+const deleteWeek = (index) => {
+    const weeks = document.querySelectorAll('.calendar-days div');
+    weeks[index].remove();
 }
 
-renderCalendar(currentMonth, currentYear);
+const updateMonth = (week, startOrFinish) => {
+    const numberDay = week.getDate();
+    if (numberDay <= 8 && startOrFinish === 'start' || numberDay >= 24 && startOrFinish === 'finish' ) {
+        const monthStr = monthFormatter.format(new Date(week.getFullYear(), week.getMonth()));
+        currentMonthYear.textContent = `${monthStr.charAt(0).toUpperCase() + monthStr.slice(1)}`;
+        const allDays = document.querySelectorAll('.calendar-days button');
 
-prevMonthBtn.addEventListener("click", () => {
-    currentMonth--;
-    if (currentMonth < 0) {
-        currentMonth = 11;
-        currentYear--;
+        allDays.forEach(day => {
+            if (parseDate(day.dataset.index) === week.getMonth()){
+                day.classList.remove('another-month-day');
+            } else {
+                day.classList.add('another-month-day');
+            }
+        });
     }
-    renderCalendar(currentMonth, currentYear);
+}
+
+const addNextWeek = () => {
+    const week = getMonday(new Date(lastWeek.getFullYear(), lastWeek.getMonth(), lastWeek.getDate() + 1));
+    renderWeek(week);
+    updateMonth(week, 'finish');
+    lastWeek = new Date(lastWeek.getFullYear(), lastWeek.getMonth(), lastWeek.getDate() + 7);
+    firstWeek = new Date(firstWeek.getFullYear(), firstWeek.getMonth(), firstWeek.getDate() + 7);
+};
+
+const addPreviousWeek = () => {
+    const week = getMonday(new Date(firstWeek.getFullYear(), firstWeek.getMonth(), firstWeek.getDate() - 1));
+    const weekContainer = renderWeek(week);
+    updateMonth(week, 'start');
+    calendar.prepend(weekContainer);
+    firstWeek = new Date(firstWeek.getFullYear(), firstWeek.getMonth(), firstWeek.getDate() - 7);
+    lastWeek = new Date(lastWeek.getFullYear(), lastWeek.getMonth(), lastWeek.getDate() - 7);
+};
+
+prevWeekBtn.addEventListener("click", () => {
+    addPreviousWeek();
+    deleteWeek(6);
 });
 
-nextMonthBtn.addEventListener("click", () => {
-    currentMonth++;
-    if (currentMonth > 11) {
-        currentMonth = 0;
-        currentYear++;
-    }
-    renderCalendar(currentMonth, currentYear);
+nextWeekBtn.addEventListener("click", () => {
+    addNextWeek();
+    deleteWeek(0);
 });
+
+renderInitialWeeks(currentMonth, currentYear);

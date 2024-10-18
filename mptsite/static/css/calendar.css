@@ -10,11 +10,19 @@
     align-items: center;
 }
 
-.calendar-week-days, .calendar-days {
+.calendar-week-days {
     display: grid;
     grid-template-columns: repeat(7, 1fr);
     text-align: center;
     margin: 0 5px;
+}
+
+.week {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    text-align: center;
+    margin: 0 5px;
+    background: linear-gradient(90deg, rgba(128, 128, 255, 0.3), rgba(255, 128, 128, 0.3));
 }
 
 .calendar-week-days div {
@@ -29,7 +37,7 @@
     background: var(--secondary-background);
 }
 
-.prev-month-day, .next-month-day {
+.another-month-day {
     color: var(--secondary-foreground);
 }
 
@@ -52,7 +60,7 @@
     color: #dc3545;
 }
 
-#prevMonth {
+#prevWeek {
      transform: rotate(180deg);
 }
 
@@ -64,19 +72,15 @@
     padding-left: 12px;
 }
 
-.calendar-days {
-    background: linear-gradient(90deg, rgba(128, 128, 255, 0.3), rgba(255, 128, 128, 0.3));
-}
-
 .calendar-days .day.selected {
     background: transparent;
 }
 
-.calendar-days > .day:nth-child(7n) {
+.day:nth-child(7n) {
     color: #DA3131;
 }
 
-.calendar-days > .next-month-day:nth-child(7n), .prev-month-day:nth-child(7n) {
+.another-month-day:nth-child(7n) {
     color: #EF6969;
 }
 
