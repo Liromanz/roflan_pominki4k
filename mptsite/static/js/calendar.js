@@ -113,7 +113,7 @@ const deleteWeek = (index) => {
 }
 
 const updateMonthNext = (week) => {
-    if (24 <= week.getDate() ) {
+    if (23 <= week.getDate() ) {
         currentMonth++;
         const monthStr = monthFormatter.format(new Date(week.getFullYear(), week.getMonth()));
         currentMonthYear.textContent = `${monthStr.charAt(0).toUpperCase() + monthStr.slice(1)}`;
@@ -166,6 +166,9 @@ const addPreviousWeek = () => {
 
 prevWeekBtn.addEventListener("click", () => {
     addPreviousWeek();
+    setTimeout(() => {
+        calendar.classList.remove('down');
+    }, 500);
     deleteWeek(6);
 });
 
