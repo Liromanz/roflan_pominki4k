@@ -11,7 +11,7 @@ let lastWeek = new Date();
 
 const locale = 'ru-RU';
 const monthFormatter = new Intl.DateTimeFormat(locale, { month: 'long' });
-const alertFormatter = new Intl.DateTimeFormat(locale, { day: "numeric", month: "numeric", year: "numeric" });
+const idFormatter = new Intl.DateTimeFormat(locale, { day: "numeric", month: "numeric", year: "numeric" });
 
 let isSelecting = false;
 let startIndex = null;
@@ -71,14 +71,12 @@ const getMonday = (date) => {
 const renderWeek = (startOfWeek, month) => {
     const weekContainer = document.createElement("div");
     weekContainer.classList.add("week");
-    console.log("month: " + month);
     for (let i = 0; i < 7; i++) {
         const currentDate = new Date(startOfWeek.getFullYear(), startOfWeek.getMonth(), startOfWeek.getDate() + i);
         const dayBtn = document.createElement("button");
         dayBtn.textContent = currentDate.getDate();
-        dayBtn.dataset.index = alertFormatter.format(currentDate);
+        dayBtn.dataset.index = idFormatter.format(currentDate);
         addEvent(dayBtn);
-        console.log(currentDate.getMonth());
         if (currentDate.getMonth() === month) {
             dayBtn.classList.add('day');
         } else {
@@ -137,7 +135,6 @@ const updateMonthPrevious = (week) => {
         const allDays = document.querySelectorAll('.calendar-days button');
 
         allDays.forEach(day => {
-            console.log(parseDate(day.dataset.index).getMonth());
             if (parseDate(day.dataset.index).getMonth() <= week.getMonth()){
                 day.classList.remove('another-month-day');
             } else {
@@ -166,9 +163,6 @@ const addPreviousWeek = () => {
 
 prevWeekBtn.addEventListener("click", () => {
     addPreviousWeek();
-    setTimeout(() => {
-        calendar.classList.remove('down');
-    }, 500);
     deleteWeek(6);
 });
 
@@ -178,3 +172,18 @@ nextWeekBtn.addEventListener("click", () => {
 });
 
 renderInitialWeeks(currentMonth, currentYear);
+
+const highlightCurrentWeek = () => {
+    const allDays = document.querySelectorAll('.calendar-days button');
+    let startOfWeek = getMonday(today);
+    startOfWeek = new Date(startOfWeek.getFullYear(), startOfWeek.getMonth(), startOfWeek.getDate());
+    allDays.forEach(day => {
+        const dayDate = parseDate(day.dataset.index);
+        if (dayDate >= startOfWeek && dayDate < new Date(startOfWeek.getFullYear(), startOfWeek.getMonth(), startOfWeek.getDate() + 7)) {
+            console.log(dayDate);
+            day.classList.add('selected');
+        }
+    });
+};
+
+highlightCurrentWeek();

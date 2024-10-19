@@ -60,3 +60,59 @@ h2 {
   word-wrap: break-word; /* Для старых браузеров */
   hyphens: auto; /* Разрешает перенос по слогам */
 }
+
+.group-select {
+  cursor: pointer;
+  background-color: var(--primary-background);
+  border: none;
+  font-size: 32px;
+  font-weight: 500;
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  padding-left: 0;
+  padding-right: 25px;
+}
+
+.container-select::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  right: 0;
+  width: 19px;
+  height: 15px;
+  transform: translateY(-45%);
+  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' width='19' height='15' viewBox='0 0 19 15' fill='none'%3e%3cpath d='M2 2L9.5 11L17 2' stroke='black' stroke-width='4' stroke-linecap='round'/%3e%3c/svg%3e");
+  background-repeat: no-repeat;
+  background-size: contain;
+  pointer-events: none;
+}
+
+.circle {
+  height: 29px;
+  width: 29px;
+  border-radius: 50%;
+}
+
+.blue {
+  background: #8DC8E4;
+}
+
+.green {
+  background: #CDE48D;
+}
+
+.btn-calendar {
+  background: transparent;
+  border: solid var(--secondary-background) 3px;
+  border-radius: 10px;
+  color: var(--secondary-foreground);
+  font-weight: 400;
+  padding-top: 12px;
+  padding-bottom: 12px;
+}
+
+.btn-calendar:hover {
+  color: #6EA8FE;
+  text-decoration: underline;
+}
