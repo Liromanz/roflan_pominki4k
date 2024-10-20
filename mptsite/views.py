@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, reverse
 from . import models as m
 from datetime import datetime
 
@@ -47,30 +47,34 @@ def home_page(request):
             block_faq = None
         faq = QuestionHelper.get_questions(block_faq)
 
+        #ссылки в хедер
+        header_urls = [
+            {"name": "О техникуме", "url": reverse('main_page') + "#about", "is_main": False},
+            {"name": "Специальности", "url": "#", "is_main": False},
+            {"name": "Абитуриенту", "url": "#", "is_main": False},
+            {"name": "Доп. образование", "url": "#", "is_main": False},
+            {"name": "Контакты", "url": "#", "is_main": False},
+            {"name": "Студенту", "url": reverse('not_auth_stud'), "is_main": True},
+        ]
+
+
         context = {'specialities': specialities, "questions": questions,
-                   "news": news, "main_news": main_news, "faq": faq}
+                   "news": news, "main_news": main_news, "faq": faq,
+                   "header_urls": header_urls}
         return render(request, 'mptsite/index.html', context=context)
 
 
-def prepods(request):
-    prepodi = m.Teacher.objects.all()
-    return render(request, 'mptsite/Prepodi.html', context={'prepodi': prepodi})
-
-
-def maintest(request):
-    return render(request, 'mptsite/topBanner.html')
-
-
-def prepods(request):
-    prepodi = m.Teacher.objects.all()
-    return render(request, 'mptsite/Prepodi.html', context={'prepodi': prepodi})
-
-
-def newFile(request):
-    return render(request, 'mptsite/newfile.html')
-
 def schedule(request):
-    return render(request, 'mptsite/schedule.html')
+    # ссылки в хедер
+    header_urls = [
+        {"name": "О техникуме", "url": reverse('main_page') + "#about", "is_main": False},
+        {"name": "Справки", "url": "#", "is_main": False},
+        {"name": "Практика", "url": "#", "is_main": False},
+        {"name": "Экзамены", "url": "#", "is_main": False},
+        {"name": "Контакты", "url": "#", "is_main": False},
+        {"name": "Расписание", "url": reverse('schedule'), "is_main": True},
+    ]
+    return render(request, 'mptsite/schedule.html', context={"header_urls": header_urls})
 
 
 def newrasp(request):
@@ -84,3 +88,22 @@ def newrasp(request):
     # print(day_rasp[1].lessons[0].building)
     slovar = {"rasp": day_rasp}
     return render(request, 'mptsite/raspisanie.html', context=slovar)
+
+
+
+
+
+def not_auth_student(request):
+    news = News.objects.all()
+
+    # ссылки в хедер
+    header_urls = [
+        {"name": "О техникуме", "url": reverse('main_page') + "#about", "is_main": False},
+        {"name": "Справки", "url": "#", "is_main": False},
+        {"name": "Практика", "url": "#", "is_main": False},
+        {"name": "Экзамены", "url": "#", "is_main": False},
+        {"name": "Контакты", "url": "#", "is_main": False},
+        {"name": "Расписание", "url": reverse('schedule'), "is_main": True},
+    ]
+
+    return render(request, 'mptsite/not_auth_student.html', context={ "news": news, "header_urls": header_urls})
