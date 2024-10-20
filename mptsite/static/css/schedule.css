@@ -1,135 +1,145 @@
 @import url(../css/root.css);
+
 .cont {
-  height: 100px;
-  width: 100%;
+    height: 100px;
+    width: 100%;
 }
+
+h2 {
+    font-weight: var(--Medium);
+    margin: 0;
+    font-size: 20px;
+}
+
+/*! Карточка расписания */
 
 .scheudle-card {
-text-wrap: pretty;
-  font-size: 14px;
+    text-wrap: pretty;
+    font-size: 14px;
 }
 
-
-.content-font{
-  font-size: 14px !important;
-}
-.schedule-element{
-  min-height: 50px;
-}
-.shcedule {
-  font-size: 14px;
+.schedule-element {
+    min-height: 50px;
 }
 
 .schedule-word {
-  hyphens: auto;
+    hyphens: auto;
 }
-h2 {
-  font-weight: var(--Medium);
-  margin: 0;
-  font-size: 20px !important;
-}
-.employee{
-  color: #2D2D44;
-}
-@media (max-width: 767px) {
-  h2 {
-    font-size: 16px !important;
-  }
 
-  .employee {
-    color: #6D6D6D;
-  }
+.schedule {
+    font-size: 14px;
+}
+
+.employee {
+    color: #2D2D44;
+}
+
+@media (max-width: 767px) {
+    h2 {
+        font-size: 16px !important;
+    }
+
+    .employee {
+        color: #6D6D6D;
+    }
 }
 
 .accent {
-  color: #2d2d4460;
-}
-.top-schedule {
-  font-size: 12px;
-  color: #C1C1C1;
-}
-.time {
-  color: #6d6d6d;
+    color: #2d2d4460;
 }
 
+.top-schedule {
+    font-size: 12px;
+    color: #C1C1C1;
+}
+
+.time {
+    color: #6d6d6d;
+}
 
 .rspc-card {
-  width: 600px;
+    width: 600px;
+}
+
+.discipline-name {
+    max-width: 100%; /* Ограничение ширины для переноса */
+    overflow-wrap: break-word; /* Позволяет перенос строк */
+    word-wrap: break-word; /* Для старых браузеров */
+    hyphens: auto; /* Разрешает перенос по слогам */
 }
 
 .changed {
-  background-color: #8dc8e8;
+    background-color: #8dc8e8;
 }
+
 .distant {
-  background-color: #cde48d;
+    background-color: #cde48d;
 }
+
 .distant,
 .changed {
-  border-radius: 5px;
-}
-.card {
-  font-size: 14px;
-}
-/* static/css/schedule.css */
-.discipline-name {
-  max-width: 100%; /* Ограничение ширины для переноса */
-  overflow-wrap: break-word; /* Позволяет перенос строк */
-  word-wrap: break-word; /* Для старых браузеров */
-  hyphens: auto; /* Разрешает перенос по слогам */
+    border-radius: 5px;
 }
 
+.card {
+    font-size: 14px;
+}
+
+/*! Календарь */
+/* static/css/schedule.css */
+
 .group-select {
-  cursor: pointer;
-  background-color: var(--primary-background);
-  border: none;
-  font-size: 32px;
-  font-weight: 500;
-  appearance: none;
-  -webkit-appearance: none;
-  -moz-appearance: none;
-  padding-left: 0;
-  padding-right: 25px;
+    cursor: pointer;
+    background-color: var(--primary-background);
+    border: none;
+    font-size: 32px;
+    font-weight: 500;
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    padding-left: 0;
+    padding-right: 25px;
 }
 
 .container-select::after {
-  content: '';
-  position: absolute;
-  top: 50%;
-  right: 0;
-  width: 19px;
-  height: 15px;
-  transform: translateY(-45%);
-  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' width='19' height='15' viewBox='0 0 19 15' fill='none'%3e%3cpath d='M2 2L9.5 11L17 2' stroke='black' stroke-width='4' stroke-linecap='round'/%3e%3c/svg%3e");
-  background-repeat: no-repeat;
-  background-size: contain;
-  pointer-events: none;
+    content: '';
+    position: absolute;
+    top: 50%;
+    right: 0;
+    width: 19px;
+    height: 15px;
+    transform: translateY(-45%);
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' width='19' height='15' viewBox='0 0 19 15' fill='none'%3e%3cpath d='M2 2L9.5 11L17 2' stroke='black' stroke-width='4' stroke-linecap='round'/%3e%3c/svg%3e");
+    background-repeat: no-repeat;
+    background-size: contain;
+    pointer-events: none;
 }
 
 .circle {
-  height: 29px;
-  width: 29px;
-  border-radius: 50%;
+    height: 29px;
+    width: 29px;
+    border-radius: 50%;
 }
 
 .blue {
-  background: #8DC8E4;
+    background: #8DC8E4;
 }
 
 .green {
-  background: #CDE48D;
+    background: #CDE48D;
 }
 
 .btn-calendar {
-  background: transparent;
-  border: solid var(--secondary-background) 3px;
-  border-radius: 10px;
-  color: var(--secondary-foreground);
-  font-weight: 400;
-  padding-top: 12px;
-  padding-bottom: 12px;
+    background: transparent;
+    border: solid var(--secondary-background) 3px;
+    border-radius: 10px;
+    color: var(--secondary-foreground);
+    font-weight: 400;
+    padding-top: 12px;
+    padding-bottom: 12px;
 }
 
 .btn-calendar:hover {
-  color: #6EA8FE;
-  text-decoration: underline;
+    color: #6EA8FE;
+    text-decoration: underline;
 }
