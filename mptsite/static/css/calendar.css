@@ -83,3 +83,31 @@
 .another-month-day:nth-child(7n) {
     color: #EF6969;
 }
+
+#calendar-mobile {
+    overflow-x: auto;
+    scroll-behavior: smooth;
+    background: var(--secondary-background);
+    border-radius: 5px;
+}
+
+#calendar-mobile h4 {
+    font-weight: 500;
+    font-size: 14px;
+    color: var(--primary-foreground);
+    margin-bottom: 5px;
+}
+
+#calendar-mobile p {
+    font-size: 10px;
+    margin-bottom: 0;
+}
+
+#calendar-mobile button {
+    background: transparent;
+}
+
+#calendar-mobile button.selected {
+    background: linear-gradient(90deg, rgba(128, 128, 255, 0.3), rgba(255, 128, 128, 0.3));
+    border-radius: 5px;
+}

@@ -24,10 +24,10 @@ const parseDate = (dateString) => {
 
 const updateSelection = () => {
     const allDays = document.querySelectorAll('.calendar-days button');
+    const start = parseDate(startIndex);
+    const end = parseDate(endIndex);
     allDays.forEach((day, index) => {
         const currentIndex = day.dataset.index;
-        const start = parseDate(startIndex);
-        const end = parseDate(endIndex);
         const current = parseDate(currentIndex);
 
         if (current >= Math.min(start, end) && current <= Math.max(start, end)) {
@@ -180,7 +180,6 @@ const highlightCurrentWeek = () => {
     allDays.forEach(day => {
         const dayDate = parseDate(day.dataset.index);
         if (dayDate >= startOfWeek && dayDate < new Date(startOfWeek.getFullYear(), startOfWeek.getMonth(), startOfWeek.getDate() + 7)) {
-            console.log(dayDate);
             day.classList.add('selected');
         }
     });
