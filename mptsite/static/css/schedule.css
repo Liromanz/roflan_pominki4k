@@ -31,14 +31,16 @@ h2 {
 .employee{
   color: #2D2D44;
 }
-@media (max-width: 576px) {
+@media (max-width: 767px) {
   h2 {
-    .employee{
-      color: #6D6D6D;
-    }
     font-size: 16px !important;
   }
+
+  .employee {
+    color: #6D6D6D;
+  }
 }
+
 .accent {
   color: #2d2d4460;
 }
