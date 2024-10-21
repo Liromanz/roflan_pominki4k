@@ -1,0 +1,113 @@
+.calendar {
+    width: 100%;
+    border-radius: 5px;
+    background-color: var(--secondary-background);
+}
+
+.calendar-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.calendar-week-days {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    text-align: center;
+    margin: 0 5px;
+}
+
+.week {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    text-align: center;
+    margin: 0 5px;
+    background: linear-gradient(90deg, rgba(128, 128, 255, 0.3), rgba(255, 128, 128, 0.3));
+}
+
+.calendar-week-days div {
+    font-weight: 400;
+    color: #C1C1C1;
+}
+
+.day {
+    color: var(--primary-foreground);
+    padding: 10px 0;
+    font-weight: 400;
+    background: var(--secondary-background);
+}
+
+.another-month-day {
+    color: var(--secondary-foreground);
+}
+
+.calendar-days button:hover {
+    background-color: #f1f1f1;
+    border-radius: 5px;
+}
+
+.btn-calendar-navigate {
+    background: none;
+    border: none;
+    cursor: pointer;
+}
+
+.btn-calendar-navigate:hover {
+    color: #0056b3;
+}
+
+.weekend {
+    color: #dc3545;
+}
+
+#prevWeek {
+     transform: rotate(180deg);
+}
+
+#currentMonth {
+    font-size: 16px;
+    font-weight: 400;
+    color: var(--primary-foreground);
+    margin-bottom: 0;
+    padding-left: 12px;
+}
+
+.calendar-days .day.selected {
+    background: transparent;
+}
+
+.day:nth-child(7n) {
+    color: #DA3131;
+}
+
+.another-month-day:nth-child(7n) {
+    color: #EF6969;
+}
+
+#calendar-mobile {
+    overflow-x: auto;
+    scroll-behavior: smooth;
+    background: var(--secondary-background);
+    border-radius: 5px;
+}
+
+#calendar-mobile h4 {
+    font-weight: 500;
+    font-size: 14px;
+    color: var(--primary-foreground);
+    margin-bottom: 5px;
+}
+
+#calendar-mobile p {
+    font-size: 10px;
+    margin-bottom: 0;
+}
+
+#calendar-mobile button {
+    background: transparent;
+}
+
+#calendar-mobile button.selected {
+    background: linear-gradient(90deg, rgba(128, 128, 255, 0.3), rgba(255, 128, 128, 0.3));
+    border-radius: 5px;
+}

@@ -1,0 +1,22 @@
+{% load static %}
+<div class="calendar p-1 mb-2">
+    <div class="calendar-header">
+        <p id="currentMonth"></p>
+        <div>
+            <button class="btn btn-calendar-navigate" id="nextWeek">
+                <svg width="17" height="12" viewBox="0 0 17 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M1 1L8.5 10L16 1" stroke="black" stroke-width="2" stroke-linecap="round"/>
+                </svg>
+            </button>
+            <button class="btn btn-calendar-navigate" id="prevWeek">
+                <svg width="17" height="12" viewBox="0 0 17 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M1 1L8.5 10L16 1" stroke="black" stroke-width="2" stroke-linecap="round"/>
+                </svg>
+            </button>
+        </div>
+    </div>
+    <div class="calendar-week-days">
+        <div>Пн</div><div>Вт</div><div>Ср</div><div>Чт</div><div>Пт</div><div>Сб</div><div class="weekend">Вс</div>
+    </div>
+    <div class="calendar-days" id="calendar"></div>
+</div>
