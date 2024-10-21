@@ -1,7 +1,7 @@
 const calendarMobile = document.getElementById("calendar-mobile");
 
 const dayMonthFormater = new Intl.DateTimeFormat(locale, { day: 'numeric', month: 'numeric' });
-const weekdayFormater = new Intl.DateTimeFormat(locale, { weekday: 'long' });
+const weekdayFormater = new Intl.DateTimeFormat(locale, { weekday: 'short' });
 
 let selectIndex = null;
 let startIndexMobile = null;
