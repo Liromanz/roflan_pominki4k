@@ -13,7 +13,6 @@ const updateSelect = (selectedIndex) => {
         const currentIndex = day.dataset.index;
 
         if (currentIndex === selectedIndex) {
-            console.log(currentIndex);
             day.classList.add('selected');
         } else {
             day.classList.remove('selected');
@@ -25,7 +24,6 @@ const addEventMobile = (btn) => {
     btn.addEventListener('click', () => {
         const currentIndex = btn.dataset.index;
         selectIndex = currentIndex;
-        console.log(selectIndex);
         updateSelect(selectIndex);
     });
 }
@@ -56,9 +54,9 @@ const renderTwoMonth = (startOfDay) => {
 };
 
 let currentDate = new Date();
-endIndexMobile = new Date(currentDate.getFullYear(), currentDate.getMonth(), currentDate.getDate() - 45)
-startIndexMobile = new Date(currentDate.getFullYear(), currentDate.getMonth(), currentDate.getDate() + 30)
-renderTwoMonth(endIndexMobile);
+startIndexMobile = new Date(currentDate.getFullYear(), currentDate.getMonth(), currentDate.getDate() - 40)
+endIndexMobile = new Date(currentDate.getFullYear(), currentDate.getMonth(), currentDate.getDate() + 29)
+renderTwoMonth(startIndexMobile);
 
 selectIndex = idFormatter.format(currentDate);
 const todayButtonElement = Array.from(document.querySelectorAll('#calendar-mobile button')).find(btn => btn.dataset.index === selectIndex);
