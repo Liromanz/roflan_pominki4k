@@ -5,12 +5,19 @@
 }
 
 .block-info p {
-    font-size: 18px;
+    font-size: 20px;
+    font-weight: 300;
+    text-align: justify;
+}
+
+.block-info h1 {
+    font-size: 40px;
 }
 
 .card-base h2 {
     color: var(--secondary-background);
     font-weight: var(--Light);
+    font-size: 40px;
 }
 
 .card-base p {
@@ -25,7 +32,7 @@
     -webkit-line-clamp: 3;
 }
 
-.about-mpt{
+.about-mpt {
     line-height: 1.7em;
 }
 
@@ -48,10 +55,35 @@
 
 @media (max-width: 992px) {
     .adaptive {
-        width: 40%;
+        width: 20%;
+    }
+
+    .communication {
+        right: 3%;
     }
 
     .organization, .communication, .collective{
         height: 90%;
     }
+
+    .block-info p {
+        font-size: 14px;
+    }
+
+    .block-info h1 {
+        font-size: 18px;
+        font-weight: 500;
+    }
+
+    #studentCouncil .h-25 {
+        height: auto !important;
+    }
+
+    .card-base h2 {
+        font-size: 18px;
+        width: 47% !important;
+        display: flex;
+        align-items: center;
+    }
+
 }
