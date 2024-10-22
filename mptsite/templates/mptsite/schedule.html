@@ -29,16 +29,11 @@
             <h1>Расписание</h1>
             <div class="mb-3">
                 <label class="container-select position-relative">
-                    <select class="group-select w-auto">
+                    <select class="group-select w-100 text-truncate">
                         <option selected>Группа</option>
-                        <option>П50-1-22</option>
-                        <option>П50-2-22</option>
-                        <option>П50-3-22</option>
-                        <option>П50-4-22</option>
-                        <option>П50-5-22</option>
-                        <option>П50-6-22</option>
-                        <option>П50-7-22</option>
-                        <option>П50-8-22</option>
+                        {% for group in groups %}
+                        <option>{{ group.group_name }}</option>
+                        {% endfor %}
                     </select>
                 </label>
             </div>
@@ -229,7 +224,7 @@
                         <hr class="py-0 my-0"/>
                     </div>
                 </div>
-             </div>
+            </div>
         </div>
     </div>
 
