@@ -11,6 +11,7 @@
     <link rel="stylesheet" href="{% static 'css/main.css' %}"/>
     <link rel="stylesheet" href="{% static 'css/schedule.css' %}"/>
     <link rel="stylesheet" href="{% static 'css/calendar.css' %}"/>
+
     <meta charset="UTF-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <title>Document</title>
@@ -28,19 +29,23 @@
         <div class=" col-md-4 col-lg-3 col-xxl-2 d-none d-md-block">
             <h1>Расписание</h1>
             <div class="mb-3">
-                <label class="container-select position-relative">
-                    <select class="group-select w-auto">
-                        <option selected>Группа</option>
-                        <option>П50-1-22</option>
-                        <option>П50-2-22</option>
-                        <option>П50-3-22</option>
-                        <option>П50-4-22</option>
-                        <option>П50-5-22</option>
-                        <option>П50-6-22</option>
-                        <option>П50-7-22</option>
-                        <option>П50-8-22</option>
-                    </select>
-                </label>
+                <form class="container-select position-relative w-75">
+                    <input type="text" class="group-select w-100" id="comboInput" placeholder="Группа" autocomplete="off">
+                    <div class="w-100" id="comboDropdown" style="display: block">
+                        <option class="dropdown-item pt-2 ps-1">П50-1-22</option>
+                        <option class="dropdown-item pt-2 ps-1">П50-2-22</option>
+                        <option class="dropdown-item pt-2 ps-1">П50-3-22</option>
+                        <option class="dropdown-item pt-2 ps-1">П50-4-22</option>
+                        <option class="dropdown-item pt-2 ps-1">П50-5-22</option>
+                        <option class="dropdown-item pt-2 ps-1">П50-6-22</option>
+                        <option class="dropdown-item pt-2 ps-1">П50-7-22</option>
+                        <option class="dropdown-item pt-2 ps-1">П50-8-22</option>
+                        <option class="dropdown-item pt-2 ps-1">ВД50-1-22</option>
+                        <option class="dropdown-item pt-2 ps-1">ВД50-1-22</option>
+                        <option class="dropdown-item pt-2 ps-1">ВД50-1-22</option>
+                        <option class="dropdown-item pt-2 ps-1">ВД50-1-22</option>
+                    </div>
+                </form>
             </div>
             <div class="w-75 d-flex justify-content-between mb-3">
                 <div class="d-flex align-items-center">
@@ -242,7 +247,9 @@
         integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
         crossorigin="anonymous"
 ></script>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script src="{% static 'js/calendar.js' %}"></script>
 <script src="{% static 'js/calendar_mobile.js' %}"></script>
+<script src="{% static 'js/group.js' %}"></script>
 </body>
 </html>
