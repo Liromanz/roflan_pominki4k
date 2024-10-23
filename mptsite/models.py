@@ -40,7 +40,7 @@ class Groups(models.Model):
     course = models.IntegerField(verbose_name="Курс", default=2)
 
     def __str__(self):
-        return f"{self.group_name}"
+        return f"{self.group_name} - {self.course}"
 
     class Meta():
         verbose_name = "Группу"
