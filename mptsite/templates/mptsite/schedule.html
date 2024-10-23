@@ -28,19 +28,16 @@
         <div class=" col-md-4 col-lg-3 col-xxl-2 d-none d-md-block">
             <h1>Расписание</h1>
             <div class="mb-3">
-                <label class="container-select position-relative">
-                    <select class="group-select w-auto">
-                        <option selected>Группа</option>
-                        <option>П50-1-22</option>
-                        <option>П50-2-22</option>
-                        <option>П50-3-22</option>
-                        <option>П50-4-22</option>
-                        <option>П50-5-22</option>
-                        <option>П50-6-22</option>
-                        <option>П50-7-22</option>
-                        <option>П50-8-22</option>
-                    </select>
-                </label>
+                <form method="post">
+                    {% csrf_token %}
+                    <label class="container-select position-relative">
+                        <select class="group-select w-100 text-truncate" name="group_cbx" onchange="this.form.submit()">
+                            {% for group in groups %}
+                            <option {% if group.id == selected_group %} selected {% endif %}  value="{{ group.id }}" > {{ group.group_name }}</option>
+                            {% endfor %}
+                        </select>
+                    </label>
+                </form>
             </div>
             <div class="w-75 d-flex justify-content-between mb-3">
                 <div class="d-flex align-items-center">
@@ -229,7 +226,7 @@
                         <hr class="py-0 my-0"/>
                     </div>
                 </div>
-             </div>
+            </div>
         </div>
     </div>
 

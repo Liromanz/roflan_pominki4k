@@ -65,6 +65,17 @@ def home_page(request):
 
 
 def schedule(request):
+    groups = m.Groups.objects.all()
+    if request.method == "POST":
+        selected_group = request.POST.get('group_cbx')
+    else:
+        group_cookie = request.COOKIES.get('selected_group')
+        if group_cookie is None:
+            selected_group = groups.first().id
+        else:
+            selected_group = group_cookie
+
+
     # ссылки в хедер
     header_urls = [
         {"name": "О техникуме", "url": reverse('main_page') + "#about", "is_main": False},
@@ -74,7 +85,13 @@ def schedule(request):
         {"name": "Контакты", "url": "#", "is_main": False},
         {"name": "Расписание", "url": reverse('schedule'), "is_main": True},
     ]
-    return render(request, 'mptsite/schedule.html', context={"header_urls": header_urls})
+    page = render(request, 'mptsite/schedule.html', context={"header_urls": header_urls, "groups": groups,
+                                                             "selected_group": int(selected_group)})
+    if request.method == "POST":
+        page.set_cookie("selected_group", selected_group)
+
+    return page
+
 
 
 def newrasp(request):
