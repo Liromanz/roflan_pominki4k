@@ -18,7 +18,8 @@
 
 .contact-button {
     text-align: left;
-    border: 3px solid var(--background-color);
+    border: 3px solid var(--primary-background);
+    color: var(--primary-foreground);
     border-radius: 10px;
     background: transparent;
     padding: 0.8rem 1.5rem;

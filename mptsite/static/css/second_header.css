@@ -1,11 +1,29 @@
 .main-header{
+    background: var(--secondary-background);
     font-size: 18px;
     .nav-link{
         color: var(--primary-foreground);
     }
 }
+
 .beaut-btn{
     background: var(--main-gradient);
     color: white;
     border-radius: 30px;
+}
+
+[data-theme="dark"] .main-header .logo {
+    filter: invert(100%);
+}
+
+#navbarNavAltMarkup {
+    background: var(--secondary-background);
+}
+
+[data-theme="dark"] .navbar-toggler-icon {
+    filter: invert(100%);
+}
+
+[data-theme="dark"] .btn-close {
+    filter: invert(100%);
 }

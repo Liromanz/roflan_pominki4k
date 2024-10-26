@@ -1,13 +1,32 @@
 .photo-block {
-  height: 790px;
-  display: flex;
-  justify-content: center;
-  align-items: end;
-  color: white;
-  background-image: url(../source/img/background.png);
-  background-size: cover;
-  background-repeat: no-repeat;
-  background-position: center;
+    position: relative;
+    height: 790px;
+    display: flex;
+    justify-content: center;
+    align-items: end;
+    color: white;
+    background-image: url(../source/img/background.png);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+[data-theme="dark"] .photo-block {
+    &::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background-color: rgba(0, 0, 0, 0.5);
+        z-index: 1;
+    }
+
+    & > * {
+        position: relative;
+        z-index: 2;
+    }
 }
 
 .photo-block p {
@@ -15,40 +34,43 @@
 }
 
 .info-block {
-  background: linear-gradient(90deg, rgba(0, 0, 0, 0.33) 0%, rgba(0, 0, 0, 0.6) 100%);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  border-radius: 26px;
+    background: linear-gradient(90deg, rgba(0, 0, 0, 0.33) 0%, rgba(0, 0, 0, 0.6) 100%);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 26px;
 }
 
 .choose-specialty {
-  border-radius: 21px;
-  background-color: #ffffff;
-  border: none;
-  color: #595959;
+    border-radius: 21px;
+    background-color: #ffffff;
+    border: none;
+    color: #595959;
 }
+
 .choose-specialty:hover {
-  transition: 0.2s !important;
-  background-color: #ffffff;
-  color: #000000;
+    transition: 0.2s !important;
+    background-color: #ffffff;
+    color: #000000;
 }
+
 .submit-documents {
-  border-radius: 21px;
-  background: rgb(99, 115, 255);
-  background: linear-gradient(90deg, rgb(99, 115, 255) 0%, rgb(187, 64, 64) 100%);
-  border: none;
-  color: #ffffff;
+    border-radius: 21px;
+    background: rgb(99, 115, 255);
+    background: linear-gradient(90deg, rgb(99, 115, 255) 0%, rgb(187, 64, 64) 100%);
+    border: none;
+    color: #ffffff;
 }
+
 .right-info {
-  text-align: end;
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  justify-content: center;
+    text-align: end;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    justify-content: center;
 }
+
 .date-number {
-  font-size: 120px;
-  font-weight: 900;
-  line-height: 90px;
-  text-align: center;
+    font-size: 120px;
+    font-weight: 900;
+    line-height: 90px;
 }

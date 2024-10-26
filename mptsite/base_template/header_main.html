@@ -1,10 +1,10 @@
 {% load static %}
-<header class="main-header sticky-top s-18 bg-white">
+<header class="main-header sticky-top s-18">
     <div class="container-lg sticky-top p-0">
         <nav class="navbar navbar-expand-lg navbar-light p-0 s-18" style="height: 60px">
             <div class="container-fluid p-0">
                 <a class="navbar-brand d-lg-none me-0" href="{% url 'main_page' %}">
-                    <img src="{% static 'source/logo/MPT_MAIN_LOGO.svg' %}" style="height: 42px" alt="#"/>
+                    <img src="{% static 'source/logo/MPT_MAIN_LOGO.svg' %}" class="logo" style="height: 42px" alt="#"/>
                 </a>
                 <div class="d-flex align-center gap-2 gap-sm-3 pe-3 px-lg-0">
                     <button class="d-lg-none theme-button" style="border: none; background: none;">
@@ -21,16 +21,16 @@
                     </button>
                 </div>
                 <div class="offcanvas offcanvas-end" id="navbarNavAltMarkup">
-                    <div class="navbar-nav w-100 justify-content-lg-between align-items-lg-center bg-white d-flex px-4 px-lg-0">
+                    <div class="navbar-nav w-100 justify-content-lg-between align-items-lg-center d-flex px-4 px-lg-0">
                         <div class="offcanvas-header">
                             <a class="navbar-brand d-lg-none" href="{% url 'main_page' %}">
-                                <img src="{% static 'source/logo/MPT_MAIN_LOGO.svg' %}" style="height: 42px" alt="#"/>
+                                <img src="{% static 'source/logo/MPT_MAIN_LOGO.svg' %}" class="logo" style="height: 42px" alt="#"/>
                             </a>
                             <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas"
                                     aria-label="Закрыть"></button>
                         </div>
                         <a class="navbar-brand d-none d-lg-block" href="{% url 'main_page' %}">
-                            <img src="{% static 'source/logo/MPT_MAIN_LOGO.svg' %}" style="height: 42px" alt="#"/>
+                            <img src="{% static 'source/logo/MPT_MAIN_LOGO.svg' %}" class="logo" style="height: 42px" alt="#"/>
                         </a>
                         {% for url_item in urls %}
                             {% if url_item.is_main %}
