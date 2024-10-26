@@ -20,36 +20,13 @@
 {% include 'header_main.html' with urls=header_urls %}
 <hr class="p-0 m-0">
 
-<div class="photo-block">
-    <div class="container info-block mb-5">
-        <div class="row p-4">
-            <div class="col p-0">
-                <div class="d-sm-flex justify-content-center mb-4">
-                    <img class="d-block m-auto" src="{% static '/source/img/asd.svg' %}" alt="МПТ"/>
-                    <p class="ps-sm-2  fs-2 medium">
-                        Студенческий портал
-                    </p>
-                </div>
-                <div class="row gap-4 m-0 d-flex flex-column flex-lg-row">
-                    <button type="button" class="submit-documents col py-2">
-                        Подать документы
-                    </button>
-                </div>
-            </div>
-            <div class="col d-none d-lg-block">
-                <p class="text-end m-0">Добро пожаловать на студенческий портал! Здесь вы найдете всё
-                    необходимое для обучения, от онлайн-курсов до сообществ студентов. Мы стремимся создать у вас
-                    комфортную среду для обучения и развития. Если у вас возникнут вопросы или проблемы, пожалуйста, не
-                    стесняйтесь обращаться к нам. Желаем вам удачи в обучении!</p>
+{% include 'photo_news.html' %}
 
-            </div>
-        </div>
-    </div>
-</div>
+{% include 'exam_question.html' %}
 
+{% include 'faq.html' %}
 
-<h1 class="m-4 main-font text-center">Новости</h1>
-{% include 'news.html' %}
+{% include 'ordering_certificates.html' %}
 
 {% include 'student_council.html' %}
 
