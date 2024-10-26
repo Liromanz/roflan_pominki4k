@@ -21,7 +21,7 @@
 
 @import url(footer.css);
 
-
+@import url(auth_popap.css);
 
 * {
     transition: all 0.3s ease-out;
@@ -60,4 +60,3 @@ h1{
 .light {
     font-weight: 300;
 }
-

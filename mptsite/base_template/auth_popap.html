@@ -1,0 +1,20 @@
+{% load static %}
+<div class="modal fade" id="authModal" tabindex="-1" aria-labelledby="authModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-lg">
+        <div class="modal-content">
+            <div class="modal-header d-flex justify-content-between mt-2 mx-2">
+                <div class="d-flex">
+                    <img src="{% static 'source/logo/GERB.svg' %}"/>
+                    <img src="{% static 'source/logo/REU_LOGO.svg' %}"/>
+                </div>
+                <p class="modal-title primary-foreground" id="authModalLabel">Московский приборостроительный техникум</p>
+            </div>
+            <div class="modal-body mt-3 mx-2">
+                <p class="text-center primary-foreground mx-5 px-4 fs-5">Войдите в систему при помощи корпоративной почты, чтобы сразу смотреть расписание своей группы, экзамены, и заказывать справки!</p>
+
+                <button class="primary-foreground auth-btn base-btn text-center mt-3 py-3 w-100 fs-5">Авторизоваться через Google</button>
+                <button class="secondary-foreground base-btn text-center py-4 w-100 fs-5 nan-auth-btn">Нет, спасибо, мне нужно только расписание</button>
+            </div>
+        </div>
+    </div>
+</div>

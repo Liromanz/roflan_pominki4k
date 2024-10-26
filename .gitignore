@@ -94,3 +94,7 @@ local_settings.py
 venv
 db.sqlite3
 roflan_pominki_4k/secrets.py
+
+node_modules/
+package-lock.json
+package.json

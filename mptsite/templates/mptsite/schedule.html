@@ -23,6 +23,11 @@
 {% include 'header_main.html' with urls=header_urls %}
 <hr class="p-0 m-0"/>
 
+<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#authModal">
+    Тестовая кнопка авторизации
+</button>
+{% include 'auth_popap.html' %}
+
 <div class="container-fluid mt-3 flex-fill">
 
     <div class="row">
