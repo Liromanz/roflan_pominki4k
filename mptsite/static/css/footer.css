@@ -1,27 +1,22 @@
-:root{
-    /* !Светлая тема */
-    --primary-background: #E8EBF4;
-    --secondary-background: #ffffff;
-    --primary-foreground: #000000;
-    --secondary-foreground: #5E5E5E;
-    /*Потом переименовать*/
-    --ternary: #F4F1F1;
-    /* !Светлая тема */
+footer a:hover {
+    color: #6EA8FE !important;
 }
 
-a {
-    color: black !important;
-    &:hover{
-        color: #6EA8FE !important;
-    }
-}
-
-footer{
+footer {
     background: var(--secondary-background);
+    color: var(--primary-foreground);
     line-height: 1.8em;
+}
+
+.info-text {
+    color: var(--primary-foreground);
 }
 
 .image-block {
     width: 30px;
     height: 30px;
+}
+
+[data-theme="dark"] .image-block {
+    filter: invert(100%);
 }

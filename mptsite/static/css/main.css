@@ -33,7 +33,7 @@
 }
 
 body {
-    background-color: #E8EBF4;
+    background-color: var(--primary-background);
 }
 
 /*header {*/
@@ -47,6 +47,10 @@ body {
 h1{
     font-size: 32px;
     font-weight: var(--Medium);
+}
+
+.title-color {
+    color: var(--primary-foreground);
 }
 
 .bold {
