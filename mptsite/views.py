@@ -107,3 +107,19 @@ def not_auth_student(request):
     ]
 
     return render(request, 'mptsite/not_auth_student.html', context={ "news": news, "header_urls": header_urls})
+
+
+def auth_student(request):
+    news = News.objects.all()
+
+    # ссылки в хедер
+    header_urls = [
+        {"name": "О техникуме", "url": reverse('main_page') + "#about", "is_main": False},
+        {"name": "Справки", "url": "#", "is_main": False},
+        {"name": "Практика", "url": "#", "is_main": False},
+        {"name": "Экзамены", "url": "#", "is_main": False},
+        {"name": "Контакты", "url": "#", "is_main": False},
+        {"name": "Расписание", "url": reverse('schedule'), "is_main": True},
+    ]
+
+    return render(request, 'mptsite/auth_student.html', context={ "news": news, "header_urls": header_urls})
