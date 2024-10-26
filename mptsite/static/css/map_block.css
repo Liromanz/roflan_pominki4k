@@ -1,21 +1,35 @@
-.metro-ico {
-  display: flex;
-  align-items: center;
+#Nahim, #Nezhka {
+    font-size: 20px;
+    color: var(--primary-foreground);
 }
+
+.metro-ico {
+    display: flex;
+    align-items: center;
+    color: #676767 !important;
+    font-size: 18px;
+}
+
 .metro-ico::before {
-  content: url(../source/logo/metro_ico.svg);
-  padding-right: 1rem;
+    content: url(../source/logo/metro_ico.svg);
+    padding-right: 1rem;
 }
 
 
 .contact-button {
     text-align: left;
     border: 3px solid var(--background-color);
-    border-radius: 15px;
+    border-radius: 10px;
     background: transparent;
-    padding:  0.8rem 1.5rem;
+    padding: 0.8rem 1.5rem;
 
-    &:hover{
+    &:hover {
         color: #6EA8FE !important;
+    }
+}
+
+@media (width <= 991px) {
+    #Nahim, #Nezhka, .metro-ico {
+        font-size: 14px;
     }
 }
