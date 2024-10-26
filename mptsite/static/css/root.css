@@ -51,6 +51,7 @@
     /* !Светлая тема */
     --primary-background: #E8EBF4;
     --secondary-background: #ffffff;
+    --font-color-white: #ffffff;
     --primary-foreground: #000000;
     --secondary-foreground: #5E5E5E;
     /*Потом переименовать*/
