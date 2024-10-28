@@ -47,7 +47,7 @@
     );
 }
 
-:root[data-theme="light"] {
+:root {
     /* !Светлая тема */
     --primary-background: #E8EBF4;
     --secondary-background: #ffffff;
