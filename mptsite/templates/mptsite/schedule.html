@@ -34,22 +34,15 @@
         <div class=" col-md-4 col-lg-3 col-xxl-2 d-none d-md-block">
             <h1>Расписание</h1>
             <div class="mb-3">
-                <form class="container-select position-relative w-75">
-                    <input type="text" class="group-select w-100" id="comboInput" placeholder="Группа" autocomplete="off">
-                    <div class="w-100" id="comboDropdown" style="display: block">
-                        <option class="dropdown-item pt-2 ps-1">П50-1-22</option>
-                        <option class="dropdown-item pt-2 ps-1">П50-2-22</option>
-                        <option class="dropdown-item pt-2 ps-1">П50-3-22</option>
-                        <option class="dropdown-item pt-2 ps-1">П50-4-22</option>
-                        <option class="dropdown-item pt-2 ps-1">П50-5-22</option>
-                        <option class="dropdown-item pt-2 ps-1">П50-6-22</option>
-                        <option class="dropdown-item pt-2 ps-1">П50-7-22</option>
-                        <option class="dropdown-item pt-2 ps-1">П50-8-22</option>
-                        <option class="dropdown-item pt-2 ps-1">ВД50-1-22</option>
-                        <option class="dropdown-item pt-2 ps-1">ВД50-1-22</option>
-                        <option class="dropdown-item pt-2 ps-1">ВД50-1-22</option>
-                        <option class="dropdown-item pt-2 ps-1">ВД50-1-22</option>
-                    </div>
+                <form method="post">
+                    {% csrf_token %}
+                    <label class="container-select position-relative">
+                        <select class="group-select w-100 text-truncate" name="group_cbx" onchange="this.form.submit()">
+                            {% for group in groups %}
+                            <option {% if group.id == selected_group %} selected {% endif %}  value="{{ group.id }}" > {{ group.group_name }}</option>
+                            {% endfor %}
+                        </select>
+                    </label>
                 </form>
             </div>
             <div class="w-75 d-flex justify-content-between mb-3">
@@ -239,7 +232,7 @@
                         <hr class="py-0 my-0"/>
                     </div>
                 </div>
-             </div>
+            </div>
         </div>
     </div>
 
