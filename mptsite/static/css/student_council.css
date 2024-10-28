@@ -10,10 +10,6 @@
     text-align: justify;
 }
 
-.block-info h1 {
-    font-size: 40px;
-}
-
 .card-base h2 {
     color: var(--secondary-background);
     font-weight: var(--Light);
@@ -70,10 +66,9 @@
         font-size: 14px;
     }
 
-    .block-info h1 {
-        font-size: 18px;
+    /*.block-info h1 {
         font-weight: 500;
-    }
+    }*/
 
     #studentCouncil .h-25 {
         height: auto !important;
