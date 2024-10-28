@@ -1,0 +1,51 @@
+{% load static %}
+<div class="container order-certificates p-3 my-5">
+    <div class="row justify-content-lg-between">
+        <h2 class="title d-flex col-lg-6 justify-content-center justify-content-lg-start ">Заказ cправок</h2>
+        <h2 class="title d-flex col-lg-6 justify-content-center d-none d-lg-block justify-content-lg-end ">Форма для отправки</h2>
+    </div>
+    <form class="d-flex flex-column  gap-2">
+<div class="row row-cols-1 row-cols-lg-2">
+          <fieldset class="d-flex flex-column gap-2">
+              <div class="form_radio">
+                  <input type="radio" id="справка-1" name="document" class="radio p-0 m-0" value="" />
+                  <label class="form-check-label" for="справка-1">Справка в военкомат (приложение 4)</label>
+              </div>
+              <div class="form_radio">
+                  <input type="radio" id="справка-2" name="document" class="radio p-0 m-0" value="" />
+                  <label class="form-check-label" for="справка-2">Справка в организацию (МФЦ, Пенсионный фонд и т.п.)</label>
+              </div>
+              <div class="form_radio">
+                  <input type="radio" id="справка-3" name="document" class="radio p-0 m-0" value="" />
+                  <label class="form-check-label" for="справка-3">Справка на работу родителю</label>
+              </div>
+              <div class="form_radio">
+                  <input type="radio" id="справка-4" name="document" class="radio p-0 m-0" value="" />
+                  <label class="form-check-label" for="справка-4">Справка на работу студенту</label>
+              </div>
+              <div class="form_radio">
+                  <input type="radio" id="справка-5" name="document" class="radio p-0 m-0" value="" />
+                  <label class="form-check-label" for="справка-5">Копия лицензии</label>
+              </div>
+              <div class="form_radio">
+                  <input type="radio" id="справка-6" name="document" class="radio p-0 m-0" value="" />
+                  <label class="form-check-label" for="справка-6">Копия аккредитации</label>
+              </div>
+          </fieldset>
+          <fieldset class="d-flex flex-column gap-2">
+              <input class="input input_text p-2" type="text" placeholder="Имя" />
+              <input class="input input_text p-2" type="text" placeholder="Фамилия" />
+              <input class="input input_text p-2" type="text" placeholder="Отчество" />
+              <div class="input_text p-2 d-flex justify-content-between align-items-center">
+                  <input class="input  w-100 " type="text" placeholder="Дата рождения" />
+                  <img class="mx-2 " src="{% static 'source/img/calendar_input.svg' %}" alt="">
+              </div>
+              <input class="input input_text p-2" width="23px" type="text" placeholder="Номер группы" />
+          </fieldset>
+</div>
+        <div class="row px-3  px-lg-2 row-cols-1 row-cols-lg-2 gap-4 justify-content-between ">
+          <input class="input input_text col-12 col-lg-5 col-xl-4  p-2 d-none d-lg-block " type="text" placeholder="Организация, в которую предоставляется справка" />
+          <button class="submit-button col-12 col-lg-6 p-3 p-lg-2 px-lg-1 " type="submit">Заказать справку</button>
+        </div>
+    </form>
+</div>

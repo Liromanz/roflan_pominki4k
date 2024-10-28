@@ -1,0 +1,81 @@
+.title {
+    font-weight: var(--Medium);
+    font-size: 40px;
+}
+
+.order-certificates {
+    background-color: white;
+}
+
+.radio {
+    border: 1px solid #E8EBF4 !important;
+    background-color: bisque;
+}
+
+.form_radio {
+    margin-bottom: 10px;
+}
+
+.form_radio input[type=radio] {
+    display: none; /* Скрыть стандартные радиокнопки */
+}
+
+@media (max-width: 768px) {
+.title{
+    font-size: 18px;
+}
+label{
+    font-size: 14px !important;
+}
+}
+
+.form_radio label {
+    display: inline-block;
+    cursor: pointer;
+    position: relative;
+    padding-left: 25px;
+    margin-right: 0;
+    line-height: 18px;
+    user-select: none;
+}
+
+.form_radio label:before {
+    content: "";
+    display: inline-block;
+    width: 17px;
+    height: 18px;
+    position: absolute;
+    left: 0;
+    bottom: 1px;
+    background: url('/static/source/img/radio_button.svg') 0 0 no-repeat ; /* Замените на вашу ссылку на изображение */
+
+}
+
+/* Checked */
+.form_radio input[type=radio]:checked + label:before {
+    transition: 0.7s;
+    background: url('/static/source/img/radio_button_checked.svg') 0 0 no-repeat ; /* Замените на вашу ссылку на изображение */
+
+}
+
+
+
+.input_text {
+    border: 1px solid #E8EBF4;
+    border-radius: 5px;
+}
+
+.input_text::placeholder {
+    font-size: 14px;
+}
+
+.input {
+    font-size: 14px;
+}
+
+.submit-button {
+    border-radius: 5px;
+    color: white;
+    background-image: var(--main-gradient);
+    width: 49%;
+}

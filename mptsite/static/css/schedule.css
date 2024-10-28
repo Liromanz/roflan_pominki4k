@@ -94,17 +94,18 @@ h2 {
     border: none;
     font-size: 32px;
     font-weight: 500;
-    appearance: none;
-    -webkit-appearance: none;
-    -moz-appearance: none;
     padding-left: 0;
-    padding-right: 25px;
+}
+
+.group-select::placeholder {
+    color: var(--primary-foreground);
+    opacity: 1;
 }
 
 .container-select::after {
     content: '';
     position: absolute;
-    top: 50%;
+    top: 20px;
     right: 0;
     width: 19px;
     height: 15px;
@@ -146,4 +147,28 @@ h2 {
 
 .container-fluid{
     max-width: 1536px;
+}
+
+#comboDropdown {
+    opacity: 0;
+    transform: translateY(-10px);
+    transition: opacity 0.6s ease, transform 0.6s ease, height 0.6s ease;
+    height: 0;
+    overflow: hidden;
+}
+
+#comboDropdown.show {
+    opacity: 1;
+    transform: translateY(0);
+    height: 250px;
+    overflow: scroll;
+}
+.dropdown-item {
+    font-size: 20px;
+    color: var(--secondary-foreground);
+}
+
+.dropdown-item:hover {
+    text-decoration: underline;
+    color: #6EA8FE;
 }

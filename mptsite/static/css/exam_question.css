@@ -1,0 +1,50 @@
+@import url(root.css);
+
+.title{
+    font-size: 40px;
+}
+a {
+  text-decoration: none !important;
+}
+a:hover {
+  color: black !important;
+}
+.exam-question {
+  background-color: white !important;
+  border-radius: 15px;
+}
+
+.list-item {
+  border: 3px solid var(--primary-background);
+  border-radius: 10px;
+}
+.list-item:hover {
+  background-color: var(--primary-background);
+  border: 3px solid #0000001e;
+}
+.btn-link {
+  border-radius: 10px;
+  background-color: var(--primary-background);
+  font-size: 16px;
+  color: #777777;
+  text-decoration: none;
+  min-height: 50px;
+  max-height: 50px;
+}
+
+@media (max-width: 768px) {
+  .title {
+    font-size: 18px !important;
+  }
+  .list-item {
+    border-radius: 5;
+    font-size: 14px;
+    border: 2px solid var(--primary-background);
+    text-wrap: pretty;
+  }
+  .btn-link {
+    border-radius: 5px;
+    color: var(--font-color-white);
+    background-image: var(--main-gradient);
+  }
+}

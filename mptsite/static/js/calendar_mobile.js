@@ -46,7 +46,7 @@ const createBtn = (currentDate) => {
 }
 
 const renderTwoMonth = (startOfDay) => {
-    for (let i = 0; i < 70; i++) {
+    for (let i = 0; i < 60; i++) {
         const currentDate = new Date(startOfDay.getFullYear(), startOfDay.getMonth(), startOfDay.getDate() + i);
         const dayBtn = createBtn(currentDate);
         calendarMobile.appendChild(dayBtn);
@@ -54,9 +54,8 @@ const renderTwoMonth = (startOfDay) => {
 };
 
 let currentDate = new Date();
-startIndexMobile = new Date(currentDate.getFullYear(), currentDate.getMonth(), currentDate.getDate() - 40)
 endIndexMobile = new Date(currentDate.getFullYear(), currentDate.getMonth(), currentDate.getDate() + 29)
-renderTwoMonth(startIndexMobile);
+renderTwoMonth(new Date(currentDate.getFullYear(), currentDate.getMonth(), currentDate.getDate() - 30));
 
 selectIndex = idFormatter.format(currentDate);
 const todayButtonElement = Array.from(document.querySelectorAll('#calendar-mobile button')).find(btn => btn.dataset.index === selectIndex);
@@ -69,14 +68,6 @@ calendarMobile.addEventListener('scroll', () => {
             endIndexMobile = new Date(endIndexMobile.getFullYear(), endIndexMobile.getMonth(), endIndexMobile.getDate()+1);
             const endBtn = createBtn(endIndexMobile);
             calendarMobile.appendChild(endBtn);
-        }
-    }
-
-    if (calendarMobile.scrollLeft <= calendarMobile.clientWidth * 0.1) {
-        for (let i = 1; i <= 30; i++) {
-            startIndexMobile = new Date(startIndexMobile.getFullYear(), startIndexMobile.getMonth(), startIndexMobile.getDate()-1);
-            const endBtn = createBtn(startIndexMobile);
-            calendarMobile.prepend(endBtn);
         }
     }
 });

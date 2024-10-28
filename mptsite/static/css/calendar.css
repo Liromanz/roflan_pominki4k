@@ -86,6 +86,7 @@
 
 #calendar-mobile {
     overflow-x: auto;
+    scrollbar-width: none;
     scroll-behavior: smooth;
     background: var(--secondary-background);
     border-radius: 5px;

@@ -1,27 +1,19 @@
-
-/*# sourceMappingURL=main.css.map */
+/*# sourceMappingURL=not_auth_student.css.map */
 
 @import url('https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300..900;1,300..900&display=swap');
-@import url(root.css);
 @import url(drop_style.css);
-
-@import url(preload.css);
+@import url(root.css);
 
 @import url(header_top.css);
 @import url(second_header.css);
-@import url(photo_block.css);
-
-@import url(about_MPT.css);
-@import url(training_program.css);
-@import url(faq.css);
-
-@import url(map_block.css);
-@import url(frequently_asked_questions.css);
-@import url(applicant.css);
-
 @import url(footer.css);
 
-@import url(auth_popap.css);
+/*@import url(photo_block.css);*/
+@import url(exam_question.css);
+@import url(ordering_certificates.css);
+@import url(student_council.css);
+@import url(map_block.css);
+@import url(photo_archive.css);
 
 * {
     transition: all 0.3s ease-out;
@@ -33,20 +25,13 @@
 }
 
 body {
-    background-color: #E8EBF4;
+    background: var(--primary-background);
 }
-
-/*header {*/
-/*    background-color: var(--secondary-background) !important;*/
-/*}*/
-
-/*footer {*/
-/*    background-color: var(--secondary-background);*/
-/*}*/
 
 h1{
     font-size: 32px;
     font-weight: var(--Medium);
+    color: var(--primary-foreground);
 }
 
 .bold {
@@ -59,4 +44,8 @@ h1{
 
 .light {
     font-weight: 300;
+}
+
+.main-color {
+    color: var(--primary-foreground) !important;
 }

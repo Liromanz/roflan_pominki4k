@@ -1,0 +1,44 @@
+.no-scroll {
+    overflow: auto !important;
+}
+
+.modal-title {
+    font-weight: 600;
+    font-size: 25px;
+    text-align: right;
+}
+
+.modal-content {
+    border-radius: 20px;
+}
+
+.modal-header {
+    border: none;
+    border-radius: 0;
+}
+
+.modal-content .primary-foreground {
+    color: var(--primary-foreground);
+}
+
+.modal-content .secondary-foreground {
+    color: #8B8B8B;
+}
+
+.modal-content .base-btn {
+    background: transparent;
+    &:hover {
+        color: #6EA8FE;
+        text-decoration: underline;
+    }
+}
+
+.modal-content .nan-auth-btn {
+    font-weight: 400;
+}
+
+.modal-content .auth-btn {
+    border: 3px solid #E8EBF4;
+    border-radius: 15px;
+    font-weight: 300;
+}
