@@ -49,3 +49,13 @@ h1{
 .main-color {
     color: var(--primary-foreground) !important;
 }
+
+.title {
+    font-size: 32px;
+}
+
+@media (max-width: 992px) {
+    .title {
+        font-size: 18px !important;
+    }
+}
