@@ -27,3 +27,17 @@
 [data-theme="dark"] .btn-close {
     filter: invert(100%);
 }
+
+.navbar-toggler {
+    border: none;
+    padding: 0;
+    &:focus {
+        box-shadow: none;
+    }
+}
+
+.navbar-toggler * {
+    height: 28px;
+}
+
+
